@@ -9,7 +9,7 @@ Everything is listed with size, sha256, original research path and licence point
 | Item | Where |
 |---|---|
 | Tarball | `dist/camloc-aramis-assets-final-v1.tar` (one part, 913,162,240 B, sha256 in `manifests/assets-final-v1.json` -> `tar`) |
-| Download URL | <https://github.com/igorkozlovskii/schubki-2026-camloc-aramis/releases/tag/v1.0.0> (`gh release download v1.0.0 -R igorkozlovskii/schubki-2026-camloc-aramis`); tarball SHA-256 `2f3fffc60b5dcecd211f55912c0779df6fa9c1c4c47c80e16f434199f6d981f9` |
+| Download URL | <https://github.com/igorkozlovskii/schubki-2026-camloc-aramis/releases/latest> (`gh release download -R igorkozlovskii/schubki-2026-camloc-aramis -p 'camloc-aramis-assets-final-v1.tar*'`; the same tarball is attached to every release); tarball SHA-256 `2f3fffc60b5dcecd211f55912c0779df6fa9c1c4c47c80e16f434199f6d981f9` |
 | Layout | unpacks to `assets-final-v1/` (mirrors the research layout: `artifacts/`, `manifests/v2/`, `configs/models/`, `reports/experiments/`, `derived/`, `assets/final/`) |
 
 ```bash

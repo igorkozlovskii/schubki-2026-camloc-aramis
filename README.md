@@ -26,7 +26,11 @@ Runtime inference is offline (`HF_HUB_OFFLINE=1`). `pixi run camloc-run` uses `f
 
 ## Assets
 
-Download `camloc-aramis-assets-final-v1.tar` from the [v1.0.0 GitHub release](https://github.com/igorkozlovskii/schubki-2026-camloc-aramis/releases/tag/v1.0.0).
+Download `camloc-aramis-assets-final-v1.tar` from the [latest GitHub release](https://github.com/igorkozlovskii/schubki-2026-camloc-aramis/releases/latest) (the same tarball is attached to every release):
+
+```bash
+gh release download -R igorkozlovskii/schubki-2026-camloc-aramis -p 'camloc-aramis-assets-final-v1.tar*'
+```
 
 ```bash
 sha256sum camloc-aramis-assets-final-v1.tar
