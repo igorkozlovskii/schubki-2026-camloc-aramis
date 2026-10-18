@@ -53,4 +53,5 @@ env = { PYTHONNOUSERSITE = "1", PYTHONPATH = "$PIXI_PROJECT_ROOT/src:$PIXI_PROJE
 [tasks]
 # Frozen final model: raw MCAP + first pose -> organizer CSV (see README / docs). Example:
 #   pixi run camloc-run --mcap <bag.mcap> --first-pose <first_pose.csv|json> --out <new output dir>
-camloc-run = "python scripts/final_run.py run"
+camloc-run = "python scripts/final_run.py --config configs/final/final-v2.yaml run"
+camloc-run-v1 = "python scripts/final_run.py --config configs/final/final-v1.yaml run"

@@ -49,3 +49,5 @@ PRG-003 (release orchestrator, in the research checkout) owns orchestration
 during preparation. Implementers work within a written brief and leave
 receipts; reviewers are independent. This sibling does not own or edit
 PRG-001/PRG-002 state.
+
+R05 (final-v2): `configs/final/final-v2.yaml` is the default (task `camloc-run`); `final-v1` runs with `--config configs/final/final-v1.yaml` (task `camloc-run-v1`). One merged driver; no new asset (same bundle and tarball). `tools/export_sources.py` exports both freeze configs.

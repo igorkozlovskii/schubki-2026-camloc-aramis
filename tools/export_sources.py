@@ -90,9 +90,22 @@ D086_START = [
 # code (PRG-002 D-091 freeze, PRG-003 R02b brief). Lazy imports that only sit in functions the
 # final run never calls (S3.1 GRU training, S2.8 telemetry-border filter, S1.11 research
 # evaluators, ...) are explicitly excluded; everything else the closure reaches is copied.
-DEFAULT_FREEZE_CONFIG = "configs/final/final-v1.yaml"
-FREEZE_MANIFEST = ("manifests/final/final-v1.json", "manifests/final-v1-freeze.json")
-PORTED = {"scripts/final_run.py"}        # hand-ported release driver (not byte-copied): recorded, not planned
+# R05: two frozen configurations are exported (final-v2 = default, final-v1 kept runnable); their freeze.code lists are united.
+DEFAULT_FREEZE_CONFIGS = ["configs/final/final-v1.yaml", "configs/final/final-v2.yaml"]
+DEFAULT_FREEZE_CONFIG = DEFAULT_FREEZE_CONFIGS[0]
+V1_MANIFEST = "manifests/final/final-v1.json"
+# hand-ported release driver (not byte-copied): recorded, not planned. The research drivers scripts/final_run.py (final-v1, sha 01558e66) and
+# scripts/final_run_v2.py (final-v2, F2 sha 3865924f) are merged into the ONE release scripts/final_run.py.
+PORTED = {"scripts/final_run.py", "scripts/final_run_v2.py"}
+PORTED_DEST = "scripts/final_run.py"
+
+
+def freeze_manifest_of(src_root: Path, freeze_config: str) -> tuple[str, str]:
+    """(research manifest path, release dest path) of a freeze config: its `freeze_manifest` key (default the final-v1 one); dest = manifests/<stem>-freeze.json."""
+    import yaml
+    cfg = yaml.safe_load((src_root / freeze_config).read_text())
+    src = cfg.get("freeze_manifest", V1_MANIFEST)
+    return src, f"manifests/{Path(src).stem}-freeze.json"
 SCRIPT_EXCLUDE = {
     "v2_s28_lib", "v2_s26_lib", "v2_s26_filter", "v2_s111_run",
     "v2_s31_eval", "v2_s31c_eval", "v2_s31d_eval", "v2_s31e_eval", "v2_s31f_eval",
@@ -242,16 +255,21 @@ def script_closure(src_root: Path, start: list[str]) -> tuple[list[str], set[str
     return sorted(seen), camloc, sorted(excluded)
 
 
-def freeze_selection(src_root: Path, freeze_config: str) -> dict:
+def freeze_selection(src_root: Path, freeze_configs) -> dict:
     import yaml
-    cfg = yaml.safe_load((src_root / freeze_config).read_text())
-    code = cfg["freeze"]["code"]
+    code: list[str] = []
+    for fc in ([freeze_configs] if isinstance(freeze_configs, str) else freeze_configs):
+        cfg = yaml.safe_load((src_root / fc).read_text())
+        code += [c for c in cfg["freeze"]["code"] if c not in code]
     scripts = [Path(c).stem for c in code if c.startswith("scripts/") and c not in PORTED]
-    cl_mods = [c[len("src/"):-3].replace("/", ".") for c in code if c.startswith("src/")]
+    cl_mods = [c[len("src/"):-3].replace("/", ".").removesuffix(".__init__") for c in code if c.startswith("src/")]
     others = [c for c in code if not c.startswith(("scripts/", "src/"))]
     return {"scripts": scripts, "camloc": cl_mods, "others": others, "code": code}
 
-def build_plan(src_root: Path, dest: Path, freeze_config: str | None = DEFAULT_FREEZE_CONFIG) -> Planner:
+def build_plan(src_root: Path, dest: Path, freeze_configs=None) -> Planner:
+    if freeze_configs is None:
+        freeze_configs = DEFAULT_FREEZE_CONFIGS
+    freeze_configs = [freeze_configs] if isinstance(freeze_configs, str) else list(freeze_configs)
     sys.path.insert(0, str(src_root / "src"))
     from camloc.release.codeclosure import import_closure
 
@@ -261,11 +279,11 @@ def build_plan(src_root: Path, dest: Path, freeze_config: str | None = DEFAULT_F
     fz = None
     extra_start: list[str] = []
     script_mods: list[str] = []
-    if freeze_config:
-        fz = freeze_selection(src_root, freeze_config)
+    if freeze_configs:
+        fz = freeze_selection(src_root, freeze_configs)
         script_mods, script_camloc, excluded = script_closure(src_root, fz["scripts"])
         extra_start = sorted((set(fz["camloc"]) | script_camloc) - CAMLOC_EXCLUDE)
-        pl.freeze_info = {"config": freeze_config, "freeze_code": fz["code"], "script_modules": script_mods,
+        pl.freeze_info = {"configs": freeze_configs, "freeze_code": fz["code"], "script_modules": script_mods,
                           "script_excluded_reached": excluded, "camloc_extra_start": extra_start}
     closure = import_closure(str(src_root / "src"), MC7_START + D086_START + extra_start)
     # Guard: no learned-layer module may enter the closure (excluded by D-086).
@@ -294,9 +312,11 @@ def build_plan(src_root: Path, dest: Path, freeze_config: str | None = DEFAULT_F
         for rel in fz["others"]:
             pl.add_verbatim(rel, rel, "config")
         # release config: asset paths remapped
-        cfg_text = (src_root / freeze_config).read_text()
-        pl.add_transformed(freeze_config, freeze_config, "config", CONFIG_ASSET_RE.sub(r"$ASSETS/\1", cfg_text).encode(), CONFIG_REASON)
-        pl.add_verbatim(FREEZE_MANIFEST[0], FREEZE_MANIFEST[1], "manifest")
+        for freeze_config in freeze_configs:
+            cfg_text = (src_root / freeze_config).read_text()
+            pl.add_transformed(freeze_config, freeze_config, "config", CONFIG_ASSET_RE.sub(r"$ASSETS/\1", cfg_text).encode(), CONFIG_REASON)
+            fm_src, fm_dest = freeze_manifest_of(src_root, freeze_config)
+            pl.add_verbatim(fm_src, fm_dest, "manifest")
         for n in SCHEMA_FILES:
             pl.add_verbatim(f"schemas/{n}.schema.json", f"schemas/{n}.schema.json", "schema")
 
@@ -382,15 +402,18 @@ def write_manifest(pl: Planner, src_head: str | None, applied: dict) -> Path:
 def _ported_records(pl: Planner) -> list[dict]:
     out = []
     for rel in sorted(PORTED):
-        sp, dp = pl.src_root / rel, pl.dest / rel
-        frozen = json.loads((pl.src_root / FREEZE_MANIFEST[0]).read_text())["code"].get(rel)
+        sp, dp = pl.src_root / rel, pl.dest / PORTED_DEST
+        frozen = None
+        for fc in (pl.freeze_info or {}).get("configs", []):
+            fm = pl.src_root / freeze_manifest_of(pl.src_root, fc)[0]
+            frozen = frozen or json.loads(fm.read_text())["code"].get(rel)
         now = sha256_file(sp)
-        out.append({"source_path": rel, "dest_path": rel,
+        out.append({"source_path": rel, "dest_path": PORTED_DEST,
                     "orig_sha256": frozen or now,            # the F1-frozen research file that was ported (freeze hash), not a later working-tree edit
                     "research_working_tree_sha256": now, "research_drifted_from_freeze": bool(frozen and frozen != now),
                     "copied_sha256": sha256_file(dp) if dp.is_file() else None,
-                    "adaptation": "hand-ported release driver: pixi/VISION -> sys.executable, gpu_slot/flock removed, "
-                                  "artifacts/ resolved via asset root, parity/freeze subcommands dropped (see docs/R02B_ADAPTATIONS.md)"})
+                    "adaptation": "hand-ported release driver (final-v1 and final-v2 merged into one file): pixi/VISION -> sys.executable, gpu_slot/flock removed, "
+                                  "artifacts/ resolved via asset root, parity/parity-v2/freeze subcommands dropped (see docs/R02B_ADAPTATIONS.md)"})
     return out
 
 
@@ -435,9 +458,9 @@ def main(argv=None) -> int:
                     help="destination release root (default: this tool's parent)")
     ap.add_argument("--source-head", default=None,
                     help="optional parent git HEAD to record in the manifest")
-    ap.add_argument("--freeze-config", default=DEFAULT_FREEZE_CONFIG,
+    ap.add_argument("--freeze-config", action="append", default=None,
                     help="research-relative freeze config whose freeze.code lists the live release scripts/modules "
-                         "(R02b); pass '' for the R02a-only export")
+                         "(R02b); repeatable (default: final-v1 and final-v2, R05); pass '' alone for the R02a-only export")
     ap.add_argument("--dry-run", action="store_true",
                     help="plan and validate only; write nothing")
     args = ap.parse_args(argv)
@@ -449,7 +472,8 @@ def main(argv=None) -> int:
     if src_root == dest:
         ap.error("source-root and dest must differ")
 
-    pl = build_plan(src_root, dest, args.freeze_config or None)
+    fcs = DEFAULT_FREEZE_CONFIGS if args.freeze_config is None else [f for f in args.freeze_config if f]
+    pl = build_plan(src_root, dest, fcs)
     applied = apply_plan(pl, write=not args.dry_run)
     if args.dry_run:
         # still validate the manifest shape without writing it

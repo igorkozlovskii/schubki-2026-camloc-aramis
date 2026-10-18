@@ -2,7 +2,9 @@
 # Camera-based race-car localization on Yas Marina
 ## Idea
 
-The system estimates a race car's position and heading from seven onboard cameras, calibration, a landmark map, track borders and car-state telemetry. It starts from one supplied pose and produces causal poses at 10 Hz. The released versions uses camera landmark matching, border and pole measurements, and a telemetry-based track-coordinate filter; it has no learned sequence layer.
+The system estimates a race car's position and heading from seven onboard cameras, calibration, a landmark map, track borders and car-state telemetry. It starts from one supplied pose and produces causal poses at 10 Hz. The released system uses camera landmark matching, border and pole measurements, and a telemetry-based track-coordinate filter; it has no learned sequence layer.
+
+`final-v2` is the default: it batches feature extraction and matching for the six non-front cameras using the E matcher. `final-v1` remains available; both versions use the same maps, borders, poles, filter and asset bundle.
 
 
 ## Requirements
@@ -19,7 +21,7 @@ pixi install --locked
 ```
 
 If CUDA detection fails on the host, prefix the command with `CONDA_OVERRIDE_CUDA=12.4`.
-Runtime inference is offline (`HF_HUB_OFFLINE=1`).
+Runtime inference is offline (`HF_HUB_OFFLINE=1`). `pixi run camloc-run` uses `final-v2`; `pixi run camloc-run-v1` uses `final-v1`.
 
 ## Assets
 
@@ -56,7 +58,9 @@ No external dataset was used for training. Full declarations are in [licenses/li
 pixi.toml, pixi.lock     pinned environment
 src/camloc/              runtime library
 scripts/                 frozen driver and export CLIs
-configs/                 final configuration and model parameters
+configs/final/           final-v2 (default) and final-v1 configurations
+configs/v2/s122/         E-matcher parameters
+configs/models, splits/  model parameters and release splits
 schemas/                 data schemas
 external/                vendored LightGlue subset
 tools/                   asset, source-export and dependency tools
