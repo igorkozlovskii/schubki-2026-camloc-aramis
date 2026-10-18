@@ -1,0 +1,212 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "telemetry_manifest.schema.json",
+ "title": "telemetry-v1 manifest",
+ "type": "object",
+ "required": [
+  "schema_version",
+  "manifest_id",
+  "contract",
+  "source",
+  "file",
+  "stamp_semantics",
+  "units",
+  "fields",
+  "counts",
+  "rate",
+  "first_stamp_ns",
+  "last_stamp_ns",
+  "creation_command",
+  "regenerable"
+ ],
+ "properties": {
+  "schema_version": {
+   "const": 1
+  },
+  "manifest_id": {
+   "const": "telemetry-v1"
+  },
+  "contract": {
+   "const": "inputs-v2"
+  },
+  "source": {
+   "type": "object",
+   "required": [
+    "path",
+    "bytes",
+    "sha256",
+    "topic",
+    "schema",
+    "range_log_time_ns"
+   ],
+   "properties": {
+    "path": {
+     "type": "string"
+    },
+    "bytes": {
+     "type": "integer"
+    },
+    "sha256": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "pattern": "^[0-9a-f]{64}$"
+    },
+    "topic": {
+     "const": "/constructor0/state_estimation"
+    },
+    "schema": {
+     "const": "sd_localization_msgs/msg/StateEstimation"
+    },
+    "range_log_time_ns": {
+     "type": [
+      "array",
+      "null"
+     ],
+     "items": {
+      "type": "integer"
+     },
+     "minItems": 2,
+     "maxItems": 2
+    }
+   }
+  },
+  "file": {
+   "type": "object",
+   "required": [
+    "name",
+    "sha256",
+    "bytes"
+   ],
+   "properties": {
+    "name": {
+     "const": "telemetry.csv"
+    },
+    "sha256": {
+     "type": "string",
+     "pattern": "^[0-9a-f]{64}$"
+    },
+    "bytes": {
+     "type": "integer"
+    }
+   }
+  },
+  "stamp_semantics": {
+   "type": "string"
+  },
+  "units": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "string"
+   }
+  },
+  "fields": {
+   "type": "object",
+   "required": [
+    "exported",
+    "skipped_by_name",
+    "allowed_but_missing_in_message",
+    "forbidden_names_seen"
+   ],
+   "properties": {
+    "exported": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "skipped_by_name": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "allowed_but_missing_in_message": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "forbidden_names_seen": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "counts": {
+   "type": "object",
+   "required": [
+    "messages_read",
+    "rows_written",
+    "duplicate_stamps_dropped",
+    "out_of_order_arrivals"
+   ],
+   "properties": {
+    "messages_read": {
+     "type": "integer"
+    },
+    "rows_written": {
+     "type": "integer"
+    },
+    "duplicate_stamps_dropped": {
+     "type": "integer"
+    },
+    "out_of_order_arrivals": {
+     "type": "integer"
+    },
+    "duplicate_stamps_listed": {
+     "type": "array",
+     "items": {
+      "type": "integer"
+     }
+    }
+   }
+  },
+  "rate": {
+   "type": "object",
+   "required": [
+    "median_dt_ms",
+    "max_dt_ms",
+    "n_gaps_over_50ms"
+   ],
+   "properties": {
+    "median_dt_ms": {
+     "type": "number"
+    },
+    "rate_hz": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "max_dt_ms": {
+     "type": "number"
+    },
+    "n_gaps_over_50ms": {
+     "type": "integer"
+    },
+    "gaps_over_50ms": {
+     "type": "array"
+    }
+   }
+  },
+  "first_stamp_ns": {
+   "type": "integer"
+  },
+  "last_stamp_ns": {
+   "type": "integer"
+  },
+  "creation_command": {
+   "type": "string"
+  },
+  "created_utc": {
+   "type": "string"
+  },
+  "regenerable": {
+   "type": "boolean"
+  }
+ }
+}

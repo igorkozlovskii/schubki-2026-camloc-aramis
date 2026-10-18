@@ -1,0 +1,327 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "cameras-v1 store manifest written by the generic test-day exporter (S02b)",
+ "type": "object",
+ "required": [
+  "schema_version",
+  "store_id",
+  "complete",
+  "creation_command",
+  "source",
+  "counts_per_camera",
+  "index_rows",
+  "topic_inventory",
+  "skipped_by_topic",
+  "files",
+  "generic",
+  "skipped_messages_total",
+  "forbidden_records"
+ ],
+ "properties": {
+  "store_id": {
+   "const": "cameras-v1"
+  },
+  "complete": {
+   "type": "boolean"
+  },
+  "index_rows": {
+   "type": "integer",
+   "minimum": 1
+  },
+  "source": {
+   "type": "object",
+   "required": [
+    "sha256",
+    "bytes"
+   ],
+   "properties": {
+    "sha256": {
+     "type": "string",
+     "pattern": "^[0-9a-f]{64}$"
+    },
+    "bytes": {
+     "type": "integer",
+     "minimum": 1
+    }
+   }
+  },
+  "counts_per_camera": {
+   "type": "object",
+   "propertyNames": {
+    "enum": [
+     "fl",
+     "fr",
+     "cl",
+     "cr",
+     "rl",
+     "rr",
+     "r"
+    ]
+   },
+   "additionalProperties": {
+    "type": "integer",
+    "minimum": 0
+   }
+  },
+  "topic_inventory": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "object",
+    "required": [
+     "messages",
+     "class",
+     "schema_name",
+     "exported_as_payload",
+     "exported_messages"
+    ],
+    "properties": {
+     "class": {
+      "enum": [
+       "allowed",
+       "disabled_pending_Q1",
+       "forbidden",
+       "unknown"
+      ]
+     },
+     "messages": {
+      "type": "integer",
+      "minimum": 0
+     },
+     "exported_messages": {
+      "type": "integer",
+      "minimum": 0
+     },
+     "exported_as_payload": {
+      "type": "boolean"
+     }
+    },
+    "if": {
+     "properties": {
+      "class": {
+       "not": {
+        "const": "allowed"
+       }
+      }
+     }
+    },
+    "then": {
+     "properties": {
+      "exported_as_payload": {
+       "const": false
+      },
+      "exported_messages": {
+       "const": 0
+      }
+     }
+    }
+   }
+  },
+  "files": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "object",
+    "required": [
+     "bytes",
+     "sha256"
+    ],
+    "properties": {
+     "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+     },
+     "bytes": {
+      "type": "integer",
+      "minimum": 0
+     }
+    }
+   }
+  },
+  "generic": {
+   "type": "object",
+   "required": [
+    "tool",
+    "input_mode",
+    "read_mode",
+    "truncated_input",
+    "cameras_present",
+    "cameras_missing",
+    "per_camera",
+    "clock",
+    "calibration",
+    "track_bounds",
+    "unknown_topics",
+    "refused_topics_present",
+    "anomalies",
+    "stamp_range_ns",
+    "export_command"
+   ],
+   "properties": {
+    "input_mode": {
+     "const": "raw-mcap-generic"
+    },
+    "read_mode": {
+     "enum": [
+      "indexed",
+      "stream"
+     ]
+    },
+    "truncated_input": {
+     "type": "boolean"
+    },
+    "cameras_present": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "cameras_missing": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "clock": {
+     "type": "object",
+     "required": [
+      "required",
+      "available",
+      "used",
+      "fallback",
+      "switch_reported"
+     ],
+     "properties": {
+      "fallback": {
+       "type": "boolean"
+      },
+      "switch_reported": {
+       "type": "boolean"
+      }
+     }
+    },
+    "calibration": {
+     "type": "object",
+     "required": [
+      "sha256",
+      "training_sha256",
+      "matches_training",
+      "calibration_mismatch",
+      "message",
+      "full_sha256",
+      "camera_fingerprint",
+      "training_camera_fingerprint",
+      "camera_matches_training",
+      "per_camera_fingerprints",
+      "camera_comparison",
+      "non_camera_differences"
+     ],
+     "properties": {
+      "calibration_mismatch": {
+       "type": "boolean"
+      },
+      "matches_training": {
+       "type": "boolean"
+      },
+      "camera_matches_training": {
+       "type": "boolean"
+      },
+      "non_camera_differences": {
+       "type": "boolean"
+      },
+      "camera_comparison": {
+       "type": "object",
+       "required": [
+        "status",
+        "differing",
+        "missing_required"
+       ],
+       "properties": {
+        "status": {
+         "enum": [
+          "match",
+          "note",
+          "mismatch"
+         ]
+        }
+       }
+      },
+      "camera_fingerprint": {
+       "type": "string",
+       "pattern": "^[0-9a-f]{64}$"
+      },
+      "full_sha256": {
+       "type": "string",
+       "pattern": "^[0-9a-f]{64}$"
+      }
+     }
+    },
+    "anomalies": {
+     "type": "object",
+     "required": [
+      "duplicate_stamps",
+      "out_of_order_arrivals",
+      "non_jpeg_payloads",
+      "frame_id_mismatch"
+     ],
+     "additionalProperties": {
+      "type": "object",
+      "required": [
+       "count",
+       "policy",
+       "items"
+      ],
+      "properties": {
+       "count": {
+        "type": "integer",
+        "minimum": 0
+       },
+       "items": {
+        "type": "array"
+       }
+      }
+     }
+    },
+    "stamp_range_ns": {
+     "type": "array",
+     "items": {
+      "type": "integer"
+     },
+     "minItems": 2,
+     "maxItems": 2
+    }
+   }
+  },
+  "skipped_by_topic": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "object",
+    "required": [
+     "class",
+     "schema_name",
+     "messages"
+    ],
+    "properties": {
+     "class": {
+      "enum": [
+       "allowed",
+       "disabled_pending_Q1",
+       "forbidden",
+       "unknown"
+      ]
+     },
+     "messages": {
+      "type": "integer",
+      "minimum": 0
+     }
+    }
+   }
+  },
+  "skipped_messages_total": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "forbidden_records": {
+   "const": 0,
+   "description": "reader-compat certificate (frozen S02 reader requires 0): payloads exported from non-allowlisted topics; 0 by construction. See skipped_by_topic for the real skip counts."
+  }
+ }
+}

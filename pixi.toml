@@ -1,0 +1,56 @@
+# Standalone organizer-release environment for the single final D-086 model
+# (mc7 + borders + poles + speed-aware v_max; no learned/GRU layer).
+#
+# ONE dedicated environment for the whole release pipeline: the model/vision
+# stack (PyTorch/CUDA/kornia/OpenCV/transformers, proven pins reused verbatim
+# from the research vision lock) AND the MCAP reader/exporter dependencies
+# (mcap, mcap-ros2-support) that scripts/export_test_input.py and
+# scripts/export_telemetry.py need. Streamlit, JupyterLab and research-only
+# tooling are intentionally excluded.
+#
+# This is a self-contained sibling project: no parent manifest, lock or .pixi/
+# is referenced or copied. Import paths point only inside this tree.
+#
+# Install (CUDA detection workaround for this machine; not an organizer
+# requirement):
+#   CONDA_OVERRIDE_CUDA=12.4 pixi install --locked --manifest-path <this>/pixi.toml
+[workspace]
+name = "schubki-2026-release"
+channels = ["pytorch", "nvidia", "conda-forge"]
+platforms = ["linux-64"]
+
+[dependencies]
+# --- model / vision stack: versions pinned to the environments/vision lock that ran F1 (R02b: python 3.11.6, pyarrow 12.0.1, ...) ---
+python = "==3.11.6"
+pytorch = "==2.3.1"
+pytorch-cuda = "==12.1"
+torchvision = "0.18.*"
+numpy = "==1.26.4"
+pandas = "==2.3.3"
+scipy = "==1.17.1"
+pyarrow = "==12.0.1"
+pyyaml = "*"
+jsonschema = "*"
+pip = "*"
+pytest = "*"
+
+[pypi-dependencies]
+# --- model / vision stack (from environments/vision/pixi.toml) ---
+kornia = "==0.8.3"
+opencv-python-headless = "==4.10.0.84"
+transformers = "==4.57.6"
+safetensors = "==0.8.0"
+# --- MCAP reader / exporter stack (from the research root exporter env) ---
+mcap = "*"
+mcap-ros2-support = "*"
+
+[activation]
+# `camloc` is importable from this sibling's own src/ (src layout); the vendored
+# LightGlue subset is importable as top-level `lightglue`. No parent path, no
+# user site-packages. HF stays offline (no weight fetch on import).
+env = { PYTHONNOUSERSITE = "1", PYTHONPATH = "$PIXI_PROJECT_ROOT/src:$PIXI_PROJECT_ROOT/external/S04-lightglue/LightGlue", HF_HUB_OFFLINE = "1", OMP_NUM_THREADS = "4", MKL_NUM_THREADS = "4", OPENBLAS_NUM_THREADS = "4" }
+
+[tasks]
+# Frozen final model: raw MCAP + first pose -> organizer CSV (see README / docs). Example:
+#   pixi run camloc-run --mcap <bag.mcap> --first-pose <first_pose.csv|json> --out <new output dir>
+camloc-run = "python scripts/final_run.py run"

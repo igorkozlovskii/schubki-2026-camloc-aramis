@@ -1,0 +1,1037 @@
+{
+ "schema": "assets-final-v1",
+ "bundle": "final-v1",
+ "source_root_head": "a82158b43fd522ac07146370909c19410c3e8eda",
+ "freeze_manifest": "manifests/final/final-v1.json",
+ "freeze_manifest_sha256": "d5c2de82022331334a8c0c10344007f6c51ac510b2ca979a8130dfa5d13a1bfb",
+ "file_count": 76,
+ "total_bytes": 913103441,
+ "groups": [
+  {
+   "group": "maps",
+   "key": "fl",
+   "path": "artifacts/maps/S04-full-v1",
+   "kind": "dir",
+   "in_freeze_manifest": true,
+   "files": 6,
+   "bytes": 74293230,
+   "digest_sha256": "162196308e599a3c27e5d3149382af2fc043ab17f3b4c99e0d57d3a54db99616",
+   "freeze_expect": "162196308e599a3c27e5d3149382af2fc043ab17f3b4c99e0d57d3a54db99616"
+  },
+  {
+   "group": "maps",
+   "key": "fr",
+   "path": "artifacts/maps/S04d-fr-full-v1",
+   "kind": "dir",
+   "in_freeze_manifest": true,
+   "files": 7,
+   "bytes": 126775096,
+   "digest_sha256": "93d46484bd4d4ce5c6b3bf75f6dced138fddab85b2dde5848d48579fd9b89b5a",
+   "freeze_expect": "93d46484bd4d4ce5c6b3bf75f6dced138fddab85b2dde5848d48579fd9b89b5a"
+  },
+  {
+   "group": "maps",
+   "key": "cl",
+   "path": "artifacts/maps/V2-S1.16-cl-full",
+   "kind": "dir",
+   "in_freeze_manifest": true,
+   "files": 7,
+   "bytes": 108975722,
+   "digest_sha256": "7152fd3a38e975ce8272b8abc9c44b2e5d93ac85991a3e5ab7d79eb83a5add6e",
+   "freeze_expect": "7152fd3a38e975ce8272b8abc9c44b2e5d93ac85991a3e5ab7d79eb83a5add6e"
+  },
+  {
+   "group": "maps",
+   "key": "cr",
+   "path": "artifacts/maps/V2-S1.16-cr-full",
+   "kind": "dir",
+   "in_freeze_manifest": true,
+   "files": 7,
+   "bytes": 138025289,
+   "digest_sha256": "a4ee7b44cb5d3e803f458988954edb46b787dc8bd857ee8347d83adce04f3299",
+   "freeze_expect": "a4ee7b44cb5d3e803f458988954edb46b787dc8bd857ee8347d83adce04f3299"
+  },
+  {
+   "group": "maps",
+   "key": "r",
+   "path": "artifacts/maps/V2-S1.16-r-full",
+   "kind": "dir",
+   "in_freeze_manifest": true,
+   "files": 7,
+   "bytes": 90726889,
+   "digest_sha256": "60ee28ee09935f8dcd94699a0092b03447e36e571d2990470b97ae48dd710571",
+   "freeze_expect": "60ee28ee09935f8dcd94699a0092b03447e36e571d2990470b97ae48dd710571"
+  },
+  {
+   "group": "maps",
+   "key": "rl",
+   "path": "artifacts/maps/V2-S1.16-rl-full",
+   "kind": "dir",
+   "in_freeze_manifest": true,
+   "files": 7,
+   "bytes": 80003543,
+   "digest_sha256": "46a7babc4e68f3712877c5bda4ba662542457e1506c0b4f6dd934e438da79493",
+   "freeze_expect": "46a7babc4e68f3712877c5bda4ba662542457e1506c0b4f6dd934e438da79493"
+  },
+  {
+   "group": "maps",
+   "key": "rr",
+   "path": "artifacts/maps/V2-S1.16-rr-full",
+   "kind": "dir",
+   "in_freeze_manifest": true,
+   "files": 7,
+   "bytes": 102920922,
+   "digest_sha256": "e5a04d9a9635c0fc4a6839ab648a1b985fd6dc483d40e3be52b8434b3fed68d9",
+   "freeze_expect": "e5a04d9a9635c0fc4a6839ab648a1b985fd6dc483d40e3be52b8434b3fed68d9"
+  },
+  {
+   "group": "poles",
+   "key": "poles",
+   "path": "artifacts/maps/V2-S2.5-poles-full",
+   "kind": "dir",
+   "in_freeze_manifest": true,
+   "files": 3,
+   "bytes": 344095,
+   "digest_sha256": "cc4921cd15847a5476102bc8483c518246adecdda054f3413a9e1aef0243c9d5",
+   "freeze_expect": "cc4921cd15847a5476102bc8483c518246adecdda054f3413a9e1aef0243c9d5"
+  },
+  {
+   "group": "attitude_map",
+   "key": "attitude_map",
+   "path": "artifacts/v2/S3.2c-attitude-map/full.npz",
+   "kind": "dir",
+   "in_freeze_manifest": true,
+   "files": 1,
+   "bytes": 25198,
+   "digest_sha256": "5f1a0bca96e571bd17afd58999c5872c60b842a4ca1f73ca548c37f0878613a0",
+   "freeze_expect": "5f1a0bca96e571bd17afd58999c5872c60b842a4ca1f73ca548c37f0878613a0"
+  },
+  {
+   "group": "body_masks",
+   "key": "body_masks",
+   "path": "artifacts/v2/S1.1-masks/full",
+   "kind": "dir",
+   "in_freeze_manifest": true,
+   "files": 9,
+   "bytes": 195051,
+   "digest_sha256": "37b395d44fec19c316b247a8d819b9e4658b37222a23ef27f14cb254b2dea431",
+   "freeze_expect": "37b395d44fec19c316b247a8d819b9e4658b37222a23ef27f14cb254b2dea431"
+  },
+  {
+   "group": "border_seg_B_all_laps",
+   "key": "border_seg_B_all_laps",
+   "path": "artifacts/v2/S3.2e-train/runs/B_lap-1_seed0/ckpt_last.pt",
+   "kind": "dir",
+   "in_freeze_manifest": true,
+   "files": 1,
+   "bytes": 50147002,
+   "digest_sha256": "640f26d418c50c6a2282122a3f3041400c56cae24fe0de23a1104526e3ac46dd",
+   "freeze_expect": "640f26d418c50c6a2282122a3f3041400c56cae24fe0de23a1104526e3ac46dd"
+  },
+  {
+   "group": "aliked_n16_weights",
+   "key": "aliked_n16_weights",
+   "path": "artifacts/external/S04-lightglue/weights/aliked-n16.pth",
+   "kind": "dir",
+   "in_freeze_manifest": true,
+   "files": 1,
+   "bytes": 2738091,
+   "digest_sha256": "394ca7f997fd3f1831495dfcdff2f4bf1530a757c6e7b5b7bf03d7844896379f",
+   "freeze_expect": "394ca7f997fd3f1831495dfcdff2f4bf1530a757c6e7b5b7bf03d7844896379f"
+  },
+  {
+   "group": "global_descriptor_dinov2_small",
+   "key": "global_descriptor_dinov2_small",
+   "path": "artifacts/external/S04-dinov2-small",
+   "kind": "dir",
+   "in_freeze_manifest": true,
+   "files": 3,
+   "bytes": 88250943,
+   "digest_sha256": "26fc58b4b2f895a25c4373d538b96e91f6b9c5878e020e8ddf0f5e7a526e331a",
+   "freeze_expect": "26fc58b4b2f895a25c4373d538b96e91f6b9c5878e020e8ddf0f5e7a526e331a"
+  },
+  {
+   "group": "reference_calibration",
+   "key": "reference_calibration",
+   "path": "artifacts/releases/S2.9-release-mc7-v1/calibration/calib.json",
+   "kind": "dir",
+   "in_freeze_manifest": true,
+   "files": 1,
+   "bytes": 11338,
+   "digest_sha256": "bf477314a5a4eed7bba4fa7ee57371a8142b503b1cf0323dca763e12ef1b7abb",
+   "freeze_expect": "bf477314a5a4eed7bba4fa7ee57371a8142b503b1cf0323dca763e12ef1b7abb"
+  },
+  {
+   "group": "constants",
+   "key": "manifests/v2/S4.2-constants.json",
+   "path": "manifests/v2/S4.2-constants.json",
+   "kind": "file",
+   "in_freeze_manifest": true,
+   "files": 1,
+   "bytes": 1171,
+   "digest_sha256": "78584c186d4eb42da8731e296aeabf74d8b51500227b39f6dee522f6694dc72a",
+   "freeze_expect": "78584c186d4eb42da8731e296aeabf74d8b51500227b39f6dee522f6694dc72a"
+  },
+  {
+   "group": "constants",
+   "key": "manifests/v2/S2.8-constants.json",
+   "path": "manifests/v2/S2.8-constants.json",
+   "kind": "file",
+   "in_freeze_manifest": true,
+   "files": 1,
+   "bytes": 695,
+   "digest_sha256": "0260d910e7056f28d77e2711f8a1e6ca7eb7d923b00abe4b860ec647567db60b",
+   "freeze_expect": "0260d910e7056f28d77e2711f8a1e6ca7eb7d923b00abe4b860ec647567db60b"
+  },
+  {
+   "group": "assets",
+   "key": "assets/final/track_bounds.json",
+   "path": "assets/final/track_bounds.json",
+   "kind": "file",
+   "in_freeze_manifest": true,
+   "files": 1,
+   "bytes": 1015783,
+   "digest_sha256": "28cf2bfd9ce74c2e5f1ededd5d36866221c341609b27a15e3b5bae94b33de0ff",
+   "freeze_expect": "28cf2bfd9ce74c2e5f1ededd5d36866221c341609b27a15e3b5bae94b33de0ff"
+  },
+  {
+   "group": "supplemental",
+   "key": "configs/models/e04-pnp-rfb-v1.yaml",
+   "path": "configs/models/e04-pnp-rfb-v1.yaml",
+   "kind": "file",
+   "in_freeze_manifest": true,
+   "files": 1,
+   "bytes": 487,
+   "digest_sha256": "1ed820d5df1d2dc144385177b994728e82d846d00332b6aadcaeef656d02d92d",
+   "freeze_expect": "1ed820d5df1d2dc144385177b994728e82d846d00332b6aadcaeef656d02d92d"
+  },
+  {
+   "group": "aliked_lightglue",
+   "key": "artifacts/external/S04-lightglue/weights/aliked_lightglue_v0.1_arxiv.pth",
+   "path": "artifacts/external/S04-lightglue/weights/aliked_lightglue_v0.1_arxiv.pth",
+   "kind": "file",
+   "in_freeze_manifest": false,
+   "files": 1,
+   "bytes": 47632827,
+   "digest_sha256": "d975e965b105311a6143194852297dff4f02aea5cc2e10cecfed966ca0e22503",
+   "freeze_expect": null
+  },
+  {
+   "group": "supplemental",
+   "key": "configs/models/e09k2-y1.yaml",
+   "path": "configs/models/e09k2-y1.yaml",
+   "kind": "file",
+   "in_freeze_manifest": false,
+   "files": 1,
+   "bytes": 1208,
+   "digest_sha256": "f15513932b6ab54dbf477762ef5c033dd7f0c56454793a3072da95d99a61e22e",
+   "freeze_expect": null
+  },
+  {
+   "group": "supplemental",
+   "key": "reports/experiments/S10b-tel/tuning/V3_all.json",
+   "path": "reports/experiments/S10b-tel/tuning/V3_all.json",
+   "kind": "file",
+   "in_freeze_manifest": false,
+   "files": 1,
+   "bytes": 2555,
+   "digest_sha256": "dba1ac1c5c270c32facea41ce59efb953ac1ce56b3cac47b28e1a4cf1eaf91df",
+   "freeze_expect": null
+  },
+  {
+   "group": "supplemental",
+   "key": "reports/experiments/S10g-tel4/tuning/g1_all.json",
+   "path": "reports/experiments/S10g-tel4/tuning/g1_all.json",
+   "kind": "file",
+   "in_freeze_manifest": false,
+   "files": 1,
+   "bytes": 523,
+   "digest_sha256": "2551e97fbaabab7416444ef918cf369d877a7c5437bda63cef30c5cf2a0db99e",
+   "freeze_expect": null
+  },
+  {
+   "group": "supplemental",
+   "key": "derived/track_bounds.json",
+   "path": "derived/track_bounds.json",
+   "kind": "file",
+   "in_freeze_manifest": false,
+   "files": 1,
+   "bytes": 1015783,
+   "digest_sha256": "28cf2bfd9ce74c2e5f1ededd5d36866221c341609b27a15e3b5bae94b33de0ff",
+   "freeze_expect": "28cf2bfd9ce74c2e5f1ededd5d36866221c341609b27a15e3b5bae94b33de0ff"
+  }
+ ],
+ "files": [
+  {
+   "path": "artifacts/external/S04-dinov2-small/config.json",
+   "bytes": 547,
+   "sha256": "1809f83e3bdb1609a501a610ad4a742f4fd8ae44d72ca4aa0df52d1f2ac8628d",
+   "original_path": "artifacts/external/S04-dinov2-small/config.json",
+   "group": "global_descriptor_dinov2_small",
+   "freeze_key": "global_descriptor_dinov2_small",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (DINOv2 ViT-S/14, Apache-2.0)"
+  },
+  {
+   "path": "artifacts/external/S04-dinov2-small/model.safetensors",
+   "bytes": 88249960,
+   "sha256": "ae1e99fcefd534ed978cdeb8326f08030c96e28b7a81ffcbc98a857c84d14be1",
+   "original_path": "artifacts/external/S04-dinov2-small/model.safetensors",
+   "group": "global_descriptor_dinov2_small",
+   "freeze_key": "global_descriptor_dinov2_small",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (DINOv2 ViT-S/14, Apache-2.0)"
+  },
+  {
+   "path": "artifacts/external/S04-dinov2-small/preprocessor_config.json",
+   "bytes": 436,
+   "sha256": "14e780d86fa1861f8751f868d7f45425b5feb55c38ca26f152ca5097ab30f828",
+   "original_path": "artifacts/external/S04-dinov2-small/preprocessor_config.json",
+   "group": "global_descriptor_dinov2_small",
+   "freeze_key": "global_descriptor_dinov2_small",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (DINOv2 ViT-S/14, Apache-2.0)"
+  },
+  {
+   "path": "artifacts/external/S04-lightglue/weights/aliked-n16.pth",
+   "bytes": 2738091,
+   "sha256": "5be8704840ed662d9d8c561bf7279c222092674e7eb05fd0feab94899e9d82f2",
+   "original_path": "artifacts/external/S04-lightglue/weights/aliked-n16.pth",
+   "group": "aliked_n16_weights",
+   "freeze_key": "aliked_n16_weights",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (ALIKED-n16 checkpoint, BSD-3-Clause)"
+  },
+  {
+   "path": "artifacts/external/S04-lightglue/weights/aliked_lightglue_v0.1_arxiv.pth",
+   "bytes": 47632827,
+   "sha256": "d975e965b105311a6143194852297dff4f02aea5cc2e10cecfed966ca0e22503",
+   "original_path": "artifacts/external/S04-lightglue/weights/aliked_lightglue_v0.1_arxiv.pth",
+   "group": "aliked_lightglue",
+   "freeze_key": "artifacts/external/S04-lightglue/weights/aliked_lightglue_v0.1_arxiv.pth",
+   "in_freeze_manifest": false,
+   "licence": "licenses/license-table.md (LightGlue ALIKED matcher checkpoint, Apache-2.0)",
+   "note": "LightGlue ALIKED matcher checkpoint loaded by camloc.models.retrieval.Matcher; absent from final-v1.json (gap), hash first recorded here"
+  },
+  {
+   "path": "artifacts/maps/S04-full-v1/filtered_training_rows.csv",
+   "bytes": 15073,
+   "sha256": "8e6edfe46a7831e16d777232ac68acdd6bea2f97ba648c37ccf6fe7297cc9b9f",
+   "original_path": "artifacts/maps/S04-full-v1/filtered_training_rows.csv",
+   "group": "maps",
+   "freeze_key": "fl",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/S04-full-v1/global.npy",
+   "bytes": 1668224,
+   "sha256": "536676e537495318dbadaa7b74347132627828e462a4c19b4b3007b4dfb6680e",
+   "original_path": "artifacts/maps/S04-full-v1/global.npy",
+   "group": "maps",
+   "freeze_key": "fl",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/S04-full-v1/keyframes.csv",
+   "bytes": 107998,
+   "sha256": "58fec030245d149a12c31ecf20e71d53a094138bf3b9cd2799ae3a6302a55790",
+   "original_path": "artifacts/maps/S04-full-v1/keyframes.csv",
+   "group": "maps",
+   "freeze_key": "fl",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/S04-full-v1/local.npz",
+   "bytes": 72345384,
+   "sha256": "74d652b53f6a110b130381690fa2593a89f58fb916154dfc4ed68f48879312ed",
+   "original_path": "artifacts/maps/S04-full-v1/local.npz",
+   "group": "maps",
+   "freeze_key": "fl",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/S04-full-v1/map.json",
+   "bytes": 5008,
+   "sha256": "a81f189f10df55f78b2379738a90fbde78fe4218d071696d6e86f3b16bf3a041",
+   "original_path": "artifacts/maps/S04-full-v1/map.json",
+   "group": "maps",
+   "freeze_key": "fl",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/S04-full-v1/pairs.csv",
+   "bytes": 151543,
+   "sha256": "8e8f9dabb097206f9ebb1a90db294cdb35146b5102293f724524a1a744411628",
+   "original_path": "artifacts/maps/S04-full-v1/pairs.csv",
+   "group": "maps",
+   "freeze_key": "fl",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/S04d-fr-full-v1/filtered_training_rows.csv",
+   "bytes": 15073,
+   "sha256": "8e6edfe46a7831e16d777232ac68acdd6bea2f97ba648c37ccf6fe7297cc9b9f",
+   "original_path": "artifacts/maps/S04d-fr-full-v1/filtered_training_rows.csv",
+   "group": "maps",
+   "freeze_key": "fr",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/S04d-fr-full-v1/global.npy",
+   "bytes": 1668224,
+   "sha256": "f6bdf443bff8dae34dddedab28b122f7fa44d98a352e56c7d142fd740426d14f",
+   "original_path": "artifacts/maps/S04d-fr-full-v1/global.npy",
+   "group": "maps",
+   "freeze_key": "fr",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/S04d-fr-full-v1/keyframes.csv",
+   "bytes": 107998,
+   "sha256": "d3cf94db2961a62a30219f54f6f3eb76be08bfceaeded75b0437baf87682912c",
+   "original_path": "artifacts/maps/S04d-fr-full-v1/keyframes.csv",
+   "group": "maps",
+   "freeze_key": "fr",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/S04d-fr-full-v1/kf_link.csv",
+   "bytes": 49966,
+   "sha256": "99baf13f50165163f3dd139f33c4996ab897b9ca2a2c33b2188766855520f130",
+   "original_path": "artifacts/maps/S04d-fr-full-v1/kf_link.csv",
+   "group": "maps",
+   "freeze_key": "fr",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/S04d-fr-full-v1/local.npz",
+   "bytes": 124775064,
+   "sha256": "9735bbf76cc400841828f169c9e50695d7a6bb15a100e3211a7bf7b2b1312e3e",
+   "original_path": "artifacts/maps/S04d-fr-full-v1/local.npz",
+   "group": "maps",
+   "freeze_key": "fr",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/S04d-fr-full-v1/map.json",
+   "bytes": 5248,
+   "sha256": "2b70b483c1fdff76be0bee79cf7631d926043af2c14046be0acf3e34b1ffa739",
+   "original_path": "artifacts/maps/S04d-fr-full-v1/map.json",
+   "group": "maps",
+   "freeze_key": "fr",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/S04d-fr-full-v1/pairs.csv",
+   "bytes": 153523,
+   "sha256": "c3166609bbcbf4044b140cef95e0026c517e56801b8441c8046c4410d34b3954",
+   "original_path": "artifacts/maps/S04d-fr-full-v1/pairs.csv",
+   "group": "maps",
+   "freeze_key": "fr",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-cl-full/filtered_training_rows.csv",
+   "bytes": 15073,
+   "sha256": "8e6edfe46a7831e16d777232ac68acdd6bea2f97ba648c37ccf6fe7297cc9b9f",
+   "original_path": "artifacts/maps/V2-S1.16-cl-full/filtered_training_rows.csv",
+   "group": "maps",
+   "freeze_key": "cl",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-cl-full/global.npy",
+   "bytes": 1668224,
+   "sha256": "af7165576098b7f46e1d469450a906f4ab4d2af76b4012ed4caa6586414a2858",
+   "original_path": "artifacts/maps/V2-S1.16-cl-full/global.npy",
+   "group": "maps",
+   "freeze_key": "cl",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-cl-full/keyframes.csv",
+   "bytes": 107998,
+   "sha256": "74ce98a4046b5f6c4ad8c94eb249e9eafcd73be6a3165dd68e6c7e45a46cf492",
+   "original_path": "artifacts/maps/V2-S1.16-cl-full/keyframes.csv",
+   "group": "maps",
+   "freeze_key": "cl",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-cl-full/kf_link.csv",
+   "bytes": 49966,
+   "sha256": "f89c8b07c567b00c175dd36d72046bffff8de17726df7f822ea46e89ad13b98e",
+   "original_path": "artifacts/maps/V2-S1.16-cl-full/kf_link.csv",
+   "group": "maps",
+   "freeze_key": "cl",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-cl-full/local.npz",
+   "bytes": 106979886,
+   "sha256": "ca544908d3ba8bedeae967d36922336afca8c177df97377137e246cfcafc5ae8",
+   "original_path": "artifacts/maps/V2-S1.16-cl-full/local.npz",
+   "group": "maps",
+   "freeze_key": "cl",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-cl-full/map.json",
+   "bytes": 5105,
+   "sha256": "0c1acc2b88e03a814a122410825d83f0732775064f1ab537782b1f5dd7cd5d67",
+   "original_path": "artifacts/maps/V2-S1.16-cl-full/map.json",
+   "group": "maps",
+   "freeze_key": "cl",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-cl-full/pairs.csv",
+   "bytes": 149470,
+   "sha256": "10fedd5bfa7c7c43c28177fce95450563a0f93c93cbc6942a0b21ef295b1dd13",
+   "original_path": "artifacts/maps/V2-S1.16-cl-full/pairs.csv",
+   "group": "maps",
+   "freeze_key": "cl",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-cr-full/filtered_training_rows.csv",
+   "bytes": 15073,
+   "sha256": "8e6edfe46a7831e16d777232ac68acdd6bea2f97ba648c37ccf6fe7297cc9b9f",
+   "original_path": "artifacts/maps/V2-S1.16-cr-full/filtered_training_rows.csv",
+   "group": "maps",
+   "freeze_key": "cr",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-cr-full/global.npy",
+   "bytes": 1668224,
+   "sha256": "c2de483d42b73a5c1fd425a6acf01cef36d4b845eae318113d6d822ca78205a0",
+   "original_path": "artifacts/maps/V2-S1.16-cr-full/global.npy",
+   "group": "maps",
+   "freeze_key": "cr",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-cr-full/keyframes.csv",
+   "bytes": 107998,
+   "sha256": "037dce19114ffd6d7f3f63941f066390a21942ee8ba2f8da14ad324cf120ba30",
+   "original_path": "artifacts/maps/V2-S1.16-cr-full/keyframes.csv",
+   "group": "maps",
+   "freeze_key": "cr",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-cr-full/kf_link.csv",
+   "bytes": 49966,
+   "sha256": "75eef356bed0186e346e0c409082f3acedbfb8d29d6800709e3cc78a120b5b6a",
+   "original_path": "artifacts/maps/V2-S1.16-cr-full/kf_link.csv",
+   "group": "maps",
+   "freeze_key": "cr",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-cr-full/local.npz",
+   "bytes": 136028529,
+   "sha256": "804dbab89e613050b27a1f321c747710bc5adeeb625051a812b5382f29193669",
+   "original_path": "artifacts/maps/V2-S1.16-cr-full/local.npz",
+   "group": "maps",
+   "freeze_key": "cr",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-cr-full/map.json",
+   "bytes": 5154,
+   "sha256": "fd5c96099c55af3385d37621a3a60bf889fa4cd1172b384bb3c8f3be87135ba5",
+   "original_path": "artifacts/maps/V2-S1.16-cr-full/map.json",
+   "group": "maps",
+   "freeze_key": "cr",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-cr-full/pairs.csv",
+   "bytes": 150345,
+   "sha256": "ac62740a1f7088f68654c6f9b51475b3f83a9ce2543bda9dfca14722be24ba12",
+   "original_path": "artifacts/maps/V2-S1.16-cr-full/pairs.csv",
+   "group": "maps",
+   "freeze_key": "cr",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-r-full/filtered_training_rows.csv",
+   "bytes": 15073,
+   "sha256": "8e6edfe46a7831e16d777232ac68acdd6bea2f97ba648c37ccf6fe7297cc9b9f",
+   "original_path": "artifacts/maps/V2-S1.16-r-full/filtered_training_rows.csv",
+   "group": "maps",
+   "freeze_key": "r",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-r-full/global.npy",
+   "bytes": 1668224,
+   "sha256": "3c05d2c1857d52db1fefa7a3acb8eb6f5cd40e7b19090989193a9cd99d9e0a5f",
+   "original_path": "artifacts/maps/V2-S1.16-r-full/global.npy",
+   "group": "maps",
+   "freeze_key": "r",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-r-full/keyframes.csv",
+   "bytes": 107998,
+   "sha256": "e1a4e704c100015f85762a189450ae69b8aa33df10f531e3415b283426cb3677",
+   "original_path": "artifacts/maps/V2-S1.16-r-full/keyframes.csv",
+   "group": "maps",
+   "freeze_key": "r",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-r-full/kf_link.csv",
+   "bytes": 49966,
+   "sha256": "2c4822ee135c78140f47dd27af7649a94636ce064d9a58fa016f6b9881d447dd",
+   "original_path": "artifacts/maps/V2-S1.16-r-full/kf_link.csv",
+   "group": "maps",
+   "freeze_key": "r",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-r-full/local.npz",
+   "bytes": 88729938,
+   "sha256": "bd6b810310141a422bc6222c38eee079224e13080c590a37ebe86ed747232670",
+   "original_path": "artifacts/maps/V2-S1.16-r-full/local.npz",
+   "group": "maps",
+   "freeze_key": "r",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-r-full/map.json",
+   "bytes": 5107,
+   "sha256": "5a1c280711229a19d684147c3d5e83d903f707aa01525e433e8a61ac8a15171f",
+   "original_path": "artifacts/maps/V2-S1.16-r-full/map.json",
+   "group": "maps",
+   "freeze_key": "r",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-r-full/pairs.csv",
+   "bytes": 150583,
+   "sha256": "dac95c00f26824d56806c6dcbea8b52bb2dbde035c590bf38f83df5728f5f0a4",
+   "original_path": "artifacts/maps/V2-S1.16-r-full/pairs.csv",
+   "group": "maps",
+   "freeze_key": "r",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-rl-full/filtered_training_rows.csv",
+   "bytes": 15073,
+   "sha256": "8e6edfe46a7831e16d777232ac68acdd6bea2f97ba648c37ccf6fe7297cc9b9f",
+   "original_path": "artifacts/maps/V2-S1.16-rl-full/filtered_training_rows.csv",
+   "group": "maps",
+   "freeze_key": "rl",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-rl-full/global.npy",
+   "bytes": 1668224,
+   "sha256": "0d40dceb872b6bf913bc410f24fbd4ecb502ffacc5973904a21a31246ce70b49",
+   "original_path": "artifacts/maps/V2-S1.16-rl-full/global.npy",
+   "group": "maps",
+   "freeze_key": "rl",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-rl-full/keyframes.csv",
+   "bytes": 107998,
+   "sha256": "3e6e5ade5466c12ed62c39fa8ff09c2ed6438a76854d692b9a69cc72f254a9d5",
+   "original_path": "artifacts/maps/V2-S1.16-rl-full/keyframes.csv",
+   "group": "maps",
+   "freeze_key": "rl",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-rl-full/kf_link.csv",
+   "bytes": 49966,
+   "sha256": "310e42d4e3e56c5384e97b82095b2beaad2f8d968eacefeda19e939b9faa9b00",
+   "original_path": "artifacts/maps/V2-S1.16-rl-full/kf_link.csv",
+   "group": "maps",
+   "freeze_key": "rl",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-rl-full/local.npz",
+   "bytes": 78011595,
+   "sha256": "0ef727f627ec367c8840f1794893861e3d33a674e4aa6ceaf194c0bd8f6d5298",
+   "original_path": "artifacts/maps/V2-S1.16-rl-full/local.npz",
+   "group": "maps",
+   "freeze_key": "rl",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-rl-full/map.json",
+   "bytes": 5117,
+   "sha256": "c3bebc64fef431d7b734e02196a2fe8a784012ac101b56f342a7ec46bb9aada9",
+   "original_path": "artifacts/maps/V2-S1.16-rl-full/map.json",
+   "group": "maps",
+   "freeze_key": "rl",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-rl-full/pairs.csv",
+   "bytes": 145570,
+   "sha256": "16a23aeed8a155f211bbe1848cdae6b04b6777741804f02fb4e0ebf00d8ee99d",
+   "original_path": "artifacts/maps/V2-S1.16-rl-full/pairs.csv",
+   "group": "maps",
+   "freeze_key": "rl",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-rr-full/filtered_training_rows.csv",
+   "bytes": 15073,
+   "sha256": "8e6edfe46a7831e16d777232ac68acdd6bea2f97ba648c37ccf6fe7297cc9b9f",
+   "original_path": "artifacts/maps/V2-S1.16-rr-full/filtered_training_rows.csv",
+   "group": "maps",
+   "freeze_key": "rr",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-rr-full/global.npy",
+   "bytes": 1668224,
+   "sha256": "5235518d79cb625daa6e0a7ed2fa708416a55933b215265eb10f570ce896659b",
+   "original_path": "artifacts/maps/V2-S1.16-rr-full/global.npy",
+   "group": "maps",
+   "freeze_key": "rr",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-rr-full/keyframes.csv",
+   "bytes": 107998,
+   "sha256": "f1d74a53c6481a2227ac313ed023fc1cba85a168a60383e3f052eb760eccb38f",
+   "original_path": "artifacts/maps/V2-S1.16-rr-full/keyframes.csv",
+   "group": "maps",
+   "freeze_key": "rr",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-rr-full/kf_link.csv",
+   "bytes": 49966,
+   "sha256": "f0d536fc31fbabbf336b5dd1db4c317a0b36204ed9a5fae1c3137daac9c302e1",
+   "original_path": "artifacts/maps/V2-S1.16-rr-full/kf_link.csv",
+   "group": "maps",
+   "freeze_key": "rr",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-rr-full/local.npz",
+   "bytes": 100926702,
+   "sha256": "3836e20373b9c3472253aaa8f078486077a1b2138c4f71f74c3ba0a1b5008a8d",
+   "original_path": "artifacts/maps/V2-S1.16-rr-full/local.npz",
+   "group": "maps",
+   "freeze_key": "rr",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-rr-full/map.json",
+   "bytes": 5130,
+   "sha256": "95f103df853a1dad2c6a4f61c98b5e27d70f0cfab0de56db0ccd79747bd6c8fb",
+   "original_path": "artifacts/maps/V2-S1.16-rr-full/map.json",
+   "group": "maps",
+   "freeze_key": "rr",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S1.16-rr-full/pairs.csv",
+   "bytes": 147829,
+   "sha256": "ee611d465d2ae367d8bf127f8690123390e8f3c5f7aed7c6df080015efc38b45",
+   "original_path": "artifacts/maps/V2-S1.16-rr-full/pairs.csv",
+   "group": "maps",
+   "freeze_key": "rr",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (reference map rows: own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S2.5-poles-full/landmarks.parquet",
+   "bytes": 40570,
+   "sha256": "24540bedba123fd4c8c1f6916e69d4b27ae1455b1edf24ba5300934593408a16",
+   "original_path": "artifacts/maps/V2-S2.5-poles-full/landmarks.parquet",
+   "group": "poles",
+   "freeze_key": "poles",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S2.5-poles-full/map.json",
+   "bytes": 3702,
+   "sha256": "48d585342cb157f186fa695a83ead1eae1133480dd07b90b4c62c959b59a9fe9",
+   "original_path": "artifacts/maps/V2-S2.5-poles-full/map.json",
+   "group": "poles",
+   "freeze_key": "poles",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/maps/V2-S2.5-poles-full/tracks.parquet",
+   "bytes": 299823,
+   "sha256": "3dd32487500739fcd056ed5687ef1011e7b6ca53ca16aa9c3a79ceaa5f1620b5",
+   "original_path": "artifacts/maps/V2-S2.5-poles-full/tracks.parquet",
+   "group": "poles",
+   "freeze_key": "poles",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (own derived data from the supplied recording; organizer data terms apply)"
+  },
+  {
+   "path": "artifacts/releases/S2.9-release-mc7-v1/calibration/calib.json",
+   "bytes": 11338,
+   "sha256": "3bdea36b925c2145d4ef1a87c36be159ac4974b6278196a5daf04fed7ee1036b",
+   "original_path": "artifacts/releases/S2.9-release-mc7-v1/calibration/calib.json",
+   "group": "reference_calibration",
+   "freeze_key": "reference_calibration",
+   "in_freeze_manifest": true,
+   "licence": "licenses/license-table.md (organizer-supplied recording metadata)"
+  },
+  {
+   "path": "artifacts/v2/S1.1-masks/full/cl.png",
+   "bytes": 2345,
+   "sha256": "7a44d1307b06cb9d3fce6e86f0bddbfadcc834b726346fb68f0668481a9bd41c",
+   "original_path": "artifacts/v2/S1.1-masks/full/cl.png",
+   "group": "body_masks",
+   "freeze_key": "body_masks",
+   "in_freeze_manifest": true,
+   "licence": "own derived data from the supplied recording; organizer data terms apply (licenses/ has no separate row)"
+  },
+  {
+   "path": "artifacts/v2/S1.1-masks/full/cr.png",
+   "bytes": 2412,
+   "sha256": "955d99b0f6822a31d799d08e56ccaea85eb3d13f7053ef0c568e7a00c8a1fc7c",
+   "original_path": "artifacts/v2/S1.1-masks/full/cr.png",
+   "group": "body_masks",
+   "freeze_key": "body_masks",
+   "in_freeze_manifest": true,
+   "licence": "own derived data from the supplied recording; organizer data terms apply (licenses/ has no separate row)"
+  },
+  {
+   "path": "artifacts/v2/S1.1-masks/full/fl.png",
+   "bytes": 2282,
+   "sha256": "e899736e9484775f909f888553d816686161c95d1c3e4f75858ed6f6cb1e84c4",
+   "original_path": "artifacts/v2/S1.1-masks/full/fl.png",
+   "group": "body_masks",
+   "freeze_key": "body_masks",
+   "in_freeze_manifest": true,
+   "licence": "own derived data from the supplied recording; organizer data terms apply (licenses/ has no separate row)"
+  },
+  {
+   "path": "artifacts/v2/S1.1-masks/full/fr.png",
+   "bytes": 2424,
+   "sha256": "817dbeef168896cce5006e2caeefcca044a42f23cf8bd44bec28066faca0ff25",
+   "original_path": "artifacts/v2/S1.1-masks/full/fr.png",
+   "group": "body_masks",
+   "freeze_key": "body_masks",
+   "in_freeze_manifest": true,
+   "licence": "own derived data from the supplied recording; organizer data terms apply (licenses/ has no separate row)"
+  },
+  {
+   "path": "artifacts/v2/S1.1-masks/full/frames_used.json",
+   "bytes": 176455,
+   "sha256": "16f6a5c14bace867f3c8b21be1c4155efce159b95eea31fb32b3c11a09ece784",
+   "original_path": "artifacts/v2/S1.1-masks/full/frames_used.json",
+   "group": "body_masks",
+   "freeze_key": "body_masks",
+   "in_freeze_manifest": true,
+   "licence": "own derived data from the supplied recording; organizer data terms apply (licenses/ has no separate row)"
+  },
+  {
+   "path": "artifacts/v2/S1.1-masks/full/manifest.json",
+   "bytes": 2538,
+   "sha256": "5eb8ea56c8464aa9a936d4a42cf5a0bd4f3f66510c0b275ff23b2f307d523532",
+   "original_path": "artifacts/v2/S1.1-masks/full/manifest.json",
+   "group": "body_masks",
+   "freeze_key": "body_masks",
+   "in_freeze_manifest": true,
+   "licence": "own derived data from the supplied recording; organizer data terms apply (licenses/ has no separate row)"
+  },
+  {
+   "path": "artifacts/v2/S1.1-masks/full/r.png",
+   "bytes": 2100,
+   "sha256": "9badcbb71ebdfd94178a5437ee2b553511b32a586584c4897d70a635af2c62e0",
+   "original_path": "artifacts/v2/S1.1-masks/full/r.png",
+   "group": "body_masks",
+   "freeze_key": "body_masks",
+   "in_freeze_manifest": true,
+   "licence": "own derived data from the supplied recording; organizer data terms apply (licenses/ has no separate row)"
+  },
+  {
+   "path": "artifacts/v2/S1.1-masks/full/rl.png",
+   "bytes": 2155,
+   "sha256": "07151d6d24da7a9165c03dde0166b5a922c875668b83d32dc418b13ab9b0075d",
+   "original_path": "artifacts/v2/S1.1-masks/full/rl.png",
+   "group": "body_masks",
+   "freeze_key": "body_masks",
+   "in_freeze_manifest": true,
+   "licence": "own derived data from the supplied recording; organizer data terms apply (licenses/ has no separate row)"
+  },
+  {
+   "path": "artifacts/v2/S1.1-masks/full/rr.png",
+   "bytes": 2340,
+   "sha256": "55f602ef34ac79fbf46d764e9468243e52f6c2852ebe4316e51594ee7f85f9e2",
+   "original_path": "artifacts/v2/S1.1-masks/full/rr.png",
+   "group": "body_masks",
+   "freeze_key": "body_masks",
+   "in_freeze_manifest": true,
+   "licence": "own derived data from the supplied recording; organizer data terms apply (licenses/ has no separate row)"
+  },
+  {
+   "path": "artifacts/v2/S3.2c-attitude-map/full.npz",
+   "bytes": 25198,
+   "sha256": "ec30fc11e33106f05d59d4a0fe2f4a63d3f5cf7aa098c882309e4cb67aa11ac2",
+   "original_path": "artifacts/v2/S3.2c-attitude-map/full.npz",
+   "group": "attitude_map",
+   "freeze_key": "attitude_map",
+   "in_freeze_manifest": true,
+   "licence": "own derived data from the supplied recording; organizer data terms apply (licences/ has no separate row)"
+  },
+  {
+   "path": "artifacts/v2/S3.2e-train/runs/B_lap-1_seed0/ckpt_last.pt",
+   "bytes": 50147002,
+   "sha256": "b7512ca523126d4ecbededf8b00dba4ceb7a1c561ae66e03656105f46fbb9d1b",
+   "original_path": "artifacts/v2/S3.2e-train/runs/B_lap-1_seed0/ckpt_last.pt",
+   "group": "border_seg_B_all_laps",
+   "freeze_key": "border_seg_B_all_laps",
+   "in_freeze_manifest": true,
+   "licence": "own trained checkpoint on the supplied recording; component-licence reconciliation still open (PRG-003 R02a remaining work); see receipt"
+  },
+  {
+   "path": "assets/final/track_bounds.json",
+   "bytes": 1015783,
+   "sha256": "28cf2bfd9ce74c2e5f1ededd5d36866221c341609b27a15e3b5bae94b33de0ff",
+   "original_path": "assets/final/track_bounds.json",
+   "group": "assets",
+   "freeze_key": "assets/final/track_bounds.json",
+   "in_freeze_manifest": true,
+   "licence": "own derived track geometry from the organizer-supplied recording; organizer data terms apply"
+  },
+  {
+   "path": "configs/models/e04-pnp-rfb-v1.yaml",
+   "bytes": 487,
+   "sha256": "1ed820d5df1d2dc144385177b994728e82d846d00332b6aadcaeef656d02d92d",
+   "original_path": "configs/models/e04-pnp-rfb-v1.yaml",
+   "group": "supplemental",
+   "freeze_key": "configs/models/e04-pnp-rfb-v1.yaml",
+   "in_freeze_manifest": true,
+   "licence": "own derived parameters / see note"
+  },
+  {
+   "path": "configs/models/e09k2-y1.yaml",
+   "bytes": 1208,
+   "sha256": "f15513932b6ab54dbf477762ef5c033dd7f0c56454793a3072da95d99a61e22e",
+   "original_path": "configs/models/e09k2-y1.yaml",
+   "group": "supplemental",
+   "freeze_key": "configs/models/e09k2-y1.yaml",
+   "in_freeze_manifest": false,
+   "licence": "own derived parameters / see note",
+   "note": "filter parameter file read through scripts/s07e_lib.py; absent from final-v1.json"
+  },
+  {
+   "path": "derived/track_bounds.json",
+   "bytes": 1015783,
+   "sha256": "28cf2bfd9ce74c2e5f1ededd5d36866221c341609b27a15e3b5bae94b33de0ff",
+   "original_path": "derived/track_bounds.json",
+   "group": "supplemental",
+   "freeze_key": "derived/track_bounds.json",
+   "in_freeze_manifest": false,
+   "licence": "own derived parameters / see note",
+   "note": "read by scripts/v2_s13_lib.py (TrackFrame); identical to assets/final/track_bounds.json, sha256 checked"
+  },
+  {
+   "path": "manifests/v2/S2.8-constants.json",
+   "bytes": 695,
+   "sha256": "0260d910e7056f28d77e2711f8a1e6ca7eb7d923b00abe4b860ec647567db60b",
+   "original_path": "manifests/v2/S2.8-constants.json",
+   "group": "constants",
+   "freeze_key": "manifests/v2/S2.8-constants.json",
+   "in_freeze_manifest": true,
+   "licence": "own derived constants (numbers); no third-party licence"
+  },
+  {
+   "path": "manifests/v2/S4.2-constants.json",
+   "bytes": 1171,
+   "sha256": "78584c186d4eb42da8731e296aeabf74d8b51500227b39f6dee522f6694dc72a",
+   "original_path": "manifests/v2/S4.2-constants.json",
+   "group": "constants",
+   "freeze_key": "manifests/v2/S4.2-constants.json",
+   "in_freeze_manifest": true,
+   "licence": "own derived constants (numbers); no third-party licence"
+  },
+  {
+   "path": "reports/experiments/S10b-tel/tuning/V3_all.json",
+   "bytes": 2555,
+   "sha256": "dba1ac1c5c270c32facea41ce59efb953ac1ce56b3cac47b28e1a4cf1eaf91df",
+   "original_path": "reports/experiments/S10b-tel/tuning/V3_all.json",
+   "group": "supplemental",
+   "freeze_key": "reports/experiments/S10b-tel/tuning/V3_all.json",
+   "in_freeze_manifest": false,
+   "licence": "own derived parameters / see note",
+   "note": "tuned filter parameters read by scripts/s10b_lib.py; absent from final-v1.json"
+  },
+  {
+   "path": "reports/experiments/S10g-tel4/tuning/g1_all.json",
+   "bytes": 523,
+   "sha256": "2551e97fbaabab7416444ef918cf369d877a7c5437bda63cef30c5cf2a0db99e",
+   "original_path": "reports/experiments/S10g-tel4/tuning/g1_all.json",
+   "group": "supplemental",
+   "freeze_key": "reports/experiments/S10g-tel4/tuning/g1_all.json",
+   "in_freeze_manifest": false,
+   "licence": "own derived parameters / see note",
+   "note": "tuned re-anchor parameters read by scripts/s10g_lib.py; absent from final-v1.json"
+  }
+ ],
+ "tar": {
+  "name": "camloc-aramis-assets-final-v1.tar",
+  "bytes": 913162240,
+  "sha256": "2f3fffc60b5dcecd211f55912c0779df6fa9c1c4c47c80e16f434199f6d981f9",
+  "parts": 1
+ }
+}

@@ -1,0 +1,7 @@
+# Release-v1 split table (PRG-003 R02b): deliberately EMPTY. The research run_inference.py/runner.py read a lap-interval table whose only
+# run-time use is the audit-lap guard (refuse a range that touches a research audit lap). The release processes organizer recordings,
+# not the research recording, so it carries no research lap or audit intervals. Contract fields below are what camloc.runner.load_split requires.
+schema_version: 1
+split_id: release-v1
+status: frozen
+laps: []

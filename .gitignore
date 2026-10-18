@@ -1,0 +1,26 @@
+# Pixi installation outputs (never committed; never copied from another project)
+/.pixi/
+*.pyc
+__pycache__/
+
+# Local install / build scratch
+*.egg-info/
+.pytest_cache/
+
+# Runtime outputs (bundles, exported inputs, predictions) land in ignored dirs
+/artifacts/
+/out/
+*.mcap
+*.parquet
+*.npy
+*.npz
+*.pth
+*.pt
+
+# Editor / OS noise
+.DS_Store
+
+# R02b: asset bundle, release tarballs, run outputs (large; hash-manifested, never committed)
+/assets/
+/dist/
+/runs/

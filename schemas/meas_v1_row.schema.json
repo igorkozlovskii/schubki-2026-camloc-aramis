@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "meas-v1-row",
+  "title": "meas-v1 row: one camera measurement per (tick, camera, kind)",
+  "description": "PRG-002 shared contract (PLAN.md section 5). Rows are validated after NaN -> null conversion. Track coordinates follow track-v1 (camloc.geometry.centerline, 1 m resampled centreline from track_left/track_right only). Ground-truth error tables are separate *_eval.parquet files and never part of this stream. Extra columns must start with q_.",
+  "type": "object",
+  "required": ["stamp_ns", "avail_ns", "lap", "camera", "kind", "valid", "s", "n", "dpsi", "x", "y", "yaw", "sig_s", "sig_n", "sig_dpsi", "sig_xy", "sig_yaw", "init"],
+  "properties": {
+    "stamp_ns": {"type": "integer"},
+    "avail_ns": {"type": "integer"},
+    "lap": {"type": "integer"},
+    "camera": {"enum": ["fl", "fr", "cl", "cr", "r", "rl", "rr", "multi"]},
+    "kind": {"enum": ["border", "landmark", "landmark3d", "coarse", "vo"]},
+    "valid": {"type": "boolean"},
+    "s": {"type": ["number", "null"]},
+    "n": {"type": ["number", "null"]},
+    "dpsi": {"type": ["number", "null"]},
+    "x": {"type": ["number", "null"]},
+    "y": {"type": ["number", "null"]},
+    "yaw": {"type": ["number", "null"]},
+    "sig_s": {"type": ["number", "null"], "minimum": 0},
+    "sig_n": {"type": ["number", "null"], "minimum": 0},
+    "sig_dpsi": {"type": ["number", "null"], "minimum": 0},
+    "sig_xy": {"type": ["number", "null"], "minimum": 0},
+    "sig_yaw": {"type": ["number", "null"], "minimum": 0},
+    "init": {"enum": ["gt_perturbed", "pred_stream", "none"]}
+  },
+  "patternProperties": {"^q_": {}},
+  "additionalProperties": false
+}

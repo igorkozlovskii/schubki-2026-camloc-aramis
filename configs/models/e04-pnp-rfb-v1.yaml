@@ -1,0 +1,8 @@
+# E04 variant: PnP fix when gated-in, else the labeled retrieval top-1 keyframe pose (not hold-last). Added after the E03 dev result was seen; labeled variant.
+schema_version: 1
+model_id: e04-pnp-rfb-v1
+class: camloc.models.pnp:E04PnpModel
+assets: {map_dir: artifacts/maps/S04-full-v1}
+params: {top_k: 6, lost_s: 5.0, prior_base_m: 40.0, vmax_mps: 45.0, min_inliers: 60, min_inlier_ratio: 0.2, max_rms_px: 2.5, ransac_px: 3.0, fallback: retrieval}
+audit_opened: false
+audit_reason: null

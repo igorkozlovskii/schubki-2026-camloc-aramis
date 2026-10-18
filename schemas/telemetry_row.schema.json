@@ -1,0 +1,129 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "telemetry_row.schema.json",
+ "title": "telemetry-v1 row (allowed car-state fields only)",
+ "type": "object",
+ "properties": {
+  "stamp_ns": {
+   "type": "integer"
+  },
+  "v_mps": {
+   "type": "number"
+  },
+  "v_raw_mps": {
+   "type": "number"
+  },
+  "vx_mps": {
+   "type": "number"
+  },
+  "vy_mps": {
+   "type": "number"
+  },
+  "wx_radps": {
+   "type": "number"
+  },
+  "wy_radps": {
+   "type": "number"
+  },
+  "wz_radps": {
+   "type": "number"
+  },
+  "ax_mps2": {
+   "type": "number"
+  },
+  "ay_mps2": {
+   "type": "number"
+  },
+  "az_mps2": {
+   "type": "number"
+  },
+  "ax_vel_mps2": {
+   "type": "number"
+  },
+  "ay_vel_mps2": {
+   "type": "number"
+  },
+  "beta_rad": {
+   "type": "number"
+  },
+  "dbeta_radps": {
+   "type": "number"
+  },
+  "kappa_radpm": {
+   "type": "number"
+  },
+  "omega_w_fl": {
+   "type": "number"
+  },
+  "omega_w_fr": {
+   "type": "number"
+  },
+  "omega_w_rl": {
+   "type": "number"
+  },
+  "omega_w_rr": {
+   "type": "number"
+  },
+  "lambda_fl_perc": {
+   "type": "number"
+  },
+  "lambda_fr_perc": {
+   "type": "number"
+  },
+  "lambda_rl_perc": {
+   "type": "number"
+  },
+  "lambda_rr_perc": {
+   "type": "number"
+  },
+  "alpha_fl_rad": {
+   "type": "number"
+  },
+  "alpha_fr_rad": {
+   "type": "number"
+  },
+  "alpha_rl_rad": {
+   "type": "number"
+  },
+  "alpha_rr_rad": {
+   "type": "number"
+  },
+  "diff_fr_alpha_rad": {
+   "type": "number"
+  },
+  "delta_wheel_rad": {
+   "type": "number"
+  },
+  "gas": {
+   "type": "number"
+  },
+  "brake": {
+   "type": "number"
+  },
+  "gear": {
+   "type": "number"
+  },
+  "rpm": {
+   "type": "number"
+  },
+  "cba_actual_pressure_fl_pa": {
+   "type": "number"
+  },
+  "cba_actual_pressure_fr_pa": {
+   "type": "number"
+  },
+  "cba_actual_pressure_rl_pa": {
+   "type": "number"
+  },
+  "cba_actual_pressure_rr_pa": {
+   "type": "number"
+  },
+  "valid_wheelsspeeds_b": {
+   "type": "number"
+  }
+ },
+ "required": [
+  "stamp_ns"
+ ],
+ "additionalProperties": false
+}

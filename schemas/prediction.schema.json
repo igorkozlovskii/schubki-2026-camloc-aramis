@@ -1,0 +1,27 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "prediction CSV row (timestamp_ns,x,y,yaw)",
+ "description": "Table rules (not expressible per row): header line required, timestamp_ns strictly increasing, no duplicates, all values finite, yaw in radians.",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "timestamp_ns",
+  "x",
+  "y",
+  "yaw"
+ ],
+ "properties": {
+  "timestamp_ns": {
+   "type": "integer"
+  },
+  "x": {
+   "type": "number"
+  },
+  "y": {
+   "type": "number"
+  },
+  "yaw": {
+   "type": "number"
+  }
+ }
+}

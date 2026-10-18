@@ -1,0 +1,1424 @@
+{
+  "schema": "source-export-v1",
+  "generated_utc": "2026-10-18T19:53:07Z",
+  "source_root_head": "633a3e20b86b3287cc55e073c6c4343fccb3c484",
+  "file_count": 146,
+  "total_bytes": 1029839,
+  "roles": {
+    "cli": 5,
+    "config": 4,
+    "driver": 29,
+    "manifest": 1,
+    "runtime": 96,
+    "schema": 6,
+    "third_party": 5
+  },
+  "freeze": {
+    "config": "configs/final/final-v1.yaml",
+    "freeze_code": [
+      "scripts/final_run.py",
+      "scripts/v2_s42_lib.py",
+      "scripts/v2_s43_vmax.py",
+      "scripts/v2_s210_lib.py",
+      "scripts/v2_s210_fit.py",
+      "scripts/v2_s41_telemetry.py",
+      "scripts/export_telemetry.py",
+      "scripts/export_test_input.py",
+      "scripts/run_inference.py",
+      "scripts/v2_s116_lib.py",
+      "scripts/v2_s116_lib2.py",
+      "scripts/v2_s25_filter.py",
+      "scripts/v2_s23_lib.py",
+      "src/camloc/v2/multicam/closedloop.py",
+      "src/camloc/v2/multicam/filter.py",
+      "src/camloc/filtering/tel_filter.py",
+      "src/camloc/v2/landmark_probe.py",
+      "configs/models/e04-pnp-rfb-v1.yaml"
+    ],
+    "script_modules": [
+      "export_telemetry",
+      "export_test_input",
+      "run_inference",
+      "s07_fusion_lib",
+      "s07c_faults",
+      "s07c_lib",
+      "s07d_lib",
+      "s07e_lib",
+      "s10b_lib",
+      "s10f_lib",
+      "s10f_report",
+      "s10g_lib",
+      "v2_s111_border",
+      "v2_s116_lib",
+      "v2_s116_lib2",
+      "v2_s11_common",
+      "v2_s13_lib",
+      "v2_s18_common",
+      "v2_s210_fit",
+      "v2_s210_lib",
+      "v2_s21_lib",
+      "v2_s23_lib",
+      "v2_s25_filter",
+      "v2_s31_prep",
+      "v2_s31c_prep",
+      "v2_s32b_run",
+      "v2_s32c_run",
+      "v2_s32d_lib",
+      "v2_s41_telemetry",
+      "v2_s42_lib",
+      "v2_s43_vmax"
+    ],
+    "script_excluded_reached": [
+      "v2_s28_lib",
+      "v2_s31e_eval",
+      "v2_s31e_prep",
+      "v2_s31e_train",
+      "v2_s31f_eval",
+      "v2_s31f_lib",
+      "v2_s31f_train"
+    ],
+    "camloc_extra_start": [
+      "camloc",
+      "camloc.contracts",
+      "camloc.contracts.CAMERAS",
+      "camloc.contracts.ContractError",
+      "camloc.evaluation",
+      "camloc.evaluation.scoring",
+      "camloc.filtering",
+      "camloc.filtering.fusion_filter",
+      "camloc.filtering.fusion_filter.FusionParams",
+      "camloc.filtering.fusion_runtime",
+      "camloc.filtering.fusion_runtime.StreamFusion",
+      "camloc.filtering.fusion_streams",
+      "camloc.filtering.kin2_filter",
+      "camloc.filtering.kin2_filter.Kin2Params",
+      "camloc.filtering.kin2_runtime",
+      "camloc.filtering.kin2_runtime.Kin2Stream",
+      "camloc.filtering.kin_filter",
+      "camloc.filtering.kin_filter.KinParams",
+      "camloc.filtering.kin_filter.Meas",
+      "camloc.filtering.kin_filter.wrap",
+      "camloc.filtering.kin_runtime",
+      "camloc.filtering.kin_runtime.KinStream",
+      "camloc.filtering.tel3_filter",
+      "camloc.filtering.tel3_filter.Reanchor3",
+      "camloc.filtering.tel3_runtime",
+      "camloc.filtering.tel3_runtime.Kin3Stream",
+      "camloc.filtering.tel3_runtime.Tel3Stream",
+      "camloc.filtering.tel4_filter",
+      "camloc.filtering.tel4_filter.Reanchor4",
+      "camloc.filtering.tel4_filter.Tel4Filter",
+      "camloc.filtering.tel4_runtime",
+      "camloc.filtering.tel4_runtime.Tel4Stream",
+      "camloc.filtering.tel_filter",
+      "camloc.filtering.tel_filter.TelParams",
+      "camloc.filtering.tel_filter.TickRec",
+      "camloc.filtering.tel_runtime",
+      "camloc.filtering.tel_runtime.NEEDED",
+      "camloc.filtering.tel_runtime.TelStream",
+      "camloc.filtering.tel_runtime.load_store",
+      "camloc.geometry.borders",
+      "camloc.geometry.borders.BorderMap",
+      "camloc.geometry.camera",
+      "camloc.geometry.camera.CameraModel",
+      "camloc.geometry.centerline",
+      "camloc.geometry.centerline.Centerline",
+      "camloc.geometry.residuals",
+      "camloc.geometry.residuals.image_tangents",
+      "camloc.geometry.transforms",
+      "camloc.geometry.transforms.wrap_angle",
+      "camloc.io",
+      "camloc.io.CameraStore",
+      "camloc.io.export_generic",
+      "camloc.io.export_telemetry",
+      "camloc.io.export_telemetry.TopicAbsent",
+      "camloc.io.export_telemetry.export_telemetry",
+      "camloc.io.load_static_metadata",
+      "camloc.io.store",
+      "camloc.io.store.CameraStore",
+      "camloc.io.telemetry",
+      "camloc.io.telemetry.ALLOWED_FIELDS",
+      "camloc.io.telemetry.STAMP_COL",
+      "camloc.io.telemetry.TELEMETRY_ID",
+      "camloc.io.telemetry.TELEMETRY_MANIFEST_NAME",
+      "camloc.io.telemetry.TELEMETRY_NAME",
+      "camloc.io.telemetry.TelemetryError",
+      "camloc.io.telemetry.TelemetryStore",
+      "camloc.io.telemetry.assert_no_forbidden",
+      "camloc.mapping.keyframes",
+      "camloc.mapping.keyframes.load_gt_poses",
+      "camloc.mapping.map",
+      "camloc.mapping.map.load_map",
+      "camloc.models.e04t",
+      "camloc.models.e04t.build_stream",
+      "camloc.models.e04t.resolve_filter",
+      "camloc.runner",
+      "camloc.stress",
+      "camloc.stress.StressPlan",
+      "camloc.stress.load_manifest",
+      "camloc.util",
+      "camloc.util.sha256_file",
+      "camloc.v2",
+      "camloc.v2.body_masks",
+      "camloc.v2.border_attitude",
+      "camloc.v2.border_attitude.map_attitude",
+      "camloc.v2.border_fast",
+      "camloc.v2.border_fast.FastMeasurer",
+      "camloc.v2.border_probe",
+      "camloc.v2.border_probe.BorderMeas",
+      "camloc.v2.border_probe.MEAS_COLUMNS",
+      "camloc.v2.border_probe.PERTURBATION",
+      "camloc.v2.border_probe.ProbeConfig",
+      "camloc.v2.border_probe.ProbeContext",
+      "camloc.v2.border_probe.correct_camera",
+      "camloc.v2.border_probe.meas_row",
+      "camloc.v2.border_seg",
+      "camloc.v2.border_seg.SegFitConfig",
+      "camloc.v2.border_seg.SegMeasurer",
+      "camloc.v2.border_seg_att",
+      "camloc.v2.border_seg_att.AttFitConfig",
+      "camloc.v2.border_seg_att.AttMeasurer",
+      "camloc.v2.border_seg_att.AttTracker",
+      "camloc.v2.filter.params",
+      "camloc.v2.filter.params.FilterParams",
+      "camloc.v2.filter.params.TIER_FIELDS",
+      "camloc.v2.filter.params.load_config",
+      "camloc.v2.filter.stream",
+      "camloc.v2.filter.stream.TrackStream",
+      "camloc.v2.filter.track",
+      "camloc.v2.filter.track.TrackFrame",
+      "camloc.v2.filter2.params",
+      "camloc.v2.filter2.params.FilterParams",
+      "camloc.v2.filter2.params.TIER_FIELDS",
+      "camloc.v2.filter2.params.load_config",
+      "camloc.v2.filter2.stream",
+      "camloc.v2.filter2.stream.TrackStream",
+      "camloc.v2.landmark_probe",
+      "camloc.v2.landmark_probe.rows_from_run",
+      "camloc.v2.landmark_probe.validate_meas_v1",
+      "camloc.v2.learned.features",
+      "camloc.v2.learned.features.RAW_FIELDS",
+      "camloc.v2.learned.features.tick_inputs",
+      "camloc.v2.learned.v1d.FallbackCfg",
+      "camloc.v2.learned.v1d.postprocess",
+      "camloc.v2.meas",
+      "camloc.v2.meas.from_fusion_e04",
+      "camloc.v2.meas.to_records",
+      "camloc.v2.meas.write_meas",
+      "camloc.v2.multicam.closedloop",
+      "camloc.v2.multicam.closedloop.MultiCamBase",
+      "camloc.v2.multicam.closedloop.PushBorder",
+      "camloc.v2.multicam.closedloop.back_propagate",
+      "camloc.v2.multicam.closedloop.drive_closed_loop",
+      "camloc.v2.multicam.filter",
+      "camloc.v2.multicam.filter.MultiCamTel4Filter",
+      "camloc.v2.multicam.fusion",
+      "camloc.v2.multicam.fusion.build_rows",
+      "camloc.v2.multicam.fusion.kappa_from_errors",
+      "camloc.v2.multicam.fusion_age",
+      "camloc.v2.multicam.fusion_age.build_rows_age",
+      "camloc.v2.multicam.fusion_age.image_stamp",
+      "camloc.v2.poles.associate",
+      "camloc.v2.poles.associate.AssocConfig",
+      "camloc.v2.poles.associate.associate",
+      "camloc.v2.poles.associate.bearing_sigma",
+      "camloc.v2.poles.detect",
+      "camloc.v2.poles.detect.COLUMNS",
+      "camloc.v2.poles.detect.DetConfig",
+      "camloc.v2.poles.detect.detect_vertical",
+      "camloc.v2.poles.detect.mask_keep",
+      "camloc.v2.poles.geometry",
+      "camloc.v2.poles.geometry.bearing_jacobian",
+      "camloc.v2.poles.geometry.predict_bearing",
+      "camloc.v2.poles.geometry.wrap",
+      "camloc.v2.road_attitude",
+      "camloc.v2.road_attitude.RoadAttitudeMap",
+      "camloc.v2.seg",
+      "camloc.v2.seg.infer",
+      "camloc.v2.seg.infer.SegPredictor",
+      "camloc.v2.seg.infer.decode_jpeg",
+      "camloc.v2.seg.labels"
+    ]
+  },
+  "ported": [
+    {
+      "source_path": "scripts/final_run.py",
+      "dest_path": "scripts/final_run.py",
+      "orig_sha256": "01558e668df3589a8716a7a7062e6dc9dce8819334c9581f81de96752ba0f521",
+      "research_working_tree_sha256": "a687cc1c0430ceb24d6b202ffa4a0265d8b4f602e508efc161086894b374d200",
+      "research_drifted_from_freeze": true,
+      "copied_sha256": "4a464ed1f17201ab37e1c99772f0e3e76e43175f16d259dff09eb75c46cdb5cc",
+      "adaptation": "hand-ported release driver: pixi/VISION -> sys.executable, gpu_slot/flock removed, artifacts/ resolved via asset root, parity/freeze subcommands dropped (see docs/R02B_ADAPTATIONS.md)"
+    }
+  ],
+  "files": [
+    {
+      "source_path": "configs/final/final-v1.yaml",
+      "dest_path": "configs/final/final-v1.yaml",
+      "role": "config",
+      "orig_sha256": "eaeedd442f9544cbbcda45097bb454aa17bdf1047edc8f0b3a34c6b65b7c1db2",
+      "copied_sha256": "a90539535c2a2dcb0e611f61297cf74b205ff2dc4c15647e2ca8496bf9e3703d",
+      "adaptation": "asset paths remapped to the release asset root: artifacts/, manifests/v2/, assets/final/ prefixed '$ASSETS/' (the driver resolves '$ASSETS/' against --assets / CAMLOC_ASSETS / assets/final-v1); no value changed"
+    },
+    {
+      "source_path": "configs/models/e04-pnp-rfb-v1.yaml",
+      "dest_path": "configs/models/e04-pnp-rfb-v1.yaml",
+      "role": "config",
+      "orig_sha256": "1ed820d5df1d2dc144385177b994728e82d846d00332b6aadcaeef656d02d92d",
+      "copied_sha256": "1ed820d5df1d2dc144385177b994728e82d846d00332b6aadcaeef656d02d92d",
+      "adaptation": null
+    },
+    {
+      "source_path": "configs/models/e10g-g1.yaml",
+      "dest_path": "configs/models/e10g-g1.yaml",
+      "role": "config",
+      "orig_sha256": "a46ae35bad58544df6474397c2d0f7b3b3a6bdf4f6346ef444893ae7d967b01a",
+      "copied_sha256": "a46ae35bad58544df6474397c2d0f7b3b3a6bdf4f6346ef444893ae7d967b01a",
+      "adaptation": null
+    },
+    {
+      "source_path": "artifacts/external/S04-lightglue/LightGlue/LICENSE",
+      "dest_path": "external/S04-lightglue/LightGlue/LICENSE",
+      "role": "third_party",
+      "orig_sha256": "0e6031ed3e62dc91dc8b1c8f240abd200b1083f60773362e64e339fe01d1bf18",
+      "copied_sha256": "0e6031ed3e62dc91dc8b1c8f240abd200b1083f60773362e64e339fe01d1bf18",
+      "adaptation": null
+    },
+    {
+      "source_path": "artifacts/external/S04-lightglue/LightGlue/lightglue/__init__.py",
+      "dest_path": "external/S04-lightglue/LightGlue/lightglue/__init__.py",
+      "role": "third_party",
+      "orig_sha256": "cf4322abb908f69282198931fb23c09a1ef1101b066d57842402e6436a92eaa3",
+      "copied_sha256": "2ec32154b82de5ffaa3a253fccd8ae8507a2bf99bca852da0b7eeb2ffe8bbf19",
+      "adaptation": "dropped imports of unshipped backends (superpoint restrictive licence, plus unused disk/dog_hardnet/sift); kept ALIKED, LightGlue, match_pair"
+    },
+    {
+      "source_path": "artifacts/external/S04-lightglue/LightGlue/lightglue/aliked.py",
+      "dest_path": "external/S04-lightglue/LightGlue/lightglue/aliked.py",
+      "role": "third_party",
+      "orig_sha256": "60b24397c52e8a08d838828967cd03f5d6066c1f7c3c433805bf11dcb0d5228e",
+      "copied_sha256": "60b24397c52e8a08d838828967cd03f5d6066c1f7c3c433805bf11dcb0d5228e",
+      "adaptation": null
+    },
+    {
+      "source_path": "artifacts/external/S04-lightglue/LightGlue/lightglue/lightglue.py",
+      "dest_path": "external/S04-lightglue/LightGlue/lightglue/lightglue.py",
+      "role": "third_party",
+      "orig_sha256": "dcb75b9cad1985c5e7a537c512d4318d47fbcc99df75b39a513de60e027c039f",
+      "copied_sha256": "dcb75b9cad1985c5e7a537c512d4318d47fbcc99df75b39a513de60e027c039f",
+      "adaptation": null
+    },
+    {
+      "source_path": "artifacts/external/S04-lightglue/LightGlue/lightglue/utils.py",
+      "dest_path": "external/S04-lightglue/LightGlue/lightglue/utils.py",
+      "role": "third_party",
+      "orig_sha256": "c6d9260656a24d826128b68c95d0b7798106d04f4244a77f3b1856573f58e690",
+      "copied_sha256": "c6d9260656a24d826128b68c95d0b7798106d04f4244a77f3b1856573f58e690",
+      "adaptation": null
+    },
+    {
+      "source_path": "manifests/v2/S2.9-constants.json",
+      "dest_path": "manifests/S2.9-constants.json",
+      "role": "config",
+      "orig_sha256": "386c568ada12f66010937ed0c49c4c2824f925f9de219e8795b8d51467cb1bc8",
+      "copied_sha256": "386c568ada12f66010937ed0c49c4c2824f925f9de219e8795b8d51467cb1bc8",
+      "adaptation": null
+    },
+    {
+      "source_path": "manifests/final/final-v1.json",
+      "dest_path": "manifests/final-v1-freeze.json",
+      "role": "manifest",
+      "orig_sha256": "d5c2de82022331334a8c0c10344007f6c51ac510b2ca979a8130dfa5d13a1bfb",
+      "copied_sha256": "d5c2de82022331334a8c0c10344007f6c51ac510b2ca979a8130dfa5d13a1bfb",
+      "adaptation": null
+    },
+    {
+      "source_path": "schemas/fusion_stream.schema.json",
+      "dest_path": "schemas/fusion_stream.schema.json",
+      "role": "schema",
+      "orig_sha256": "a7d5ead7141314b01f1364bcc6261fa50bc5f0a87694e328e4321077715ea384",
+      "copied_sha256": "a7d5ead7141314b01f1364bcc6261fa50bc5f0a87694e328e4321077715ea384",
+      "adaptation": null
+    },
+    {
+      "source_path": "schemas/meas_v1_row.schema.json",
+      "dest_path": "schemas/meas_v1_row.schema.json",
+      "role": "schema",
+      "orig_sha256": "2a39b8e878667121e459fb24d70013d295e4ba141d2305450056bacbb7cd8939",
+      "copied_sha256": "2a39b8e878667121e459fb24d70013d295e4ba141d2305450056bacbb7cd8939",
+      "adaptation": null
+    },
+    {
+      "source_path": "schemas/prediction.schema.json",
+      "dest_path": "schemas/prediction.schema.json",
+      "role": "schema",
+      "orig_sha256": "46cdb5e4a523957636ebf8a23f2195dc5c025b26215ef09bf1af95525c40a433",
+      "copied_sha256": "46cdb5e4a523957636ebf8a23f2195dc5c025b26215ef09bf1af95525c40a433",
+      "adaptation": null
+    },
+    {
+      "source_path": "schemas/store_manifest_generic.schema.json",
+      "dest_path": "schemas/store_manifest_generic.schema.json",
+      "role": "schema",
+      "orig_sha256": "bce6094a837ab3295a708c9d9cf1faa32a59db9f2f5c88f10f7be5f5f30de787",
+      "copied_sha256": "bce6094a837ab3295a708c9d9cf1faa32a59db9f2f5c88f10f7be5f5f30de787",
+      "adaptation": null
+    },
+    {
+      "source_path": "schemas/telemetry_manifest.schema.json",
+      "dest_path": "schemas/telemetry_manifest.schema.json",
+      "role": "schema",
+      "orig_sha256": "cfbe1dd4c41af5827116d9324c3ac747bace173e625adc827e7f67e35977c84d",
+      "copied_sha256": "cfbe1dd4c41af5827116d9324c3ac747bace173e625adc827e7f67e35977c84d",
+      "adaptation": null
+    },
+    {
+      "source_path": "schemas/telemetry_row.schema.json",
+      "dest_path": "schemas/telemetry_row.schema.json",
+      "role": "schema",
+      "orig_sha256": "a91987ce55befe29e5e095aaad72c670ea956bb5dbf997123bc28083d6b5b294",
+      "copied_sha256": "a91987ce55befe29e5e095aaad72c670ea956bb5dbf997123bc28083d6b5b294",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/export_telemetry.py",
+      "dest_path": "scripts/export_telemetry.py",
+      "role": "cli",
+      "orig_sha256": "f0ed73762fe180abf750123255592c78a7bf5cc6272eca95ac25da1becf9f942",
+      "copied_sha256": "f0ed73762fe180abf750123255592c78a7bf5cc6272eca95ac25da1becf9f942",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/export_test_input.py",
+      "dest_path": "scripts/export_test_input.py",
+      "role": "cli",
+      "orig_sha256": "9772b4fba3861e41b2142353b5d2ee4bb96c505cf5f07efe484bdf137317bb75",
+      "copied_sha256": "9772b4fba3861e41b2142353b5d2ee4bb96c505cf5f07efe484bdf137317bb75",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/package_release.py",
+      "dest_path": "scripts/package_release.py",
+      "role": "cli",
+      "orig_sha256": "715c79ba95cbc11da98a473b64732b5647f983903ef2411d1927337b98bb54a9",
+      "copied_sha256": "715c79ba95cbc11da98a473b64732b5647f983903ef2411d1927337b98bb54a9",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/run_inference.py",
+      "dest_path": "scripts/run_inference.py",
+      "role": "driver",
+      "orig_sha256": "48182b662bfa5b401166fce2334d2588099f748896b637d869302e2d148d76c6",
+      "copied_sha256": "48182b662bfa5b401166fce2334d2588099f748896b637d869302e2d148d76c6",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/run_release.py",
+      "dest_path": "scripts/run_release.py",
+      "role": "cli",
+      "orig_sha256": "d747e0e7b4ab90262e31aa01c1c68051bee27bf6a1ca12d09a961549cd4240f8",
+      "copied_sha256": "d747e0e7b4ab90262e31aa01c1c68051bee27bf6a1ca12d09a961549cd4240f8",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/s07_fusion_lib.py",
+      "dest_path": "scripts/s07_fusion_lib.py",
+      "role": "driver",
+      "orig_sha256": "5e146df5e083407806a5526ace3d84b935c99149646d16727267f5910e31a875",
+      "copied_sha256": "65db79581dfda9d25502788ba614d433d7f31458fa4cf2f7bc245e3c023f2461",
+      "adaptation": "ROOT (data/asset root) taken from env CAMLOC_ASSET_ROOT when set (the release driver sets it to the asset bundle root, which mirrors the research artifacts/ manifests/ configs/ layout); falls back to the script's parent otherwise. One-line path adaptation, no scientific change."
+    },
+    {
+      "source_path": "scripts/s07c_faults.py",
+      "dest_path": "scripts/s07c_faults.py",
+      "role": "driver",
+      "orig_sha256": "df1b9db9cd68b7ae57a90ad319907e48cb2079248b710848f456d7a0f3568efe",
+      "copied_sha256": "bcd761a7d88348942db79c368b16900bbf72ec74c891f22e81d91e3fd178ae08",
+      "adaptation": "ROOT (data/asset root) taken from env CAMLOC_ASSET_ROOT when set (the release driver sets it to the asset bundle root, which mirrors the research artifacts/ manifests/ configs/ layout); falls back to the script's parent otherwise. One-line path adaptation, no scientific change."
+    },
+    {
+      "source_path": "scripts/s07c_lib.py",
+      "dest_path": "scripts/s07c_lib.py",
+      "role": "driver",
+      "orig_sha256": "b19cb160f7297255663cc53401c557173018144ddd150424a0026eaed773db97",
+      "copied_sha256": "b19cb160f7297255663cc53401c557173018144ddd150424a0026eaed773db97",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/s07d_lib.py",
+      "dest_path": "scripts/s07d_lib.py",
+      "role": "driver",
+      "orig_sha256": "4f67aa508de5c3d094a3e14e8dc1140805900ae76b4801520ee7f863680bcd5c",
+      "copied_sha256": "4f67aa508de5c3d094a3e14e8dc1140805900ae76b4801520ee7f863680bcd5c",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/s07e_lib.py",
+      "dest_path": "scripts/s07e_lib.py",
+      "role": "driver",
+      "orig_sha256": "7347123b2da6fa030660c6ef42dcb09d0812ca190430783bea98e7c134aae1e4",
+      "copied_sha256": "7347123b2da6fa030660c6ef42dcb09d0812ca190430783bea98e7c134aae1e4",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/s10b_lib.py",
+      "dest_path": "scripts/s10b_lib.py",
+      "role": "driver",
+      "orig_sha256": "a454999892e98c510d6734978a4b7e4d5dfee4ea25fcd4104b1ca769ff82a814",
+      "copied_sha256": "a454999892e98c510d6734978a4b7e4d5dfee4ea25fcd4104b1ca769ff82a814",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/s10f_lib.py",
+      "dest_path": "scripts/s10f_lib.py",
+      "role": "driver",
+      "orig_sha256": "a215f024e9a5e2379d6d68d615da5dabf2d6bdf7fd8db5dc835e46132fccd296",
+      "copied_sha256": "a215f024e9a5e2379d6d68d615da5dabf2d6bdf7fd8db5dc835e46132fccd296",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/s10f_report.py",
+      "dest_path": "scripts/s10f_report.py",
+      "role": "driver",
+      "orig_sha256": "0b59a244f01d6fc57226b2db8fea1171eb9f409687709420db904e24eb0107ae",
+      "copied_sha256": "0b59a244f01d6fc57226b2db8fea1171eb9f409687709420db904e24eb0107ae",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/s10g_lib.py",
+      "dest_path": "scripts/s10g_lib.py",
+      "role": "driver",
+      "orig_sha256": "c701118def4db7bc7e72bbd555e48a58969575c70093940bbdec690c00896e19",
+      "copied_sha256": "c701118def4db7bc7e72bbd555e48a58969575c70093940bbdec690c00896e19",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/v2_s111_border.py",
+      "dest_path": "scripts/v2_s111_border.py",
+      "role": "driver",
+      "orig_sha256": "4c2af7b656a2e3c7723cf57e3dd4f4cde0cc9fa24536979ae78574c96b3d3d99",
+      "copied_sha256": "4c2af7b656a2e3c7723cf57e3dd4f4cde0cc9fa24536979ae78574c96b3d3d99",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/v2_s116_lib.py",
+      "dest_path": "scripts/v2_s116_lib.py",
+      "role": "driver",
+      "orig_sha256": "caa832f3fe309c98aabe8dcc9c07bf5a65201c4fe93aa2352f59b8cc1b48ba88",
+      "copied_sha256": "caa832f3fe309c98aabe8dcc9c07bf5a65201c4fe93aa2352f59b8cc1b48ba88",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/v2_s116_lib2.py",
+      "dest_path": "scripts/v2_s116_lib2.py",
+      "role": "driver",
+      "orig_sha256": "e2db20ff46b8350994e322de5438acfc397dd28888bfdd2eef5cc5a9166a42e2",
+      "copied_sha256": "e2db20ff46b8350994e322de5438acfc397dd28888bfdd2eef5cc5a9166a42e2",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/v2_s11_common.py",
+      "dest_path": "scripts/v2_s11_common.py",
+      "role": "driver",
+      "orig_sha256": "b2bcec4ebcae62092ce6084a69db19b4ad951318a2c1a751b152680addc9dd8c",
+      "copied_sha256": "dfeb50df59ab5df9bdd0cb4f4a12bc32e0943df0c19a8c52ba53f447f500a105",
+      "adaptation": "ROOT (data/asset root) taken from env CAMLOC_ASSET_ROOT when set (the release driver sets it to the asset bundle root, which mirrors the research artifacts/ manifests/ configs/ layout); falls back to the script's parent otherwise. One-line path adaptation, no scientific change."
+    },
+    {
+      "source_path": "scripts/v2_s13_lib.py",
+      "dest_path": "scripts/v2_s13_lib.py",
+      "role": "driver",
+      "orig_sha256": "248ff776c5f66bb83a343b2a6c097b1e31fb991e98721b8eea0cdf7674a5e1a7",
+      "copied_sha256": "248ff776c5f66bb83a343b2a6c097b1e31fb991e98721b8eea0cdf7674a5e1a7",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/v2_s18_common.py",
+      "dest_path": "scripts/v2_s18_common.py",
+      "role": "driver",
+      "orig_sha256": "d6f7dff49532fdea614dd40e7f2acbaec0af6abe6386e8d5e2ffaca875797658",
+      "copied_sha256": "d6f7dff49532fdea614dd40e7f2acbaec0af6abe6386e8d5e2ffaca875797658",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/v2_s210_fit.py",
+      "dest_path": "scripts/v2_s210_fit.py",
+      "role": "driver",
+      "orig_sha256": "0f1ecca0df4a717f590962cb637d1f0e3ead7c783fa3d18822934572c4175d61",
+      "copied_sha256": "0f1ecca0df4a717f590962cb637d1f0e3ead7c783fa3d18822934572c4175d61",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/v2_s210_lib.py",
+      "dest_path": "scripts/v2_s210_lib.py",
+      "role": "driver",
+      "orig_sha256": "30d56096f8a0340c39203317eea3c1efaf0e54e4d384df941fb866e75842639f",
+      "copied_sha256": "30d56096f8a0340c39203317eea3c1efaf0e54e4d384df941fb866e75842639f",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/v2_s21_lib.py",
+      "dest_path": "scripts/v2_s21_lib.py",
+      "role": "driver",
+      "orig_sha256": "0b937892e3f25666f01b031002549cbcd946dd0e82c639e66cfdf6cb4d9da3d1",
+      "copied_sha256": "0b937892e3f25666f01b031002549cbcd946dd0e82c639e66cfdf6cb4d9da3d1",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/v2_s23_lib.py",
+      "dest_path": "scripts/v2_s23_lib.py",
+      "role": "driver",
+      "orig_sha256": "6ef993504f8357ced8e1f8eef5b1a1170ac84fcc95181ca182fce4a0fc30a355",
+      "copied_sha256": "6ef993504f8357ced8e1f8eef5b1a1170ac84fcc95181ca182fce4a0fc30a355",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/v2_s25_filter.py",
+      "dest_path": "scripts/v2_s25_filter.py",
+      "role": "driver",
+      "orig_sha256": "3c35f1b4d95585e8fbbca8de266329099119a0e979e2285b2b39c82109f99b32",
+      "copied_sha256": "3c35f1b4d95585e8fbbca8de266329099119a0e979e2285b2b39c82109f99b32",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/v2_s31_prep.py",
+      "dest_path": "scripts/v2_s31_prep.py",
+      "role": "driver",
+      "orig_sha256": "28fb0d81384625d2f30ff5d20c2321d62f58f1126c8bac923099adc66c802727",
+      "copied_sha256": "28fb0d81384625d2f30ff5d20c2321d62f58f1126c8bac923099adc66c802727",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/v2_s31c_prep.py",
+      "dest_path": "scripts/v2_s31c_prep.py",
+      "role": "driver",
+      "orig_sha256": "a38e6ff460080734353b0c9f365b828d3483cb69fa01fe9e265bfbb135b86750",
+      "copied_sha256": "a38e6ff460080734353b0c9f365b828d3483cb69fa01fe9e265bfbb135b86750",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/v2_s32b_run.py",
+      "dest_path": "scripts/v2_s32b_run.py",
+      "role": "driver",
+      "orig_sha256": "02ee65853df91089967ed3c257ad393461f598eb3ff46785b7b87ac91b155e2b",
+      "copied_sha256": "02ee65853df91089967ed3c257ad393461f598eb3ff46785b7b87ac91b155e2b",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/v2_s32c_run.py",
+      "dest_path": "scripts/v2_s32c_run.py",
+      "role": "driver",
+      "orig_sha256": "d0fead3dc425ebaaa47b35c753400600aa24eba0175ef520646602936173be95",
+      "copied_sha256": "d0fead3dc425ebaaa47b35c753400600aa24eba0175ef520646602936173be95",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/v2_s32d_lib.py",
+      "dest_path": "scripts/v2_s32d_lib.py",
+      "role": "driver",
+      "orig_sha256": "1add63efdb4680648a23f7e957d02e11050c281032d0a1b122f2af915fb0311b",
+      "copied_sha256": "1add63efdb4680648a23f7e957d02e11050c281032d0a1b122f2af915fb0311b",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/v2_s41_telemetry.py",
+      "dest_path": "scripts/v2_s41_telemetry.py",
+      "role": "driver",
+      "orig_sha256": "fc98198243fceaea09680453e589948d2f0195a75921ba676b243a09d69a7a03",
+      "copied_sha256": "fc98198243fceaea09680453e589948d2f0195a75921ba676b243a09d69a7a03",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/v2_s42_lib.py",
+      "dest_path": "scripts/v2_s42_lib.py",
+      "role": "driver",
+      "orig_sha256": "7e6f68cd4385a84eb095b46167b2f8e7151b94f9c95e34d8aed2f448a2210598",
+      "copied_sha256": "fbad5df712bb04e1740311b4e235df73bcd8416c65fffc4e14368cd308e1d793",
+      "adaptation": "ROOT (data/asset root) taken from env CAMLOC_ASSET_ROOT when set (the release driver sets it to the asset bundle root, which mirrors the research artifacts/ manifests/ configs/ layout); falls back to the script's parent otherwise. One-line path adaptation, no scientific change."
+    },
+    {
+      "source_path": "scripts/v2_s43_vmax.py",
+      "dest_path": "scripts/v2_s43_vmax.py",
+      "role": "driver",
+      "orig_sha256": "d29d035794d9fb125feb9509793281436b342bfa7f3de24af73f3db12a6df7c4",
+      "copied_sha256": "d29d035794d9fb125feb9509793281436b342bfa7f3de24af73f3db12a6df7c4",
+      "adaptation": null
+    },
+    {
+      "source_path": "scripts/verify_release.py",
+      "dest_path": "scripts/verify_release.py",
+      "role": "cli",
+      "orig_sha256": "c6820c500baf87c288ebe10757e9fe0b7a16bff6efa4994a13afd4756fc6c7b2",
+      "copied_sha256": "c6820c500baf87c288ebe10757e9fe0b7a16bff6efa4994a13afd4756fc6c7b2",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/__init__.py",
+      "dest_path": "src/camloc/__init__.py",
+      "role": "runtime",
+      "orig_sha256": "ed3c4852f783a9a98eade15bb20ee691df035a6308ad17035b8e059d61e9b0c2",
+      "copied_sha256": "ed3c4852f783a9a98eade15bb20ee691df035a6308ad17035b8e059d61e9b0c2",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/contracts.py",
+      "dest_path": "src/camloc/contracts.py",
+      "role": "runtime",
+      "orig_sha256": "a3683b75cd05d86b90c8a31ab03d2f2b0998d89f38a627dcb245a82baa8f66ff",
+      "copied_sha256": "a3683b75cd05d86b90c8a31ab03d2f2b0998d89f38a627dcb245a82baa8f66ff",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/evaluation/__init__.py",
+      "dest_path": "src/camloc/evaluation/__init__.py",
+      "role": "runtime",
+      "orig_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copied_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/evaluation/scoring.py",
+      "dest_path": "src/camloc/evaluation/scoring.py",
+      "role": "runtime",
+      "orig_sha256": "7f83c84ce437fe0330201b82b8a6296bed8e223fca223c82c97a1217559ed2dd",
+      "copied_sha256": "7f83c84ce437fe0330201b82b8a6296bed8e223fca223c82c97a1217559ed2dd",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/filtering/__init__.py",
+      "dest_path": "src/camloc/filtering/__init__.py",
+      "role": "runtime",
+      "orig_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copied_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/filtering/coast_limit.py",
+      "dest_path": "src/camloc/filtering/coast_limit.py",
+      "role": "runtime",
+      "orig_sha256": "069352102dbab39e22cca1fb38fb59a47ccd6eed063ec7d1442a208a013692c4",
+      "copied_sha256": "069352102dbab39e22cca1fb38fb59a47ccd6eed063ec7d1442a208a013692c4",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/filtering/fusion_filter.py",
+      "dest_path": "src/camloc/filtering/fusion_filter.py",
+      "role": "runtime",
+      "orig_sha256": "490c3a1b7203099654472d662cbb32b9952a777d2502e496d16e2a136c319ee6",
+      "copied_sha256": "490c3a1b7203099654472d662cbb32b9952a777d2502e496d16e2a136c319ee6",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/filtering/fusion_runtime.py",
+      "dest_path": "src/camloc/filtering/fusion_runtime.py",
+      "role": "runtime",
+      "orig_sha256": "297ac655b8bfd04742751bd818e256d0272dc3416c3cc04d836f9395ee3c549f",
+      "copied_sha256": "297ac655b8bfd04742751bd818e256d0272dc3416c3cc04d836f9395ee3c549f",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/filtering/fusion_streams.py",
+      "dest_path": "src/camloc/filtering/fusion_streams.py",
+      "role": "runtime",
+      "orig_sha256": "38016eaa8ffc1a022bb628adb4d5f597246993c2d836f996016a05605ecb9ee9",
+      "copied_sha256": "38016eaa8ffc1a022bb628adb4d5f597246993c2d836f996016a05605ecb9ee9",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/filtering/kin2_filter.py",
+      "dest_path": "src/camloc/filtering/kin2_filter.py",
+      "role": "runtime",
+      "orig_sha256": "f6eee98c266b246bf3d4bbc31dba96c3f291685c9b37ee802f66f1beba3e6537",
+      "copied_sha256": "f6eee98c266b246bf3d4bbc31dba96c3f291685c9b37ee802f66f1beba3e6537",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/filtering/kin2_runtime.py",
+      "dest_path": "src/camloc/filtering/kin2_runtime.py",
+      "role": "runtime",
+      "orig_sha256": "635a78c60193da704cfee929777be183bb9f42e5223dd962e4da70331e32aaa2",
+      "copied_sha256": "635a78c60193da704cfee929777be183bb9f42e5223dd962e4da70331e32aaa2",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/filtering/kin_filter.py",
+      "dest_path": "src/camloc/filtering/kin_filter.py",
+      "role": "runtime",
+      "orig_sha256": "3f175265afcc0e0d66f53b83538a87336a94beade4c295f4aea096d77ea803df",
+      "copied_sha256": "3f175265afcc0e0d66f53b83538a87336a94beade4c295f4aea096d77ea803df",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/filtering/kin_runtime.py",
+      "dest_path": "src/camloc/filtering/kin_runtime.py",
+      "role": "runtime",
+      "orig_sha256": "85b76e08da4918ab87474c5aa01dae4ebcc605d5d58f649a27ecfa6a9d685f53",
+      "copied_sha256": "85b76e08da4918ab87474c5aa01dae4ebcc605d5d58f649a27ecfa6a9d685f53",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/filtering/tel3_filter.py",
+      "dest_path": "src/camloc/filtering/tel3_filter.py",
+      "role": "runtime",
+      "orig_sha256": "45c27afdf1c7e428afa97f69a608d8606ca4a5560616da64c239bc9367660ff8",
+      "copied_sha256": "45c27afdf1c7e428afa97f69a608d8606ca4a5560616da64c239bc9367660ff8",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/filtering/tel3_runtime.py",
+      "dest_path": "src/camloc/filtering/tel3_runtime.py",
+      "role": "runtime",
+      "orig_sha256": "437844165c786dd1523c2e8840caa555ea5587eabe0f142208f749e161e8c17f",
+      "copied_sha256": "437844165c786dd1523c2e8840caa555ea5587eabe0f142208f749e161e8c17f",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/filtering/tel4_filter.py",
+      "dest_path": "src/camloc/filtering/tel4_filter.py",
+      "role": "runtime",
+      "orig_sha256": "8f39bb517cf6fa14e1f7448be65d8c4319d89d991ca447edf1db6bb22159ab00",
+      "copied_sha256": "8f39bb517cf6fa14e1f7448be65d8c4319d89d991ca447edf1db6bb22159ab00",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/filtering/tel4_runtime.py",
+      "dest_path": "src/camloc/filtering/tel4_runtime.py",
+      "role": "runtime",
+      "orig_sha256": "9c5b7ee83424904978ac9a999b0fafdd25465a035219d2275ee3f2409aa0425f",
+      "copied_sha256": "9c5b7ee83424904978ac9a999b0fafdd25465a035219d2275ee3f2409aa0425f",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/filtering/tel_filter.py",
+      "dest_path": "src/camloc/filtering/tel_filter.py",
+      "role": "runtime",
+      "orig_sha256": "124fe2ca46bec1c6aad0869b2c6e97f63d3123bc943923d313f945fa00898c9b",
+      "copied_sha256": "124fe2ca46bec1c6aad0869b2c6e97f63d3123bc943923d313f945fa00898c9b",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/filtering/tel_runtime.py",
+      "dest_path": "src/camloc/filtering/tel_runtime.py",
+      "role": "runtime",
+      "orig_sha256": "000e3f2449a0203aec2c2bfa778c5a66d58e64c7ea23857c6402dc99554feb2d",
+      "copied_sha256": "000e3f2449a0203aec2c2bfa778c5a66d58e64c7ea23857c6402dc99554feb2d",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/geometry/__init__.py",
+      "dest_path": "src/camloc/geometry/__init__.py",
+      "role": "runtime",
+      "orig_sha256": "9794b1bb37d48b0abbbbaf8d08b9c20ee29e027cca76cc9d9cb7ea8170d3396f",
+      "copied_sha256": "9794b1bb37d48b0abbbbaf8d08b9c20ee29e027cca76cc9d9cb7ea8170d3396f",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/geometry/borders.py",
+      "dest_path": "src/camloc/geometry/borders.py",
+      "role": "runtime",
+      "orig_sha256": "29a086cac8819e9899c72e49ac005de4e82368bee227a50da158f3290c85ee7b",
+      "copied_sha256": "29a086cac8819e9899c72e49ac005de4e82368bee227a50da158f3290c85ee7b",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/geometry/camera.py",
+      "dest_path": "src/camloc/geometry/camera.py",
+      "role": "runtime",
+      "orig_sha256": "0e9432f9506955fc3782a455cd516be1210229e172899988f7e6f6e8a425eebc",
+      "copied_sha256": "0e9432f9506955fc3782a455cd516be1210229e172899988f7e6f6e8a425eebc",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/geometry/centerline.py",
+      "dest_path": "src/camloc/geometry/centerline.py",
+      "role": "runtime",
+      "orig_sha256": "a46fc5ba06d03d93d9fff394915c46a3f0a17040ac9c5afd830ed833139d4502",
+      "copied_sha256": "a46fc5ba06d03d93d9fff394915c46a3f0a17040ac9c5afd830ed833139d4502",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/geometry/residuals.py",
+      "dest_path": "src/camloc/geometry/residuals.py",
+      "role": "runtime",
+      "orig_sha256": "856d1c414b68896dfbda4636d12beaaeb7363acbd3009678e1a3bca60cf90b85",
+      "copied_sha256": "856d1c414b68896dfbda4636d12beaaeb7363acbd3009678e1a3bca60cf90b85",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/geometry/transforms.py",
+      "dest_path": "src/camloc/geometry/transforms.py",
+      "role": "runtime",
+      "orig_sha256": "32d6141bad000d8f1150ab9f93623e35242795c674f6a48e9da3df21b597b2ff",
+      "copied_sha256": "32d6141bad000d8f1150ab9f93623e35242795c674f6a48e9da3df21b597b2ff",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/io/__init__.py",
+      "dest_path": "src/camloc/io/__init__.py",
+      "role": "runtime",
+      "orig_sha256": "9c0f663d5479641907f1c73a8dff3c379f0f4d2323e63f5f3f681439511b6dce",
+      "copied_sha256": "9c0f663d5479641907f1c73a8dff3c379f0f4d2323e63f5f3f681439511b6dce",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/io/bundles.py",
+      "dest_path": "src/camloc/io/bundles.py",
+      "role": "runtime",
+      "orig_sha256": "89951977269f95f2ec4a4892d33cad3888d1880e6e842ce9251f31b4834d0c38",
+      "copied_sha256": "89951977269f95f2ec4a4892d33cad3888d1880e6e842ce9251f31b4834d0c38",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/io/calibfp.py",
+      "dest_path": "src/camloc/io/calibfp.py",
+      "role": "runtime",
+      "orig_sha256": "02d0f4257dbffa0c1e30c08dc79491a582762f72d4ec9a19550a707452dbc66b",
+      "copied_sha256": "02d0f4257dbffa0c1e30c08dc79491a582762f72d4ec9a19550a707452dbc66b",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/io/export_generic.py",
+      "dest_path": "src/camloc/io/export_generic.py",
+      "role": "runtime",
+      "orig_sha256": "16d2093f5066a23caa271074e70631a7d415dbfa0e6c9b73ffbf88e5f1a61611",
+      "copied_sha256": "16d2093f5066a23caa271074e70631a7d415dbfa0e6c9b73ffbf88e5f1a61611",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/io/export_telemetry.py",
+      "dest_path": "src/camloc/io/export_telemetry.py",
+      "role": "runtime",
+      "orig_sha256": "fdbb03e809edf8776a75dce7b02dd2cd9292db347c36885b2b1e7b1be3270076",
+      "copied_sha256": "fdbb03e809edf8776a75dce7b02dd2cd9292db347c36885b2b1e7b1be3270076",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/io/store.py",
+      "dest_path": "src/camloc/io/store.py",
+      "role": "runtime",
+      "orig_sha256": "108ae8677f0cd7468491ae37936e04ba0de528cd260297135c882e10c89c3921",
+      "copied_sha256": "108ae8677f0cd7468491ae37936e04ba0de528cd260297135c882e10c89c3921",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/io/telemetry.py",
+      "dest_path": "src/camloc/io/telemetry.py",
+      "role": "runtime",
+      "orig_sha256": "8ed1972b32a068de722e5a7d9a00baaf7f20a6e6a40d1428516e8d504fcc553e",
+      "copied_sha256": "8ed1972b32a068de722e5a7d9a00baaf7f20a6e6a40d1428516e8d504fcc553e",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/io/unlock.py",
+      "dest_path": "src/camloc/io/unlock.py",
+      "role": "runtime",
+      "orig_sha256": "6a4d9ce4dee4bb1f127b94b3db72e23296afa268d461da71eaeee6a45621ef78",
+      "copied_sha256": "6a4d9ce4dee4bb1f127b94b3db72e23296afa268d461da71eaeee6a45621ef78",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/mapping/__init__.py",
+      "dest_path": "src/camloc/mapping/__init__.py",
+      "role": "runtime",
+      "orig_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copied_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/mapping/keyframes.py",
+      "dest_path": "src/camloc/mapping/keyframes.py",
+      "role": "runtime",
+      "orig_sha256": "b31022d1c38276098c8e70a8917627bca7b76e9d617c3f3f73e219bb5e45c9d6",
+      "copied_sha256": "b31022d1c38276098c8e70a8917627bca7b76e9d617c3f3f73e219bb5e45c9d6",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/mapping/map.py",
+      "dest_path": "src/camloc/mapping/map.py",
+      "role": "runtime",
+      "orig_sha256": "7e63b4332b83553f7b30bd7bf366d9bb6fa5304b4b76d5f2c9d1d7dcfef576c3",
+      "copied_sha256": "7e63b4332b83553f7b30bd7bf366d9bb6fa5304b4b76d5f2c9d1d7dcfef576c3",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/mapping/triangulate.py",
+      "dest_path": "src/camloc/mapping/triangulate.py",
+      "role": "runtime",
+      "orig_sha256": "23933a7278008cda93559c39770320e1a46f772fe585f21a28819848e1715e91",
+      "copied_sha256": "23933a7278008cda93559c39770320e1a46f772fe585f21a28819848e1715e91",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/models/__init__.py",
+      "dest_path": "src/camloc/models/__init__.py",
+      "role": "runtime",
+      "orig_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copied_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/models/e04t.py",
+      "dest_path": "src/camloc/models/e04t.py",
+      "role": "runtime",
+      "orig_sha256": "a73ac2ff5e21d028ac0945d8ebc9ea307e0fe210b70d325a441218a43cb86692",
+      "copied_sha256": "a73ac2ff5e21d028ac0945d8ebc9ea307e0fe210b70d325a441218a43cb86692",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/models/e04y.py",
+      "dest_path": "src/camloc/models/e04y.py",
+      "role": "runtime",
+      "orig_sha256": "802b0ede1892e5a2d3f3bc4030321ff6fa2d1c04dec547c94c9d7ef309cf4c91",
+      "copied_sha256": "802b0ede1892e5a2d3f3bc4030321ff6fa2d1c04dec547c94c9d7ef309cf4c91",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/models/mc7.py",
+      "dest_path": "src/camloc/models/mc7.py",
+      "role": "runtime",
+      "orig_sha256": "4a4cd4d4be516508c6276b9dafba1ef6d1cb452a5f50966287b3e35179f679ca",
+      "copied_sha256": "4a4cd4d4be516508c6276b9dafba1ef6d1cb452a5f50966287b3e35179f679ca",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/models/pnp.py",
+      "dest_path": "src/camloc/models/pnp.py",
+      "role": "runtime",
+      "orig_sha256": "995a6f90658369f1a98f7aa954f974dd80af2d21dcf00f45dcec5602d85e19ae",
+      "copied_sha256": "995a6f90658369f1a98f7aa954f974dd80af2d21dcf00f45dcec5602d85e19ae",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/models/pnp_fb.py",
+      "dest_path": "src/camloc/models/pnp_fb.py",
+      "role": "runtime",
+      "orig_sha256": "b94e1a038cb22586ef1fb523502d8e259a43aa5a0c562fb64f1bfeee173667c6",
+      "copied_sha256": "b94e1a038cb22586ef1fb523502d8e259a43aa5a0c562fb64f1bfeee173667c6",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/models/retrieval.py",
+      "dest_path": "src/camloc/models/retrieval.py",
+      "role": "runtime",
+      "orig_sha256": "ddbffe50117db2bd894d96fcc71f7d9af0f8f42a046d2f1e45e0c52ea7249797",
+      "copied_sha256": "ddbffe50117db2bd894d96fcc71f7d9af0f8f42a046d2f1e45e0c52ea7249797",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/release/__init__.py",
+      "dest_path": "src/camloc/release/__init__.py",
+      "role": "runtime",
+      "orig_sha256": "8f0874e854f42d0c720744ec7930036b520467a7ab7c4861dc233c47cf55ad7a",
+      "copied_sha256": "8f0874e854f42d0c720744ec7930036b520467a7ab7c4861dc233c47cf55ad7a",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/release/bundle.py",
+      "dest_path": "src/camloc/release/bundle.py",
+      "role": "runtime",
+      "orig_sha256": "a3b2cb6dc1d765d43ae0ef1d721f6f70fe6febbd70d270fc80cc3f626162b1c6",
+      "copied_sha256": "a3b2cb6dc1d765d43ae0ef1d721f6f70fe6febbd70d270fc80cc3f626162b1c6",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/release/codeclosure.py",
+      "dest_path": "src/camloc/release/codeclosure.py",
+      "role": "runtime",
+      "orig_sha256": "1f9c9518adc42895f48d138f43f0d79ebc4b178c52eeedf5e1b507f501b9f54b",
+      "copied_sha256": "1f9c9518adc42895f48d138f43f0d79ebc4b178c52eeedf5e1b507f501b9f54b",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/release/codeid.py",
+      "dest_path": "src/camloc/release/codeid.py",
+      "role": "runtime",
+      "orig_sha256": "1cffe4a757cb405b98192da87bb0fcf4198ea10ddc3017902f375c2c6f6cf102",
+      "copied_sha256": "1cffe4a757cb405b98192da87bb0fcf4198ea10ddc3017902f375c2c6f6cf102",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/release/config.py",
+      "dest_path": "src/camloc/release/config.py",
+      "role": "runtime",
+      "orig_sha256": "68d09d8b5e686dc34042776984212647ec5d5e54eb1929f0eac5914a2389001d",
+      "copied_sha256": "68d09d8b5e686dc34042776984212647ec5d5e54eb1929f0eac5914a2389001d",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/release/netguard.py",
+      "dest_path": "src/camloc/release/netguard.py",
+      "role": "runtime",
+      "orig_sha256": "34f87fd84f36b7829f258f6f72d67f8cc53434c8bbdaf347946d923f568a2a6b",
+      "copied_sha256": "34f87fd84f36b7829f258f6f72d67f8cc53434c8bbdaf347946d923f568a2a6b",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/release/package.py",
+      "dest_path": "src/camloc/release/package.py",
+      "role": "runtime",
+      "orig_sha256": "e7e0ba8b9f0d9b64eb613d47d5d1d24abc41b82ad01d0db74ab371b6c1755d62",
+      "copied_sha256": "e7e0ba8b9f0d9b64eb613d47d5d1d24abc41b82ad01d0db74ab371b6c1755d62",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/release/pins.py",
+      "dest_path": "src/camloc/release/pins.py",
+      "role": "runtime",
+      "orig_sha256": "9984774f84ce5214c2645ff200393c2516c7cbe5948d3cc98fb7ab799e6be9dd",
+      "copied_sha256": "9984774f84ce5214c2645ff200393c2516c7cbe5948d3cc98fb7ab799e6be9dd",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/release/run.py",
+      "dest_path": "src/camloc/release/run.py",
+      "role": "runtime",
+      "orig_sha256": "a3ece3d4cb4c103084e7559d74dda5df68063d81228eee514b0498be19aed890",
+      "copied_sha256": "a3ece3d4cb4c103084e7559d74dda5df68063d81228eee514b0498be19aed890",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/release/validate.py",
+      "dest_path": "src/camloc/release/validate.py",
+      "role": "runtime",
+      "orig_sha256": "42798f2312e992de93cdd9ae144eb53fa1fedd0379eee0c5f0644051df120428",
+      "copied_sha256": "42798f2312e992de93cdd9ae144eb53fa1fedd0379eee0c5f0644051df120428",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/runner.py",
+      "dest_path": "src/camloc/runner.py",
+      "role": "runtime",
+      "orig_sha256": "939400854f047cd73a7d459e1ef997aec7919a6eb6f4fff645ac4da800a334f8",
+      "copied_sha256": "939400854f047cd73a7d459e1ef997aec7919a6eb6f4fff645ac4da800a334f8",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/stress/__init__.py",
+      "dest_path": "src/camloc/stress/__init__.py",
+      "role": "runtime",
+      "orig_sha256": "d3d326d05bb7fd0d0ce5ce0952dfe1d3ceb86c3f179a69a8fb471bd05a0c206b",
+      "copied_sha256": "d3d326d05bb7fd0d0ce5ce0952dfe1d3ceb86c3f179a69a8fb471bd05a0c206b",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/stress/manifest.py",
+      "dest_path": "src/camloc/stress/manifest.py",
+      "role": "runtime",
+      "orig_sha256": "9b736a2d8cf51fb47b8acfebc73c114428ca4fb84e58a2f3397601e959dcb53c",
+      "copied_sha256": "9b736a2d8cf51fb47b8acfebc73c114428ca4fb84e58a2f3397601e959dcb53c",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/stress/ops.py",
+      "dest_path": "src/camloc/stress/ops.py",
+      "role": "runtime",
+      "orig_sha256": "1c587f05643527c73cc9c3e6608af5f4e1f9f355a0b4a949420a8a69880e898b",
+      "copied_sha256": "1c587f05643527c73cc9c3e6608af5f4e1f9f355a0b4a949420a8a69880e898b",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/stress/plan.py",
+      "dest_path": "src/camloc/stress/plan.py",
+      "role": "runtime",
+      "orig_sha256": "8c93a0623c328365040fe8b6f6026036ab455e1691e4758e650d0e483acdc5f4",
+      "copied_sha256": "8c93a0623c328365040fe8b6f6026036ab455e1691e4758e650d0e483acdc5f4",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/util.py",
+      "dest_path": "src/camloc/util.py",
+      "role": "runtime",
+      "orig_sha256": "c1701bcd626a4538ee9a5e5a7ffd6575a7835c2cc9a993dbfbbc349acf43e868",
+      "copied_sha256": "c1701bcd626a4538ee9a5e5a7ffd6575a7835c2cc9a993dbfbbc349acf43e868",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/__init__.py",
+      "dest_path": "src/camloc/v2/__init__.py",
+      "role": "runtime",
+      "orig_sha256": "0f07cd3148b690259c7140a9f1696123844b91696edf47b904b32bb5ef0f65a7",
+      "copied_sha256": "0f07cd3148b690259c7140a9f1696123844b91696edf47b904b32bb5ef0f65a7",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/body_masks.py",
+      "dest_path": "src/camloc/v2/body_masks.py",
+      "role": "runtime",
+      "orig_sha256": "1916b3172177ae4e79e71af3d21107a8c1b1bd9f39c1ea3cd27da15d0bc5d603",
+      "copied_sha256": "1916b3172177ae4e79e71af3d21107a8c1b1bd9f39c1ea3cd27da15d0bc5d603",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/border_attitude.py",
+      "dest_path": "src/camloc/v2/border_attitude.py",
+      "role": "runtime",
+      "orig_sha256": "bab47eaa88b802c2fca3d90cc85624a5c0a22a3874aa2cbc3f030ecde1684233",
+      "copied_sha256": "bab47eaa88b802c2fca3d90cc85624a5c0a22a3874aa2cbc3f030ecde1684233",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/border_fast.py",
+      "dest_path": "src/camloc/v2/border_fast.py",
+      "role": "runtime",
+      "orig_sha256": "eb2613cc065db597b6ee5ecaf716e80a21d4fced08541f58db814ee3944a51a0",
+      "copied_sha256": "eb2613cc065db597b6ee5ecaf716e80a21d4fced08541f58db814ee3944a51a0",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/border_probe.py",
+      "dest_path": "src/camloc/v2/border_probe.py",
+      "role": "runtime",
+      "orig_sha256": "b1166fa942e0b894021281316db6b5a558f2f5e4bd721259e94a02fb5a965a01",
+      "copied_sha256": "b1166fa942e0b894021281316db6b5a558f2f5e4bd721259e94a02fb5a965a01",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/border_seg.py",
+      "dest_path": "src/camloc/v2/border_seg.py",
+      "role": "runtime",
+      "orig_sha256": "7f980ad05fdaef0334e0a61b3483fea37f74b8defc76657887b687fcc7c43151",
+      "copied_sha256": "7f980ad05fdaef0334e0a61b3483fea37f74b8defc76657887b687fcc7c43151",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/border_seg_att.py",
+      "dest_path": "src/camloc/v2/border_seg_att.py",
+      "role": "runtime",
+      "orig_sha256": "cd9d5b9826936572217918f0de7d83674e53b73b2e657432f9d449153557fef8",
+      "copied_sha256": "cd9d5b9826936572217918f0de7d83674e53b73b2e657432f9d449153557fef8",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/filter/__init__.py",
+      "dest_path": "src/camloc/v2/filter/__init__.py",
+      "role": "runtime",
+      "orig_sha256": "52a8d1346de0cd3ef3554ca8e854451400f7bd7bf162e8f22599b00696700cec",
+      "copied_sha256": "52a8d1346de0cd3ef3554ca8e854451400f7bd7bf162e8f22599b00696700cec",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/filter/core.py",
+      "dest_path": "src/camloc/v2/filter/core.py",
+      "role": "runtime",
+      "orig_sha256": "bc8ff84067fa34638a3f073295940f1d62da178ef6327fe19f8c4295b2f1e692",
+      "copied_sha256": "bc8ff84067fa34638a3f073295940f1d62da178ef6327fe19f8c4295b2f1e692",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/filter/params.py",
+      "dest_path": "src/camloc/v2/filter/params.py",
+      "role": "runtime",
+      "orig_sha256": "e95de21af33148ebeff3f396c1cb6e96ae3b2957a6e7666bef0a971e376f20e9",
+      "copied_sha256": "e95de21af33148ebeff3f396c1cb6e96ae3b2957a6e7666bef0a971e376f20e9",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/filter/stream.py",
+      "dest_path": "src/camloc/v2/filter/stream.py",
+      "role": "runtime",
+      "orig_sha256": "149237926b85eee9646b747c0cdade6dc889b22f1af8ae6bf20080715d040bb9",
+      "copied_sha256": "149237926b85eee9646b747c0cdade6dc889b22f1af8ae6bf20080715d040bb9",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/filter/track.py",
+      "dest_path": "src/camloc/v2/filter/track.py",
+      "role": "runtime",
+      "orig_sha256": "86c20430a34e6ce580347614b7a6a9e226d1297b1221000b3ca5be1f9c1d81cd",
+      "copied_sha256": "86c20430a34e6ce580347614b7a6a9e226d1297b1221000b3ca5be1f9c1d81cd",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/filter2/__init__.py",
+      "dest_path": "src/camloc/v2/filter2/__init__.py",
+      "role": "runtime",
+      "orig_sha256": "2ac9be3660b886505562cd1df8b531cc84b5d2ce08383369cc40689462e11109",
+      "copied_sha256": "2ac9be3660b886505562cd1df8b531cc84b5d2ce08383369cc40689462e11109",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/filter2/core.py",
+      "dest_path": "src/camloc/v2/filter2/core.py",
+      "role": "runtime",
+      "orig_sha256": "6602d98dcf346aaaaeeab0d9aabe497348fbbfcf390adcfd4d924ea5ed5fc45b",
+      "copied_sha256": "6602d98dcf346aaaaeeab0d9aabe497348fbbfcf390adcfd4d924ea5ed5fc45b",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/filter2/params.py",
+      "dest_path": "src/camloc/v2/filter2/params.py",
+      "role": "runtime",
+      "orig_sha256": "867c70a086b46bf1aed43531fe89b327c7a002aec2a9a3c29a27c10f102c3c8d",
+      "copied_sha256": "867c70a086b46bf1aed43531fe89b327c7a002aec2a9a3c29a27c10f102c3c8d",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/filter2/stream.py",
+      "dest_path": "src/camloc/v2/filter2/stream.py",
+      "role": "runtime",
+      "orig_sha256": "116af0aea5bcdf425b95eca1f7fe250f4c2d53e63e7469ea5c061dc388ce6119",
+      "copied_sha256": "116af0aea5bcdf425b95eca1f7fe250f4c2d53e63e7469ea5c061dc388ce6119",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/landmark_probe.py",
+      "dest_path": "src/camloc/v2/landmark_probe.py",
+      "role": "runtime",
+      "orig_sha256": "f5efd4ff04899dc288e05790274f17bf1c438cc9fc8ae29ec124e005b5525068",
+      "copied_sha256": "f5efd4ff04899dc288e05790274f17bf1c438cc9fc8ae29ec124e005b5525068",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/learned/__init__.py",
+      "dest_path": "src/camloc/v2/learned/__init__.py",
+      "role": "runtime",
+      "orig_sha256": "af01e32a3c1236e22786856750b1cdc356619c215fde6dbc36eeaf338c6041fb",
+      "copied_sha256": "af01e32a3c1236e22786856750b1cdc356619c215fde6dbc36eeaf338c6041fb",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/learned/features.py",
+      "dest_path": "src/camloc/v2/learned/features.py",
+      "role": "runtime",
+      "orig_sha256": "992a20c3ce31eefcad0c2e2a7d5d6f7b6d949b06ffabf3c28f89add8c81d9e68",
+      "copied_sha256": "992a20c3ce31eefcad0c2e2a7d5d6f7b6d949b06ffabf3c28f89add8c81d9e68",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/meas.py",
+      "dest_path": "src/camloc/v2/meas.py",
+      "role": "runtime",
+      "orig_sha256": "4f232ed199580ddeb20ceb83d7c45381807e44e28c0eb575b91e909e9eace566",
+      "copied_sha256": "4f232ed199580ddeb20ceb83d7c45381807e44e28c0eb575b91e909e9eace566",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/multicam/__init__.py",
+      "dest_path": "src/camloc/v2/multicam/__init__.py",
+      "role": "runtime",
+      "orig_sha256": "84668202a6b5932acf63e98bc86014aa6839b39d32e97892567d412207c54d7e",
+      "copied_sha256": "84668202a6b5932acf63e98bc86014aa6839b39d32e97892567d412207c54d7e",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/multicam/closedloop.py",
+      "dest_path": "src/camloc/v2/multicam/closedloop.py",
+      "role": "runtime",
+      "orig_sha256": "87bb0df0b486775506b182394eb0ab68636ba80af5f214292c963ae5626a42a1",
+      "copied_sha256": "87bb0df0b486775506b182394eb0ab68636ba80af5f214292c963ae5626a42a1",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/multicam/filter.py",
+      "dest_path": "src/camloc/v2/multicam/filter.py",
+      "role": "runtime",
+      "orig_sha256": "4a43b9b06bfdef1422a10954b59258d3c039082dee5e8a1eb556e500d0cec054",
+      "copied_sha256": "4a43b9b06bfdef1422a10954b59258d3c039082dee5e8a1eb556e500d0cec054",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/multicam/fusion.py",
+      "dest_path": "src/camloc/v2/multicam/fusion.py",
+      "role": "runtime",
+      "orig_sha256": "011a246ea663906189ff282108e1044394389ec687063fd760fa34a22d0e090c",
+      "copied_sha256": "011a246ea663906189ff282108e1044394389ec687063fd760fa34a22d0e090c",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/multicam/fusion_age.py",
+      "dest_path": "src/camloc/v2/multicam/fusion_age.py",
+      "role": "runtime",
+      "orig_sha256": "4f6b0eb0afb81e136b566a8a5c4100d3b49ee79cccdcdfa9209ad3433acd7cf5",
+      "copied_sha256": "4f6b0eb0afb81e136b566a8a5c4100d3b49ee79cccdcdfa9209ad3433acd7cf5",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/multicam/live.py",
+      "dest_path": "src/camloc/v2/multicam/live.py",
+      "role": "runtime",
+      "orig_sha256": "6c8c43c7f8c604e65987f87f254b24e0bdef0b8bc8cd5e0dd6a753512943e7ab",
+      "copied_sha256": "6c8c43c7f8c604e65987f87f254b24e0bdef0b8bc8cd5e0dd6a753512943e7ab",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/poles/__init__.py",
+      "dest_path": "src/camloc/v2/poles/__init__.py",
+      "role": "runtime",
+      "orig_sha256": "8d26ad994a8da4c3a13f3f058f4457a369cfef3c6e046c92becf4ce144f2ac75",
+      "copied_sha256": "8d26ad994a8da4c3a13f3f058f4457a369cfef3c6e046c92becf4ce144f2ac75",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/poles/associate.py",
+      "dest_path": "src/camloc/v2/poles/associate.py",
+      "role": "runtime",
+      "orig_sha256": "83ef6b86f42e71b10e74dfceb04161ed44892cd5751c6b490f279cb569a8bfca",
+      "copied_sha256": "83ef6b86f42e71b10e74dfceb04161ed44892cd5751c6b490f279cb569a8bfca",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/poles/detect.py",
+      "dest_path": "src/camloc/v2/poles/detect.py",
+      "role": "runtime",
+      "orig_sha256": "512abe446194b9c8e8c4c9822bb5f7d609fec4f144fcbae2847f1934ac2b6432",
+      "copied_sha256": "512abe446194b9c8e8c4c9822bb5f7d609fec4f144fcbae2847f1934ac2b6432",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/poles/geometry.py",
+      "dest_path": "src/camloc/v2/poles/geometry.py",
+      "role": "runtime",
+      "orig_sha256": "bca26b98b48314bfc0c8cb8472f5962e5ed15863ea9d93a10a0afc56095868db",
+      "copied_sha256": "bca26b98b48314bfc0c8cb8472f5962e5ed15863ea9d93a10a0afc56095868db",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/road_attitude.py",
+      "dest_path": "src/camloc/v2/road_attitude.py",
+      "role": "runtime",
+      "orig_sha256": "055e9d2337889823a81263ae11206c6733d96fb30748b14559f24e97736a36c4",
+      "copied_sha256": "055e9d2337889823a81263ae11206c6733d96fb30748b14559f24e97736a36c4",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/seg/__init__.py",
+      "dest_path": "src/camloc/v2/seg/__init__.py",
+      "role": "runtime",
+      "orig_sha256": "33a4dc28c1a27975e31c146d9fd617a57ca76d3122f0b3691a2d2e81c5e1a87d",
+      "copied_sha256": "33a4dc28c1a27975e31c146d9fd617a57ca76d3122f0b3691a2d2e81c5e1a87d",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/seg/config.py",
+      "dest_path": "src/camloc/v2/seg/config.py",
+      "role": "runtime",
+      "orig_sha256": "cd859d23ac46b4767fd1bc07ad25e787b91ccc9b435cd0e1d5f16b73c7c0e121",
+      "copied_sha256": "cd859d23ac46b4767fd1bc07ad25e787b91ccc9b435cd0e1d5f16b73c7c0e121",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/seg/infer.py",
+      "dest_path": "src/camloc/v2/seg/infer.py",
+      "role": "runtime",
+      "orig_sha256": "5c31489f4581d488bfa36a9fbcb6f2d720b866846524a06c79f15043a584890a",
+      "copied_sha256": "5c31489f4581d488bfa36a9fbcb6f2d720b866846524a06c79f15043a584890a",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/seg/labels.py",
+      "dest_path": "src/camloc/v2/seg/labels.py",
+      "role": "runtime",
+      "orig_sha256": "0c39937cc2b8ce1c0d31b6006eb5dee5c17e121c7575c0a825b3f981f0dc4f04",
+      "copied_sha256": "0c39937cc2b8ce1c0d31b6006eb5dee5c17e121c7575c0a825b3f981f0dc4f04",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/seg/model.py",
+      "dest_path": "src/camloc/v2/seg/model.py",
+      "role": "runtime",
+      "orig_sha256": "ef2fec0c8c7a279ab7858526640e635e9536d359d6784fd6d61b8f51def824b1",
+      "copied_sha256": "ef2fec0c8c7a279ab7858526640e635e9536d359d6784fd6d61b8f51def824b1",
+      "adaptation": null
+    }
+  ]
+}

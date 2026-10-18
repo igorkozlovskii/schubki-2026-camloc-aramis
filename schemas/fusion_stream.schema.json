@@ -1,0 +1,162 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "S07a per-tick observation stream rows (fusion-stream-v1), one JSON object per line",
+ "description": "Two row kinds selected by `stream`. t_ns is the exposure stamp of the clock-camera tick the row belongs to. A row may be consumed by the fusion only at the first tick whose stamp is >= avail_ns: e05_motion rows at their own stamp (compute counted in the 10 Hz budget), e04_fix rows at t_ns + latency_ns x latency_scale. Contract level: tick (frame) level. e05_motion increments are body-frame (base_link at the previous tick, x forward, y left) derived from consecutive E05 output poses; e04_fix poses are map-frame base_link poses (E04 PnP fix, or the labeled retrieval top-1 keyframe pose, or src none = source held its last pose). Table rules: t_ns strictly increasing, all numbers finite.",
+ "oneOf": [
+  {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "schema",
+    "stream",
+    "run_id",
+    "t_ns",
+    "i",
+    "dx_m",
+    "dy_m",
+    "dyaw_rad",
+    "valid",
+    "quality",
+    "latency_ns"
+   ],
+   "properties": {
+    "schema": {
+     "const": "fusion-stream-v1"
+    },
+    "stream": {
+     "const": "e05_motion"
+    },
+    "run_id": {
+     "type": "string"
+    },
+    "t_ns": {
+     "type": "integer"
+    },
+    "i": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "dx_m": {
+     "type": "number"
+    },
+    "dy_m": {
+     "type": "number"
+    },
+    "dyaw_rad": {
+     "type": "number"
+    },
+    "valid": {
+     "type": "boolean"
+    },
+    "quality": {
+     "enum": [
+      "ok",
+      "bridged",
+      "invalid"
+     ]
+    },
+    "reason": {
+     "type": "string"
+    },
+    "latency_ns": {
+     "type": "integer"
+    }
+   }
+  },
+  {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "schema",
+    "stream",
+    "run_id",
+    "t_ns",
+    "i",
+    "src",
+    "x_m",
+    "y_m",
+    "yaw_rad",
+    "latency_ns"
+   ],
+   "properties": {
+    "schema": {
+     "const": "fusion-stream-v1"
+    },
+    "stream": {
+     "const": "e04_fix"
+    },
+    "run_id": {
+     "type": "string"
+    },
+    "t_ns": {
+     "type": "integer"
+    },
+    "i": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "src": {
+     "enum": [
+      "pnp",
+      "retrieval",
+      "none"
+     ]
+    },
+    "x_m": {
+     "type": "number"
+    },
+    "y_m": {
+     "type": "number"
+    },
+    "yaw_rad": {
+     "type": "number"
+    },
+    "latency_ns": {
+     "type": "integer"
+    },
+    "n_inl": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "n_kf_inl": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "inlier_ratio": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "rms_px": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "d_kf_m": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "sim_top": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "reason": {
+     "type": [
+      "string",
+      "null"
+     ]
+    }
+   }
+  }
+ ]
+}

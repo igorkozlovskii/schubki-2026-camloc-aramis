@@ -1,0 +1,99 @@
+# S10g NOT FROZEN: DROP at rule item (a2) (see sessions/2026-10-17-S10g.md); written for the train-lap runner smoke only.
+# S10g: g1 hard-reset filter, re-anchor constants = tuning/g1_all.json; tel/kin params unchanged (S10b V3_all / frozen Y1).
+schema_version: 1
+model_id: e10g-g1
+class: camloc.filtering.tel4_model:Tel4Model
+assets:
+  e04_stream: null
+  telemetry_store: artifacts/telemetry/S10a-laps0-5
+params:
+  tel:
+    a0: 1.0039
+    a_w: 1.0052
+    b0: 3.3e-05
+    use_vy: true
+    online_nuisance: true
+    use_retrieval: false
+    q_pos: 0.0686
+    q_psi: 0.005
+    q_a: 0.0003841599999999999
+    q_b: 1.0e-06
+    sig_a0: 0.0015
+    sig_b0: 0.0001
+    init_sig_xy: 0.5
+    init_sig_yaw: 0.02
+    v_max: 40.0
+    fix_sig_xy: 1.2
+    fix_sig_yaw: 0.019599999999999996
+    fix_w_inl: 0.0
+    fix_n_ref: 300.0
+    gate_hard: 16.3
+    gate_soft: 10.92
+    use_gate: true
+    use_huber: true
+    use_reanchor: true
+    reanchor_n: 5
+    reanchor_vmax_mult: 1.0
+    ret_sig_lon: 10.0
+    ret_sig_lat: 2.5
+    ret_sig_yaw: 0.06
+    ret_gate: 11.3
+    ret_min_interval_s: 1.0
+    max_lag_ticks: 60
+  kin:
+    model: ctr
+    init_sig_xy: 0.5
+    init_sig_yaw: 0.02
+    v0: 25.0
+    init_sig_v: 10.0
+    init_sig_w: 0.3
+    v_max: 40.0
+    w_max: 2.0
+    q_acc: 8.399999999999999
+    q_yawacc: 0.7
+    fix_sig_xy: 0.42
+    fix_sig_yaw: 0.006999999999999999
+    fix_w_inl: 0.7839999999999999
+    fix_n_ref: 300.0
+    gate_hard: 16.3
+    gate_soft: 2.0
+    use_gate: true
+    use_huber: true
+    gap_s: 5.879999999999999
+    gap_infl_m: 30.0
+    gap_infl_v: 10.0
+    gap_infl_yaw: 0.05
+    use_reanchor: true
+    reanchor_n: 5
+    reanchor_vmax_mult: 1.0
+    use_retrieval: true
+    ret_sig_lon: 7.0
+    ret_sig_lat: 6.8599999999999985
+    ret_sig_yaw: 0.06
+    ret_gate: 7.91
+    ret_min_interval_s: 0.35
+    stale_fix_s: 5.0
+    max_lag_ticks: 60
+    split_gate: false
+    yaw_gate: 9.0
+    yaw_only: false
+    ret_use_yaw: true
+    yaw_hold_s: 1000000000.0
+    fix_w_inl_yaw: 0.0
+  latency_scale: 0
+  fallback_age_s: 1.0
+  expected_hash: {}
+  reanchor4:
+    mode: g1
+    t_cap: 10.0
+    t_fresh: 0.8
+    n_sup: 50
+    sig_hard: 4.0
+    spread_d: 2.0
+    onset_m: 6.0
+    onset_rate: 8.0
+    t_min_d: 0.5
+    slope_max: 20.0
+    spread_sel: 3.0
+audit_opened: false
+audit_reason: null
