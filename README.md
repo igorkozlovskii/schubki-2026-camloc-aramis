@@ -14,8 +14,10 @@ then emits causal poses at 10 Hz: the pose at time t uses only data stamped at o
 Each of the seven cameras is matched against its own landmark map built from the four training
 laps (0, 1, 3, 5); this seven-camera landmark matching is called "mc7" in the documents. Closed-loop
 track-border fits and pole bearings correct the result, and a telemetry-driven track-coordinate
-filter fuses everything. The submitted system is the configuration frozen as `final-v1`, without
-a learned sequence layer.
+filter fuses everything. The submitted system is the configuration frozen as `final-v2` (release v2.0.0; `final-v1`, release v1.0.0, stays
+runnable), without a learned sequence layer. `final-v2` differs from `final-v1` only in how the six non-front
+cameras are matched: the S1.22 "E" matcher (`camloc.v2.fastmatch`, one batched-feature model run) replaces the six
+per-camera probes; maps, borders, poles, filter, constants and the asset bundle are the same.
 
 ## Inputs and contract
 
@@ -101,7 +103,8 @@ files. Details: [docs/ASSETS.md](docs/ASSETS.md).
 pixi run camloc-run --mcap <bag.mcap> --first-pose <first_pose.csv|json> --out <new dir> [--assets assets/final-v1] [--wait-vram-mb 9000]
 ```
 
-`camloc-run` is the Pixi task for `python scripts/final_run.py run`. Arguments: the raw MCAP, the first-pose file,
+`camloc-run` is the Pixi task for `python scripts/final_run.py --config configs/final/final-v2.yaml run` (final-v2, the default).
+Final-v1 is still runnable: `pixi run camloc-run-v1 ...` or `python scripts/final_run.py --config configs/final/final-v1.yaml run ...`. Arguments: the raw MCAP, the first-pose file,
 and a new output directory (the run refuses an existing one). `--assets` defaults to `assets/final-v1` (or the
 environment variable `CAMLOC_ASSETS`). Outputs in the directory: `pred.csv`, `run_summary.json`, per-tick
 diagnostics.
@@ -172,7 +175,8 @@ the full table is `licenses/license-table.md`; additional declared items are in 
 pixi.toml, pixi.lock     one pinned environment (task camloc-run)
 src/camloc/              runtime library
 scripts/                 frozen driver (final_run.py) and its script closure; export CLIs
-configs/final/           frozen configuration final-v1.yaml (asset paths prefixed $ASSETS/)
+configs/final/           frozen configurations final-v2.yaml (default) and final-v1.yaml (asset paths prefixed $ASSETS/)
+configs/v2/s122/         E-matcher parameters read by final-v2
 configs/models, splits/  model parameters; empty lap table for organizer data
 schemas/                 data schemas used by export and validation
 external/S04-lightglue/  vendored LightGlue subset (licence files included)
@@ -180,7 +184,7 @@ tools/                   asset build/verify, source export, dependency probe
 manifests/               asset manifest, freeze manifest, source-export manifest
 licenses/                licence table, ADDITIONS.md, external-resources.json
 docs/                    ASSETS.md, RESULTS.md, ADAPTATIONS notes, RUNTIME_FOUNDATION.md
-tests/                   44 tests
+tests/                   45 tests
 assets/, dist/, runs/    generated locally (assets bundle, tarball, run outputs); not in Git
 ```
 

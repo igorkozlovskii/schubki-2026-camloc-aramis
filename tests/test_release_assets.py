@@ -18,6 +18,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 FREEZE = json.loads((ROOT / "manifests/final-v1-freeze.json").read_text())
+FREEZE2 = json.loads((ROOT / "manifests/final-v2-freeze.json").read_text())
 EXPORT = json.loads((ROOT / "manifests/source-export.json").read_text())
 ASSETS = json.loads((ROOT / "manifests/assets-final-v1.json").read_text())
 CFG = ROOT / "configs/final/final-v1.yaml"
@@ -29,7 +30,8 @@ def sha(p):
 
 def test_exactly_one_runnable_model_config():
     # models/ holds the e04 fl probe config (freeze.code) and the R02a pinned filter params; final/ holds the one release config; no other run config
-    assert sorted(p.name for p in (ROOT / "configs/final").glob("*.yaml")) == ["final-v1.yaml"]
+    assert sorted(p.name for p in (ROOT / "configs/final").glob("*.yaml")) == ["final-v1.yaml", "final-v2.yaml"]   # R05: final-v2 (default) and final-v1 (kept runnable)
+    assert (ROOT / "configs/v2/s122/generated/E-lap1.yaml").is_file()   # the E-matcher params final-v2 reads unchanged
     assert sorted(p.name for p in (ROOT / "configs/models").glob("*.yaml")) == ["e04-pnp-rfb-v1.yaml", "e10g-g1.yaml"]
 
 
@@ -49,16 +51,40 @@ def test_release_config_is_the_freeze_config_with_only_asset_paths_remapped():
 
 def test_freeze_code_all_exported_and_identities_recorded():
     rows = {r["dest_path"]: r for r in EXPORT["files"]}
-    ported = {r["dest_path"]: r for r in EXPORT["ported"]}
+    ported = {r["source_path"]: r for r in EXPORT["ported"]}   # final_run.py (v1) and final_run_v2.py (v2) are both merged into scripts/final_run.py
     for rel, h in FREEZE["code"].items():
         if rel in ported:
-            assert ported[rel]["orig_sha256"] == h and sha(ROOT / rel) == ported[rel]["copied_sha256"]
+            assert ported[rel]["orig_sha256"] == h and sha(ROOT / ported[rel]["dest_path"]) == ported[rel]["copied_sha256"]
             continue
         assert rel in rows, f"freeze.code file not exported: {rel}"
         assert rows[rel]["orig_sha256"] == h, f"export source differs from the freeze hash: {rel}"
         assert sha(ROOT / rel) == rows[rel]["copied_sha256"]
         assert bool(rows[rel]["adaptation"]) == (rows[rel]["orig_sha256"] != rows[rel]["copied_sha256"])
     assert "src/camloc/v2/multicam/closedloop.py" in rows
+
+
+def test_final_v2_config_freeze_and_assets():
+    """R05: final-v2 = final-v1 + six_cams block; its freeze manifest hashes the same asset groups as final-v1 (reused tarball), the E code is exported."""
+    rows = {r["dest_path"]: r for r in EXPORT["files"]}
+    ported = {r["source_path"]: r for r in EXPORT["ported"]}
+    cfg2 = yaml.safe_load((ROOT / "configs/final/final-v2.yaml").read_text())
+    assert cfg2["six_cams"]["matcher"] == "fastmatch" and cfg2["freeze_manifest"] == "manifests/final/final-v2.json"
+    row = rows["configs/final/final-v2.yaml"]
+    assert row["adaptation"] and sha(ROOT / "configs/final/final-v2.yaml") == row["copied_sha256"] and row["orig_sha256"] == FREEZE2["config"]["sha256"]
+    undo = re.sub(r"\$ASSETS/", "", (ROOT / "configs/final/final-v2.yaml").read_text())
+    assert hashlib.sha256(undo.encode()).hexdigest() == FREEZE2["config"]["sha256"]
+    for k in ("maps", "networks", "constants", "assets"):
+        assert FREEZE2[k] == FREEZE[k], k                 # no new asset: assets-final-v1 is reused
+    for rel, h in FREEZE2["code"].items():
+        if rel in ported:
+            assert ported[rel]["orig_sha256"] == h
+            continue
+        assert rows[rel]["orig_sha256"] == h and sha(ROOT / rel) == rows[rel]["copied_sha256"], rel
+    for rel in ("src/camloc/v2/fastmatch/model.py", "src/camloc/v2/fastmatch/lgbatch.py", "src/camloc/v2/fastmatch/__init__.py", "configs/v2/s122/generated/E-lap1.yaml"):
+        assert rel in rows and rel in FREEZE2["code"]
+    assert FREEZE2["six_cams"]["params_from"]["sha256"] == sha(ROOT / "configs/v2/s122/generated/E-lap1.yaml")
+    t = (ROOT / "pixi.toml").read_text()
+    assert 'camloc-run = "python scripts/final_run.py --config configs/final/final-v2.yaml run"' in t and "configs/final/final-v1.yaml run" in t
 
 
 def test_asset_manifest_covers_every_frozen_asset_with_equal_hashes():

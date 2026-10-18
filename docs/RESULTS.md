@@ -168,3 +168,7 @@ filter reads the four named above.
 Research decisions behind this page: D-074 (mc7 + borders + poles), D-083 (speed-aware v_max), D-086 (final
 model without a learned layer), D-090 (audit laps 6 and 7 scored once), D-091 (configuration freeze),
 D-093 (simulated daylight laps), D-094 (batched matching timing). Release-run numbers: the release repository's own test-bag runs (two runs plus a research-driver control).
+
+## Release v2.0.0: final-v2
+
+The default configuration is `final-v2` (research F2, D-097; chosen as the submission model in D-098): the six non-front camera streams come from the S1.22 "E" matcher (`camloc.v2.fastmatch`, one model run) instead of six per-camera probes; the front camera, borders, poles, filter and constants are those of `final-v1`. Accuracy figures for final-v2 and its comparison with final-v1 are research results (PRG-002 F2 and S1.22b) and are not re-measured here. The release only reproduces the pipeline end to end on the test bag (a pipeline check, D-084), see the section final-v2 of `docs/R02B_ADAPTATIONS.md`.

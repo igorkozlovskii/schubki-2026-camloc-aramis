@@ -1,4 +1,6 @@
-# Asset bundle `final-v1`
+# Asset bundle `final-v1` (also used by final-v2)
+
+final-v2 (release v2.0.0) adds no asset: `manifests/final-v2-freeze.json` hashes the same maps, networks, constants and assets as `manifests/final-v1-freeze.json` (checked equal), and the verifier passes against either (`tools/verify_assets.py --freeze manifests/final-v2-freeze.json`). The v1 tarball is reused unchanged. The only extra files final-v2 needs are code and the small E-parameter file `configs/v2/s122/generated/E-lap1.yaml`, which are in the repository.
 
 The frozen model needs 76 files (about 913 MB): reference maps for 7 cameras, the pole map, road-attitude map, body masks, the border-segmentation
 checkpoint, ALIKED and LightGlue weights, DINOv2-small, the reference calibration, two constants files, the track bounds and a few small parameter files.

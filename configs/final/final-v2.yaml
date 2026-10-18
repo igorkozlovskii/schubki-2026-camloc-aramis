@@ -1,0 +1,41 @@
+# PRG-002 F2 candidate final inference configuration (final-v2) = final-v1 with the six non-fl streams from the S1.22 'E' matcher (S1.22b night follow-up).
+# Hashes of everything listed under `freeze` are in manifests/final/final-v2.json. Run with: scripts/final_run_v2.py --config configs/final/final-v2.yaml run ...
+schema: final-config-v1
+step: PRG-002 F2
+freeze_manifest: manifests/final/final-v2.json
+model: {name: mc7BP-dyn-E, arm: "S2.10 mc7BP (mc7 7 cameras + closed-loop borders + pole bearings), six non-fl streams from the S1.22 E matcher", driver: scripts/final_run_v2.py}
+six_cams: {matcher: fastmatch, class: "camloc.v2.fastmatch.model:FastMultiCamModel", model_id: final-v2-E-full, params_from: configs/v2/s122/generated/E-lap1.yaml,
+           note: "params read unchanged (serial, stop_corr 400, stride 2, topk 6/6, pnp_threads 8); map_dirs = freeze.maps fl..rr (full maps); fl stream stays the E04 probe; streams = per-camera step residuals as v2_s122_run.streams_from_run"}
+init: {first_pose: supplied once (t0, x, y, yaw); no relocalisation; no GT}
+poles: {k_pole: 32.0, cams: [fl, fr, cl, cr], map: $ASSETS/artifacts/maps/V2-S2.5-poles-full, masks: $ASSETS/artifacts/v2/S1.1-masks/full, availability_latency_ms: 50}
+borders: {every_ticks: 5, rate_hz: 2, network_tag: full, fit: {temp: 20000, sd_dpsi_deg: 1.5}, sigma_from: $ASSETS/manifests/v2/S2.8-constants.json, start: filter_own_state, bounds: $ASSETS/assets/final/track_bounds.json}
+vmax: {rule: "v_max_eff = max(40, 1.3 * max telemetry speed seen so far)", floor: 40.0, mult: 1.3, implementation: scripts/v2_s43_vmax.py variant dyn, default: dyn}
+probes: {stride: 2, fl_config: configs/models/e04-pnp-rfb-v1.yaml, six_cams_class: "camloc.v2.fastmatch.model:FastMultiCamModel (one run, see six_cams)", maps_from: freeze.maps}
+rl_rr_rule: "S4.1: T_fitted_test = T_fitted_train inv(T_nominal_train) T_nominal_test when the store calibration differs from the training calibration in rl/rr only; any other difference refuses"
+telemetry: {order: ["state_estimation allowed fields (scripts/export_telemetry.py)", "/validation/twist+accel (scripts/v2_s41_telemetry.py)", "camera-only (not implemented in final_run.py)"],
+            forbidden: [pose, yaw_vel_rad, sn_map_state, z, roll, pitch]}
+constants: {kappa: $ASSETS/manifests/v2/S4.2-constants.json}
+output: {csv: "timestamp_ns,x,y,yaw", decimals: 6}
+freeze:
+  code: [scripts/final_run_v2.py, scripts/v2_s42_lib.py, scripts/v2_s43_vmax.py, scripts/v2_s210_lib.py, scripts/v2_s210_fit.py, scripts/v2_s41_telemetry.py, scripts/export_telemetry.py, scripts/export_test_input.py,
+         scripts/run_inference.py, scripts/v2_s116_lib.py, scripts/v2_s116_lib2.py, scripts/v2_s25_filter.py, scripts/v2_s23_lib.py, src/camloc/v2/multicam/closedloop.py, src/camloc/v2/multicam/filter.py,
+         src/camloc/filtering/tel_filter.py, src/camloc/v2/landmark_probe.py, configs/models/e04-pnp-rfb-v1.yaml,
+         src/camloc/v2/fastmatch/__init__.py, src/camloc/v2/fastmatch/model.py, src/camloc/v2/fastmatch/lgbatch.py, configs/v2/s122/generated/E-lap1.yaml]
+  constants: [$ASSETS/manifests/v2/S4.2-constants.json, $ASSETS/manifests/v2/S2.8-constants.json]
+  maps:
+    fl: $ASSETS/artifacts/maps/S04-full-v1
+    fr: $ASSETS/artifacts/maps/S04d-fr-full-v1
+    cl: $ASSETS/artifacts/maps/V2-S1.16-cl-full
+    cr: $ASSETS/artifacts/maps/V2-S1.16-cr-full
+    r: $ASSETS/artifacts/maps/V2-S1.16-r-full
+    rl: $ASSETS/artifacts/maps/V2-S1.16-rl-full
+    rr: $ASSETS/artifacts/maps/V2-S1.16-rr-full
+    poles: $ASSETS/artifacts/maps/V2-S2.5-poles-full
+    attitude_map: $ASSETS/artifacts/v2/S3.2c-attitude-map/full.npz
+    body_masks: $ASSETS/artifacts/v2/S1.1-masks/full
+  networks:
+    border_seg_B_all_laps: $ASSETS/artifacts/v2/S3.2e-train/runs/B_lap-1_seed0/ckpt_last.pt
+    aliked_n16_weights: $ASSETS/artifacts/external/S04-lightglue/weights/aliked-n16.pth
+    global_descriptor_dinov2_small: $ASSETS/artifacts/external/S04-dinov2-small
+    reference_calibration: $ASSETS/artifacts/releases/S2.9-release-mc7-v1/calibration/calib.json
+  assets: [$ASSETS/assets/final/track_bounds.json]

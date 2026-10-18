@@ -1,0 +1,173 @@
+{
+ "schema": "final-freeze-v1",
+ "step": "PRG-002 F2",
+ "config": {
+  "path": "configs/final/final-v2.yaml",
+  "sha256": "699c35a609030cc8584c51b8169e825d7584a023061286fb2ad730d1cfab903f"
+ },
+ "code": {
+  "scripts/final_run_v2.py": "3865924f0d2e6c751227fc95694d1cb8f1ee5bb40c54c4ea73717b8b90939418",
+  "scripts/v2_s42_lib.py": "7e6f68cd4385a84eb095b46167b2f8e7151b94f9c95e34d8aed2f448a2210598",
+  "scripts/v2_s43_vmax.py": "d29d035794d9fb125feb9509793281436b342bfa7f3de24af73f3db12a6df7c4",
+  "scripts/v2_s210_lib.py": "30d56096f8a0340c39203317eea3c1efaf0e54e4d384df941fb866e75842639f",
+  "scripts/v2_s210_fit.py": "0f1ecca0df4a717f590962cb637d1f0e3ead7c783fa3d18822934572c4175d61",
+  "scripts/v2_s41_telemetry.py": "fc98198243fceaea09680453e589948d2f0195a75921ba676b243a09d69a7a03",
+  "scripts/export_telemetry.py": "f0ed73762fe180abf750123255592c78a7bf5cc6272eca95ac25da1becf9f942",
+  "scripts/export_test_input.py": "9772b4fba3861e41b2142353b5d2ee4bb96c505cf5f07efe484bdf137317bb75",
+  "scripts/run_inference.py": "48182b662bfa5b401166fce2334d2588099f748896b637d869302e2d148d76c6",
+  "scripts/v2_s116_lib.py": "caa832f3fe309c98aabe8dcc9c07bf5a65201c4fe93aa2352f59b8cc1b48ba88",
+  "scripts/v2_s116_lib2.py": "e2db20ff46b8350994e322de5438acfc397dd28888bfdd2eef5cc5a9166a42e2",
+  "scripts/v2_s25_filter.py": "3c35f1b4d95585e8fbbca8de266329099119a0e979e2285b2b39c82109f99b32",
+  "scripts/v2_s23_lib.py": "6ef993504f8357ced8e1f8eef5b1a1170ac84fcc95181ca182fce4a0fc30a355",
+  "src/camloc/v2/multicam/closedloop.py": "87bb0df0b486775506b182394eb0ab68636ba80af5f214292c963ae5626a42a1",
+  "src/camloc/v2/multicam/filter.py": "4a43b9b06bfdef1422a10954b59258d3c039082dee5e8a1eb556e500d0cec054",
+  "src/camloc/filtering/tel_filter.py": "124fe2ca46bec1c6aad0869b2c6e97f63d3123bc943923d313f945fa00898c9b",
+  "src/camloc/v2/landmark_probe.py": "f5efd4ff04899dc288e05790274f17bf1c438cc9fc8ae29ec124e005b5525068",
+  "configs/models/e04-pnp-rfb-v1.yaml": "1ed820d5df1d2dc144385177b994728e82d846d00332b6aadcaeef656d02d92d",
+  "src/camloc/v2/fastmatch/__init__.py": "e9b0512364830cad7c106b58c085efe5fc2c128b31dccea45de2660c4b7b000a",
+  "src/camloc/v2/fastmatch/model.py": "b64180e03876b54ecf2fb1fc3bce375c0551555169885a57a4a9789469e001e1",
+  "src/camloc/v2/fastmatch/lgbatch.py": "27b04ea81410684022cd9c86d05f4c627a85a5698f0279f5f28fe44c1233ca2e",
+  "configs/v2/s122/generated/E-lap1.yaml": "708748aa112117b666fb4af51dd366054395e0827b1b8892ca9849dfedc92091"
+ },
+ "constants": {
+  "manifests/v2/S4.2-constants.json": "78584c186d4eb42da8731e296aeabf74d8b51500227b39f6dee522f6694dc72a",
+  "manifests/v2/S2.8-constants.json": "0260d910e7056f28d77e2711f8a1e6ca7eb7d923b00abe4b860ec647567db60b"
+ },
+ "maps": {
+  "fl": {
+   "path": "artifacts/maps/S04-full-v1",
+   "files": 6,
+   "bytes": 74293230,
+   "digest_sha256": "162196308e599a3c27e5d3149382af2fc043ab17f3b4c99e0d57d3a54db99616"
+  },
+  "fr": {
+   "path": "artifacts/maps/S04d-fr-full-v1",
+   "files": 7,
+   "bytes": 126775096,
+   "digest_sha256": "93d46484bd4d4ce5c6b3bf75f6dced138fddab85b2dde5848d48579fd9b89b5a"
+  },
+  "cl": {
+   "path": "artifacts/maps/V2-S1.16-cl-full",
+   "files": 7,
+   "bytes": 108975722,
+   "digest_sha256": "7152fd3a38e975ce8272b8abc9c44b2e5d93ac85991a3e5ab7d79eb83a5add6e"
+  },
+  "cr": {
+   "path": "artifacts/maps/V2-S1.16-cr-full",
+   "files": 7,
+   "bytes": 138025289,
+   "digest_sha256": "a4ee7b44cb5d3e803f458988954edb46b787dc8bd857ee8347d83adce04f3299"
+  },
+  "r": {
+   "path": "artifacts/maps/V2-S1.16-r-full",
+   "files": 7,
+   "bytes": 90726889,
+   "digest_sha256": "60ee28ee09935f8dcd94699a0092b03447e36e571d2990470b97ae48dd710571"
+  },
+  "rl": {
+   "path": "artifacts/maps/V2-S1.16-rl-full",
+   "files": 7,
+   "bytes": 80003543,
+   "digest_sha256": "46a7babc4e68f3712877c5bda4ba662542457e1506c0b4f6dd934e438da79493"
+  },
+  "rr": {
+   "path": "artifacts/maps/V2-S1.16-rr-full",
+   "files": 7,
+   "bytes": 102920922,
+   "digest_sha256": "e5a04d9a9635c0fc4a6839ab648a1b985fd6dc483d40e3be52b8434b3fed68d9"
+  },
+  "poles": {
+   "path": "artifacts/maps/V2-S2.5-poles-full",
+   "files": 3,
+   "bytes": 344095,
+   "digest_sha256": "cc4921cd15847a5476102bc8483c518246adecdda054f3413a9e1aef0243c9d5"
+  },
+  "attitude_map": {
+   "path": "artifacts/v2/S3.2c-attitude-map/full.npz",
+   "files": 1,
+   "bytes": 25198,
+   "digest_sha256": "5f1a0bca96e571bd17afd58999c5872c60b842a4ca1f73ca548c37f0878613a0"
+  },
+  "body_masks": {
+   "path": "artifacts/v2/S1.1-masks/full",
+   "files": 9,
+   "bytes": 195051,
+   "digest_sha256": "37b395d44fec19c316b247a8d819b9e4658b37222a23ef27f14cb254b2dea431"
+  }
+ },
+ "networks": {
+  "border_seg_B_all_laps": {
+   "path": "artifacts/v2/S3.2e-train/runs/B_lap-1_seed0/ckpt_last.pt",
+   "files": 1,
+   "bytes": 50147002,
+   "digest_sha256": "640f26d418c50c6a2282122a3f3041400c56cae24fe0de23a1104526e3ac46dd"
+  },
+  "aliked_n16_weights": {
+   "path": "artifacts/external/S04-lightglue/weights/aliked-n16.pth",
+   "files": 1,
+   "bytes": 2738091,
+   "digest_sha256": "394ca7f997fd3f1831495dfcdff2f4bf1530a757c6e7b5b7bf03d7844896379f"
+  },
+  "global_descriptor_dinov2_small": {
+   "path": "artifacts/external/S04-dinov2-small",
+   "files": 3,
+   "bytes": 88250943,
+   "digest_sha256": "26fc58b4b2f895a25c4373d538b96e91f6b9c5878e020e8ddf0f5e7a526e331a"
+  },
+  "reference_calibration": {
+   "path": "artifacts/releases/S2.9-release-mc7-v1/calibration/calib.json",
+   "files": 1,
+   "bytes": 11338,
+   "digest_sha256": "bf477314a5a4eed7bba4fa7ee57371a8142b503b1cf0323dca763e12ef1b7abb"
+  }
+ },
+ "assets": {
+  "assets/final/track_bounds.json": "28cf2bfd9ce74c2e5f1ededd5d36866221c341609b27a15e3b5bae94b33de0ff"
+ },
+ "assets_manifest": {
+  "assets/final/track_bounds.json": {
+   "sha256": "28cf2bfd9ce74c2e5f1ededd5d36866221c341609b27a15e3b5bae94b33de0ff",
+   "copied_from": "derived/track_bounds.json",
+   "equal_to_source": true
+  }
+ },
+ "six_cams": {
+  "params_from": {
+   "path": "configs/v2/s122/generated/E-lap1.yaml",
+   "sha256": "708748aa112117b666fb4af51dd366054395e0827b1b8892ca9849dfedc92091"
+  },
+  "model_config": {
+   "schema_version": 1,
+   "model_id": "final-v2-E-full",
+   "class": "camloc.v2.fastmatch.model:FastMultiCamModel",
+   "assets": {
+    "map_dirs": {
+     "fl": "artifacts/maps/S04-full-v1",
+     "fr": "artifacts/maps/S04d-fr-full-v1",
+     "cl": "artifacts/maps/V2-S1.16-cl-full",
+     "cr": "artifacts/maps/V2-S1.16-cr-full",
+     "r": "artifacts/maps/V2-S1.16-r-full",
+     "rl": "artifacts/maps/V2-S1.16-rl-full",
+     "rr": "artifacts/maps/V2-S1.16-rr-full"
+    }
+   },
+   "params": {
+    "stride": 2,
+    "topk_fl": 6,
+    "topk_other": 6,
+    "lost_s": 5.0,
+    "prior_base_m": 40.0,
+    "vmax_mps": 45.0,
+    "min_inliers": 60,
+    "min_inlier_ratio": 0.2,
+    "max_rms_px": 2.5,
+    "ransac_px": 3.0,
+    "mode": "serial",
+    "pnp_threads": 8,
+    "stop_corr": 400
+   },
+   "audit_opened": false,
+   "audit_reason": null
+  }
+ }
+}

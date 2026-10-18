@@ -1,20 +1,23 @@
 {
   "schema": "source-export-v1",
-  "generated_utc": "2026-10-18T19:53:07Z",
-  "source_root_head": "633a3e20b86b3287cc55e073c6c4343fccb3c484",
-  "file_count": 146,
-  "total_bytes": 1029839,
+  "generated_utc": "2026-10-18T20:20:41Z",
+  "source_root_head": "32b680a5688a06923b6777505fa96d6c3d0edc72",
+  "file_count": 152,
+  "total_bytes": 1067165,
   "roles": {
     "cli": 5,
-    "config": 4,
+    "config": 6,
     "driver": 29,
-    "manifest": 1,
-    "runtime": 96,
+    "manifest": 2,
+    "runtime": 99,
     "schema": 6,
     "third_party": 5
   },
   "freeze": {
-    "config": "configs/final/final-v1.yaml",
+    "configs": [
+      "configs/final/final-v1.yaml",
+      "configs/final/final-v2.yaml"
+    ],
     "freeze_code": [
       "scripts/final_run.py",
       "scripts/v2_s42_lib.py",
@@ -33,7 +36,12 @@
       "src/camloc/v2/multicam/filter.py",
       "src/camloc/filtering/tel_filter.py",
       "src/camloc/v2/landmark_probe.py",
-      "configs/models/e04-pnp-rfb-v1.yaml"
+      "configs/models/e04-pnp-rfb-v1.yaml",
+      "scripts/final_run_v2.py",
+      "src/camloc/v2/fastmatch/__init__.py",
+      "src/camloc/v2/fastmatch/model.py",
+      "src/camloc/v2/fastmatch/lgbatch.py",
+      "configs/v2/s122/generated/E-lap1.yaml"
     ],
     "script_modules": [
       "export_telemetry",
@@ -179,6 +187,9 @@
       "camloc.v2.border_seg_att.AttFitConfig",
       "camloc.v2.border_seg_att.AttMeasurer",
       "camloc.v2.border_seg_att.AttTracker",
+      "camloc.v2.fastmatch",
+      "camloc.v2.fastmatch.lgbatch",
+      "camloc.v2.fastmatch.model",
       "camloc.v2.filter.params",
       "camloc.v2.filter.params.FilterParams",
       "camloc.v2.filter.params.TIER_FIELDS",
@@ -245,10 +256,19 @@
       "source_path": "scripts/final_run.py",
       "dest_path": "scripts/final_run.py",
       "orig_sha256": "01558e668df3589a8716a7a7062e6dc9dce8819334c9581f81de96752ba0f521",
-      "research_working_tree_sha256": "a687cc1c0430ceb24d6b202ffa4a0265d8b4f602e508efc161086894b374d200",
-      "research_drifted_from_freeze": true,
-      "copied_sha256": "4a464ed1f17201ab37e1c99772f0e3e76e43175f16d259dff09eb75c46cdb5cc",
-      "adaptation": "hand-ported release driver: pixi/VISION -> sys.executable, gpu_slot/flock removed, artifacts/ resolved via asset root, parity/freeze subcommands dropped (see docs/R02B_ADAPTATIONS.md)"
+      "research_working_tree_sha256": "01558e668df3589a8716a7a7062e6dc9dce8819334c9581f81de96752ba0f521",
+      "research_drifted_from_freeze": false,
+      "copied_sha256": "ca449f8a296364edbcf4a32339c2de98ff6f39f32ca5f50d9e299b96d9884c26",
+      "adaptation": "hand-ported release driver (final-v1 and final-v2 merged into one file): pixi/VISION -> sys.executable, gpu_slot/flock removed, artifacts/ resolved via asset root, parity/parity-v2/freeze subcommands dropped (see docs/R02B_ADAPTATIONS.md)"
+    },
+    {
+      "source_path": "scripts/final_run_v2.py",
+      "dest_path": "scripts/final_run.py",
+      "orig_sha256": "3865924f0d2e6c751227fc95694d1cb8f1ee5bb40c54c4ea73717b8b90939418",
+      "research_working_tree_sha256": "3865924f0d2e6c751227fc95694d1cb8f1ee5bb40c54c4ea73717b8b90939418",
+      "research_drifted_from_freeze": false,
+      "copied_sha256": "ca449f8a296364edbcf4a32339c2de98ff6f39f32ca5f50d9e299b96d9884c26",
+      "adaptation": "hand-ported release driver (final-v1 and final-v2 merged into one file): pixi/VISION -> sys.executable, gpu_slot/flock removed, artifacts/ resolved via asset root, parity/parity-v2/freeze subcommands dropped (see docs/R02B_ADAPTATIONS.md)"
     }
   ],
   "files": [
@@ -258,6 +278,14 @@
       "role": "config",
       "orig_sha256": "eaeedd442f9544cbbcda45097bb454aa17bdf1047edc8f0b3a34c6b65b7c1db2",
       "copied_sha256": "a90539535c2a2dcb0e611f61297cf74b205ff2dc4c15647e2ca8496bf9e3703d",
+      "adaptation": "asset paths remapped to the release asset root: artifacts/, manifests/v2/, assets/final/ prefixed '$ASSETS/' (the driver resolves '$ASSETS/' against --assets / CAMLOC_ASSETS / assets/final-v1); no value changed"
+    },
+    {
+      "source_path": "configs/final/final-v2.yaml",
+      "dest_path": "configs/final/final-v2.yaml",
+      "role": "config",
+      "orig_sha256": "699c35a609030cc8584c51b8169e825d7584a023061286fb2ad730d1cfab903f",
+      "copied_sha256": "482b9ded85f0881431b137b01dea2390ee7c52cc523591932da6136c61709a2c",
       "adaptation": "asset paths remapped to the release asset root: artifacts/, manifests/v2/, assets/final/ prefixed '$ASSETS/' (the driver resolves '$ASSETS/' against --assets / CAMLOC_ASSETS / assets/final-v1); no value changed"
     },
     {
@@ -274,6 +302,14 @@
       "role": "config",
       "orig_sha256": "a46ae35bad58544df6474397c2d0f7b3b3a6bdf4f6346ef444893ae7d967b01a",
       "copied_sha256": "a46ae35bad58544df6474397c2d0f7b3b3a6bdf4f6346ef444893ae7d967b01a",
+      "adaptation": null
+    },
+    {
+      "source_path": "configs/v2/s122/generated/E-lap1.yaml",
+      "dest_path": "configs/v2/s122/generated/E-lap1.yaml",
+      "role": "config",
+      "orig_sha256": "708748aa112117b666fb4af51dd366054395e0827b1b8892ca9849dfedc92091",
+      "copied_sha256": "708748aa112117b666fb4af51dd366054395e0827b1b8892ca9849dfedc92091",
       "adaptation": null
     },
     {
@@ -330,6 +366,14 @@
       "role": "manifest",
       "orig_sha256": "d5c2de82022331334a8c0c10344007f6c51ac510b2ca979a8130dfa5d13a1bfb",
       "copied_sha256": "d5c2de82022331334a8c0c10344007f6c51ac510b2ca979a8130dfa5d13a1bfb",
+      "adaptation": null
+    },
+    {
+      "source_path": "manifests/final/final-v2.json",
+      "dest_path": "manifests/final-v2-freeze.json",
+      "role": "manifest",
+      "orig_sha256": "19b6d6e4cd26f4866a7ebb3466bf31eb9c1a5d50f484b57d727b30b0ef0d6c50",
+      "copied_sha256": "19b6d6e4cd26f4866a7ebb3466bf31eb9c1a5d50f484b57d727b30b0ef0d6c50",
       "adaptation": null
     },
     {
@@ -1186,6 +1230,30 @@
       "role": "runtime",
       "orig_sha256": "cd9d5b9826936572217918f0de7d83674e53b73b2e657432f9d449153557fef8",
       "copied_sha256": "cd9d5b9826936572217918f0de7d83674e53b73b2e657432f9d449153557fef8",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/fastmatch/__init__.py",
+      "dest_path": "src/camloc/v2/fastmatch/__init__.py",
+      "role": "runtime",
+      "orig_sha256": "e9b0512364830cad7c106b58c085efe5fc2c128b31dccea45de2660c4b7b000a",
+      "copied_sha256": "e9b0512364830cad7c106b58c085efe5fc2c128b31dccea45de2660c4b7b000a",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/fastmatch/lgbatch.py",
+      "dest_path": "src/camloc/v2/fastmatch/lgbatch.py",
+      "role": "runtime",
+      "orig_sha256": "27b04ea81410684022cd9c86d05f4c627a85a5698f0279f5f28fe44c1233ca2e",
+      "copied_sha256": "27b04ea81410684022cd9c86d05f4c627a85a5698f0279f5f28fe44c1233ca2e",
+      "adaptation": null
+    },
+    {
+      "source_path": "src/camloc/v2/fastmatch/model.py",
+      "dest_path": "src/camloc/v2/fastmatch/model.py",
+      "role": "runtime",
+      "orig_sha256": "b64180e03876b54ecf2fb1fc3bce375c0551555169885a57a4a9789469e001e1",
+      "copied_sha256": "b64180e03876b54ecf2fb1fc3bce375c0551555169885a57a4a9789469e001e1",
       "adaptation": null
     },
     {

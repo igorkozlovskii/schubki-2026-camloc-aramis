@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
-"""Release driver of the frozen D-091 final model (final-v1): mc7 + closed-loop borders + poles (S2.10 'mc7BP', k_pole 32) + speed-aware v_max (S4.3 'dyn'),
-initialised once from the supplied first pose. Ported from the research scripts/final_run.py (PRG-003 R02b); no parameter, constant or algorithm changed.
+"""Release driver of the frozen final model: mc7 + closed-loop borders + poles (S2.10 'mc7BP', k_pole 32) + speed-aware v_max (S4.3 'dyn'),
+initialised once from the supplied first pose. Ported from the research scripts/final_run.py (PRG-003 R02b: final-v1, D-091) and scripts/final_run_v2.py
+(PRG-003 R05: final-v2, D-097/D-098); no parameter, constant or algorithm changed.
+
+Two frozen configurations, selected with --config (before the subcommand):
+    configs/final/final-v2.yaml   DEFAULT. final-v2: the six non-fl camera streams come from the S1.22 'E' matcher (one camloc.v2.fastmatch FastMultiCamModel run); fl stays the E04 probe.
+    configs/final/final-v1.yaml   final-v1: six CamProbeModel E04 probes (run with:  python scripts/final_run.py --config configs/final/final-v1.yaml run ...).
 
     pixi run camloc-run --mcap <bag.mcap> --first-pose <csv|json> --out <new output dir> [--assets <asset root>]
     python scripts/final_run.py run --mcap <bag.mcap> --first-pose <csv|json> --out <new dir>             # same, in the active environment
@@ -13,12 +18,13 @@ CAMLOC_ASSET_ROOT (their ROOT). Output (--out) is a NEW directory; an existing p
 `run` does, in this order (all inputs GT-free; the GT guard of S4.2 is installed and refuses ground-truth-class files):
   1 export   scripts/export_test_input.py (store with the file's own /tf_static calibration; exit 0 or 3 accepted) and telemetry:
              state_estimation allowed fields (scripts/export_telemetry.py; exit 3 = topic absent) -> /validation/twist+accel (scripts/v2_s41_telemetry.py) -> none (camera-only: NOT implemented here, refused).
-  2 probes   seven E04 probes (fl = configs/models/e04-pnp-rfb-v1.yaml, six CamProbeModel, stride 2) through scripts/run_inference.py --mode continuous, GPU, one process per camera, sequential;
+  2 probes   final-v1: seven E04 probes (fl = configs/models/e04-pnp-rfb-v1.yaml, six CamProbeModel, stride 2); final-v2: the fl E04 probe + ONE FastMultiCamModel run (E params) for the six others;
+             through scripts/run_inference.py --mode continuous, GPU, one process per probe, sequential;
              rl/rr: if the store's calibration differs from the training calibration in the rl/rr extrinsics only, the S4.1 rule T_fitted_test = T_fitted_train inv(T_nominal_train) T_nominal_test is applied in the worker.
-  3 streams  fl E04 rows + six meas-v1 parquets.   4 detect  S2.5 pole detections (fl fr cl cr).
+  3 streams  fl E04 rows + six meas-v1 parquets (final-v2: built from the FastMultiCamModel step residuals, S1.22 construction).   4 detect  S2.5 pole detections (fl fr cl cr).
   5 filter   v2_s210_lib.run('mc7BP') with the closed-loop LiveBorder (GPU), border fit started from the filter's own state; v_max rule from scripts/v2_s43_vmax.py ('dyn' by default).
 The first pose is read once (t0, x, y, yaw) and handed to the filter and to the probes; nothing else carries a pose. Track bounds: <assets>/assets/final/track_bounds.json (hash-checked).
-The research subcommands `parity` and `freeze` need research stores and are not part of the release.
+The research subcommands `parity`, `parity-v2` and `freeze` need research stores and are not part of the release.
 GPU: the GPU stages need roughly 9 GB of free VRAM (measured); --wait-vram-mb N optionally waits until that much is free. JIT: no torch extension is compiled by the measured stages;
 if one is, set TORCH_EXTENSIONS_DIR (default <out>/work/torch_extensions) and CUDA_HOME for your toolkit.
 """
@@ -41,7 +47,7 @@ ROOT = HERE.parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(ROOT / "src"))
 
-CONFIG = ROOT / "configs/final/final-v1.yaml"
+CONFIG = ROOT / "configs/final/final-v2.yaml"
 BOUNDS_SHA = "28cf2bfd9ce74c2e5f1ededd5d36866221c341609b27a15e3b5bae94b33de0ff"
 MARGIN_NS = 1_000_000_000
 ASSETS: Path = Path(os.environ.get("CAMLOC_ASSETS") or ROOT / "assets/final-v1")
@@ -115,6 +121,53 @@ def sha(p) -> str:
 def cfg_load() -> dict:
     import yaml
     return yaml.safe_load(CONFIG.read_text())
+
+
+def is_fast(cfg: dict) -> bool:
+    """final-v2: six non-fl streams from the S1.22 E matcher (FastMultiCamModel); final-v1 has no `six_cams` block."""
+    return (cfg.get("six_cams") or {}).get("matcher") == "fastmatch"
+
+
+def fast_model_config(cfg: dict) -> dict:
+    """FastMultiCamModel config: params read unchanged from the frozen S1.22 E config, map dirs = the final config's seven full maps.
+    Release adaptation (paths only): map_dirs and ext_dir are absolute paths under the asset root (research: relative to the checkout / default artifacts/external)."""
+    import yaml
+    sc = cfg["six_cams"]
+    src = yaml.safe_load((ROOT / sc["params_from"]).read_text())
+    assert src["class"] == sc["class"], (src["class"], sc["class"])
+    return {"schema_version": 1, "model_id": sc["model_id"], "class": sc["class"],
+            "assets": {"map_dirs": {c: str(asset(cfg["freeze"]["maps"][c])) for c in ("fl", "fr", "cl", "cr", "r", "rl", "rr")}, "ext_dir": str(ASSETS / "artifacts/external")},
+            "params": dict(src["params"]), "audit_opened": False, "audit_reason": None}
+
+
+def fast_streams(run_dir: Path, lap: int) -> dict:
+    """Six meas-v1 frames from a FastMultiCamModel run's step residuals (the construction of v2_s122_run.streams_from_run / v2_s122b_run.run_streams, re-pointed at run_dir)."""
+    import numpy as np
+    import pandas as pd
+    steps = [json.loads(x) for x in open(Path(run_dir) / "diagnostics.jsonl")]
+    steps = [s for s in steps if s.get("event") == "step" and "cams" in (s.get("residuals") or {})]
+    rows = {c: [] for c in ("fr", "cl", "cr", "r", "rl", "rr")}
+    for s in steps:
+        r = s["residuals"]
+        for c, q in r["cams"].items():
+            if c not in rows:
+                continue
+            v = bool(q["valid"])
+            age = (s.get("ages_ns") or {}).get(c)
+            rows[c].append({"stamp_ns": int(s["t"]), "avail_ns": int(s["t"]), "lap": lap, "camera": c, "kind": "landmark", "valid": v,
+                            "x": q.get("x", np.nan) if v else np.nan, "y": q.get("y", np.nan) if v else np.nan, "yaw": q.get("yaw", np.nan) if v else np.nan,
+                            "q_cam_age_ms": np.nan if age is None else age / 1e6, "q_n_inl": q.get("n_inl", np.nan), "q_inlier_ratio": q.get("inlier_ratio", np.nan),
+                            "q_rms_px": q.get("rms_px", np.nan), "q_d_kf_m": q.get("d_kf_m", np.nan), "q_sim_top": q.get("sim_top", np.nan)})
+    out = {}
+    for c, v in rows.items():
+        df = pd.DataFrame(v)
+        for k in ("stamp_ns", "avail_ns", "lap"):
+            df[k] = df[k].astype("int64")
+        df["valid"] = df["valid"].astype(bool)
+        # not full meas-v1 (no s/n/dpsi/sigma columns): the same frame v2_s122_run.streams_from_run hands to v2_s210_lib.run in S1.22 / S1.22b
+        assert len(df) and df.stamp_ns.is_monotonic_increasing and np.isfinite(df.loc[df.valid, ["x", "y", "yaw"]].to_numpy()).all(), c
+        out[c] = df
+    return out
 
 
 def check_bounds() -> dict:
@@ -232,6 +285,9 @@ def stage_probes(store: Path, work: Path, fp: tuple, end_ns: int, log: dict):
     class Stub:
         audit = False
     pc = L.probe_configs(Stub())
+    cfg = cfg_load()
+    if is_fast(cfg):   # final-v2: fl E04 probe + one FastMultiCamModel run for the six other cameras
+        pc = {"fl-e04": pc["fl-e04"], "fast-e": fast_model_config(cfg)}
     dif = calib_diff(store)
     log["calibration_differs"] = dif
     if set(dif) - {"rl", "rr"}:
@@ -245,7 +301,8 @@ def stage_probes(store: Path, work: Path, fp: tuple, end_ns: int, log: dict):
         if out.exists():
             continue
         c = copy.deepcopy(c)
-        c["assets"] = {**c.get("assets", {}), "map_dir": str(asset(c["assets"]["map_dir"])), "ext_dir": str(ASSETS / "artifacts/external")}   # absolute: the model joins ROOT / map_dir
+        if "map_dirs" not in c["assets"]:   # CamProbeModel config (the FastMultiCamModel config is already absolute)
+            c["assets"] = {**c.get("assets", {}), "map_dir": str(asset(c["assets"]["map_dir"])), "ext_dir": str(ASSETS / "artifacts/external")}   # absolute: the model joins ROOT / map_dir
         cp = work / "configs" / f"{rid}.yaml"
         cp.write_text(yaml.safe_dump(c, sort_keys=False))
         cam = rid.split("-")[0]
@@ -277,6 +334,24 @@ def cmd_probe_worker(argv):
     from camloc.models import pnp
     from camloc.models.retrieval import PriorState
     cam_name = os.environ.get("FINAL_PROBE_CAM", "")
+    if cam_name == "fast":   # final-v2 FastMultiCamModel: the same fallback per camera (equal-fingerprint K/D/prior; rl/rr S4.1 extrinsic rule)
+        from camloc.v2.fastmatch import model as FM
+        orig_ci = FM._Cam.init
+
+        def cam_init(self, first_pose, sm, cam_static):
+            try:
+                return orig_ci(self, first_pose, sm, cam_static)
+            except ContractError:
+                self.prior = PriorState(first_pose.x, first_pose.y, first_pose.yaw, first_pose.timestamp_ns)
+                if self.name in ("rl", "rr"):
+                    Tn_tr = np.array(self.man["T_base_cam_nominal"], float)
+                    Tf_tr = np.array(self.man["T_base_cam_fitted"], float)
+                    Tn_te = np.asarray(cam_static.T_base_cam.matrix, float)
+                    self.T_base_cam = Tf_tr @ np.linalg.inv(Tn_tr) @ Tn_te
+                print(f"fast cam {self.name}: plain calibration check refused; fallback {'s41_test_extrinsic' if self.name in ('rl', 'rr') else 'equal_fingerprint'}", flush=True)
+        FM._Cam.init = cam_init
+        import run_inference
+        return run_inference.main(argv)
     orig = pnp.E04PnpModel.initialize
 
     def init(self, first_pose, sm):
@@ -316,6 +391,11 @@ def stage_streams(store: Path, work: Path):
     rows = fs.build_e04_stream(rd, "final:e04")
     fs.validate_rows(rows)
     fs.write_stream(rows, out / "fl.e04.jsonl.gz")
+    if is_fast(cfg_load()):
+        for cam, df in fast_streams(work / "probes" / "fast-e", 0).items():
+            df.to_parquet(out / f"{cam}_landmark.parquet", index=False)
+            print("stream", cam, len(df), int(df.valid.sum()), flush=True)
+        return
     cl = Centerline(check_bounds())
     for cam in L.CAMS6:
         rd = work / "probes" / f"{cam}-e04"
@@ -382,7 +462,7 @@ def cmd_run(a):
         raise SystemExit(f"REFUSED: {out / 'pred.csv'} exists")
     work = out / "work"
     work.mkdir(parents=True, exist_ok=True)
-    log: dict = {"config_sha256": sha(CONFIG), "vmax": a.vmax, "assets": str(ASSETS)}
+    log: dict = {"config": str(CONFIG.relative_to(ROOT)) if CONFIG.is_relative_to(ROOT) else str(CONFIG), "config_sha256": sha(CONFIG), "vmax": a.vmax, "assets": str(ASSETS)}
     wait_vram(a.wait_vram_mb)
     T = {"start": time.time()}
     fp = read_first_pose(a.first_pose)
@@ -425,8 +505,13 @@ def cmd_run(a):
 
 
 def main(argv=None) -> int:
+    global CONFIG
     argv = list(sys.argv[1:] if argv is None else argv)
     install_audit()
+    if argv[:1] == ["--config"]:
+        CONFIG = Path(argv[1]) if Path(argv[1]).is_absolute() else (ROOT / argv[1])
+        CONFIG = CONFIG.resolve()
+        argv = argv[2:]
     if argv and argv[0] == "probe-worker":
         return cmd_probe_worker(argv[1:])
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
