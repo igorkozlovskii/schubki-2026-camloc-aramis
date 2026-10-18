@@ -37,3 +37,7 @@ Adaptations of the v2 additions (paths only; the E parameters are read unchanged
 | `src/camloc/v2/fastmatch/`, `configs/v2/s122/generated/E-lap1.yaml`, `configs/final/final-v2.yaml`, `manifests/final-v2-freeze.json` | exported by `tools/export_sources.py` (now takes both freeze configs; `source-export.json` records both ported drivers) |
 
 No new asset: the final-v2 freeze manifest has the same maps/networks/constants/assets as final-v1, so `assets-final-v1` and its tarball are reused. Known research caveat (F2 receipt): the E streams do not pass `validate_meas_v1` (no s/n/dpsi/sigma columns); neither did the S1.22/S1.22b streams; the driver checks non-empty, monotone, finite and on the tick grid instead.
+
+Update after this section was written: research re-froze `scripts/final_run_v2.py` at commit 32eeeaf (sha256 `da202707...`; the change is the docstring path and `SELF` for the probe-worker command only). The shipped merged driver already behaves like the re-frozen one.
+
+Three small differences on the v1 path of the merged driver, with no numeric effect: `log["config"]` is written to `run_summary.json`; `--config` is `resolve()`d; `stage_probes` calls `cfg_load()` for v1.

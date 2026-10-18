@@ -141,8 +141,12 @@ because `state_estimation` was absent.
 - The audit set is two laps from the same recording session as training; the hidden test run may
   differ in speed and lighting. Daylight evidence is simulated.
 - The camera-only fallback is not implemented; a run needs one of the two telemetry sources.
-- Results on different GPU types differ at float level (RANSAC amplifies it); compare aggregate
+- Results on different GPU types differ (RANSAC amplifies float-level differences); compare aggregate
   numbers, not rows.
+- final-v2 output depends on the GPU type. On the test bag the research v2 driver on an A100 (research
+  reference run) and the same code on an RTX 4090 differ by median 9.6 cm, RMS 0.55 m and a maximum of 2.9 m,
+  confined to the start transient (about the first 2 s). On one GPU type the release matches the research driver
+  (median 0.2 mm, RMS 8 mm). Compare aggregate metrics, not rows.
 - The track bounds of the shared second recording differ from the packaged copy (cause not
   investigated); the packaged copy is used.
 

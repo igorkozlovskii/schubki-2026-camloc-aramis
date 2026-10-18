@@ -109,12 +109,12 @@ and a new output directory (the run refuses an existing one). `--assets` default
 environment variable `CAMLOC_ASSETS`). Outputs in the directory: `pred.csv`, `run_summary.json`, per-tick
 diagnostics.
 
-**Measured on the test bag** (722 ticks, 72.1 s of data, one RTX 4090 shared with other jobs): two runs took 431 s
+**Measured on the test bag, final-v1** (722 ticks, 72.1 s of data, one RTX 4090 shared with other jobs): two runs took 431 s
 and 543 s wall clock (about 0.6 and 0.75 s per output tick; 384 s and 498 s of it image probing), with about 9 GB
 GPU memory and 1.9 GB RAM. The research run of the same model on a quiet machine took 215 s (298 ms per tick); a
 quiet-machine time of the release driver is not measured. The program is offline in structure, not real-time.
 
-**Reproducibility.** Two identical runs are not bitwise equal. The measured per-frame latency of the image
+**Reproducibility, final-v1.** Two identical runs are not bitwise equal. The measured per-frame latency of the image
 probes decides when each camera measurement becomes available to the causal filter, so a loaded machine changes
 the output slightly. On the test bag the two release runs differ from the research output by 14.0 mm and 9.5 mm
 pooled position RMS (median 1.3 mm, 95th percentile 18 mm, maximum 0.22 m and 0.085 m); the research driver
@@ -123,9 +123,19 @@ measurement streams of the release runs are identical to the research run's; onl
 available differ. The release therefore reproduces the research driver within its run-to-run envelope (8-14 mm
 RMS, median about 1 mm, maximum up to 0.22 m on this bag), not bitwise.
 
+**Measured on the test bag, final-v2** (default): one release run on a shared RTX 4090 took 392.3 s in total
+(543 ms per output tick), 349.6 s of it image probing; 145 of 145 border fits were valid (`run_summary.json` of
+that run). On the same GPU type the release and the research v2 driver differ by a median of 0.2 mm, RMS 8 mm and
+a maximum of 7.6 cm. Identical measurement streams are not claimed for final-v2.
+
+**Reproducibility, final-v2.** final-v2 output depends on the GPU type. On the test bag the research v2 driver on
+an A100 (research reference run) and the same code on an RTX 4090 differ by median 9.6 cm, RMS 0.55 m and a
+maximum of 2.9 m, confined to the start transient (about the first 2 s). On one GPU type the release matches the
+research driver (median 0.2 mm, RMS 8 mm). Compare aggregate metrics, not rows.
+
 ## Results
 
-Position RMSE in metres at the per-tick pose level. The audit rows were scored lap by lap with
+Position RMSE in metres at the per-tick pose level. The table below gives the final-v1 figures; final-v2 figures follow it. The audit rows were scored lap by lap with
 the unchanged organizer scorer (coverage 100 %); the pooled value is computed from the two laps'
 per-tick errors. The dev and held-out rows come from a re-implementation of the organizer scoring
 formulas (same ground-truth interpolation and 50 ms gap rule). On earlier development runs that
@@ -146,11 +156,25 @@ not averaged together; details, sets and caveats are in [docs/RESULTS.md](docs/R
 | Dev lap 2, sunnier variant | simulated daylight | GT first pose | 0.699 |
 | Held-out lap 1, relit with the v3 generator | simulated daylight | GT first pose | 1.104 |
 
+final-v2 (research D-096/D-097; one run per cell, post-hoc selection, not audited; the v2 matcher streams were
+computed on an A100), position RMSE in metres, final-v2 vs the final-v1 figures above:
+
+| Evaluation set | Lighting | final-v2 | final-v1 |
+|---|---|---|---|
+| Held-out laps 1, 3, 5, pooled | night | 0.291 | 0.326 |
+| Held-out lap 1 | simulated daylight | 0.768 | 1.104 |
+| Dev lap 4 | simulated daylight | 0.535 | 0.590 |
+| Dev lap 2, sunnier variant | simulated daylight | 0.544 | 0.699 |
+| Dev lap 2, v3 relit | simulated daylight | 0.505 | 0.697 |
+| Dev lap 2 | night | 0.308 | 0.276 |
+
+final-v2 was not scored on the audit laps 6 and 7.
+
 The audit row is the estimate for night conditions of the training session; the hidden run may differ in speed and time of day. Daylight rows use images relit by a
 synthetic generator and say how the method degrades, not how it performs on real daylight.
 The shared second recording (higher speed, different time of day) was used only to check that
-the pipeline runs; it has no ground truth and no score. Processing time per frame is in `docs/RESULTS.md`; the release run measured 597 ms
-and 752 ms per output tick (total wall time over 722 ticks) on a shared RTX 4090. The shipped test run has no ground truth, so
+the pipeline runs; it has no ground truth and no score. Processing time per frame is in `docs/RESULTS.md`; the final-v1 release runs measured 597 ms
+and 752 ms per output tick (total wall time over 722 ticks) on a shared RTX 4090; the final-v2 release run measured 543 ms per tick (one run, shared RTX 4090). The shipped test run has no ground truth, so
 there is no scorer output for it; the table above comes from the research pipeline.
 
 ## Licences and declared pre-trained models
@@ -195,3 +219,5 @@ learned layer; D-074 and D-083 give its parts), frozen as `configs/final/final-v
 (SHA-256 `eaeedd442f9544cbbcda45097bb454aa17bdf1047edc8f0b3a34c6b65b7c1db2`). Maps, networks
 and checkpoints are fitted on laps 0, 1, 3 and 5 only. The research checkout is not part of
 this repository. Port details and deviations from the research driver: `docs/R02B_ADAPTATIONS.md`.
+
+final-v2 (default since v2.0.0): configuration `configs/final/final-v2.yaml` (release copy SHA-256 `482b9ded85f0881431b137b01dea2390ee7c52cc523591932da6136c61709a2c`; research original `699c35a609030cc8584c51b8169e825d7584a023061286fb2ad730d1cfab903f`, which differs by the `$ASSETS/` path prefix); research decisions D-096 and D-097. The figures in the Results section and the timings above are labelled final-v1 or final-v2 accordingly.
