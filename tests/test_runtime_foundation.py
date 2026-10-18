@@ -63,7 +63,7 @@ def test_manifest_present_and_valid():
 def test_camloc_imports_from_sibling():
     import camloc
     assert _in_tree(camloc.__file__, SRC), camloc.__file__
-    assert not _in_tree(camloc.__file__, Path("/home/igor/Projects/other/schubki_2026/src"))
+    assert not any(f in camloc.__file__ for f in FORBIDDEN_PATH_FRAGMENTS), camloc.__file__
 
 
 @pytest.mark.parametrize("mod", [
