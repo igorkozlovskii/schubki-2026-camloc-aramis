@@ -528,6 +528,13 @@ def main(argv=None) -> int:
     a = ap.parse_args(argv)
     if a.cmd == "run" and not (a.mcap or (a.store and a.tel)):
         ap.error("run needs --mcap, or --store and --tel")
+    # relative paths are relative to where the user ran the command (pixi tasks run in the repo root and export INIT_CWD);
+    # make them absolute before any stage starts a subprocess in the work directory
+    base = Path(os.environ.get("INIT_CWD") or os.getcwd())
+    for k in ("mcap", "store", "tel", "first_pose", "out", "assets"):
+        v = getattr(a, k, None)
+        if v is not None:
+            setattr(a, k, (base / Path(v).expanduser()).resolve())
     set_assets(a.assets or ASSETS)
     return {"run": cmd_run}[a.cmd](a)
 

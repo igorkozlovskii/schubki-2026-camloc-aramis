@@ -41,3 +41,5 @@ No new asset: the final-v2 freeze manifest has the same maps/networks/constants/
 Update after this section was written: research re-froze `scripts/final_run_v2.py` at commit 32eeeaf (sha256 `da202707...`; the change is the docstring path and `SELF` for the probe-worker command only). The shipped merged driver already behaves like the re-frozen one.
 
 Three small differences on the v1 path of the merged driver, with no numeric effect: `log["config"]` is written to `run_summary.json`; `--config` is `resolve()`d; `stage_probes` calls `cfg_load()` for v1.
+
+- v3.0.2: `scripts/final_run.py` resolves relative `--mcap`, `--store`, `--tel`, `--first-pose`, `--out` and `--assets` against the directory the command was run from (`INIT_CWD` under `pixi run`) before any stage starts a subprocess. Path handling only; no numeric effect.
