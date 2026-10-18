@@ -176,3 +176,30 @@ D-093 (simulated daylight laps), D-094 (batched matching timing). Release-run nu
 ## Release v2.0.0: final-v2
 
 The default configuration is `final-v2` (research F2, D-097; chosen as the submission model in D-098): the six non-front camera streams come from the S1.22 "E" matcher (`camloc.v2.fastmatch`, one model run) instead of six per-camera probes; the front camera, borders, poles, filter and constants are those of `final-v1`. Accuracy figures for final-v2 and its comparison with final-v1 are research results (PRG-002 F2 and S1.22b) and are not re-measured here. The release only reproduces the pipeline end to end on the test bag (a pipeline check, D-084), see the section final-v2 of `docs/R02B_ADAPTATIONS.md`.
+
+
+final-v2 (research D-096/D-097; one run per cell, post-hoc selection, not audited; the v2 matcher streams were
+computed on an A100), position RMSE in metres, final-v2 vs the final-v1 figures above:
+
+| Evaluation set | Lighting | final-v2 | final-v1 |
+|---|---|---|---|
+| Held-out laps 1, 3, 5, pooled | night | 0.291 | 0.326 |
+| Held-out lap 1 | simulated daylight | 0.768 | 1.104 |
+| Dev lap 4 | simulated daylight | 0.535 | 0.590 |
+| Dev lap 2, sunnier variant | simulated daylight | 0.544 | 0.699 |
+| Dev lap 2, v3 relit | simulated daylight | 0.505 | 0.697 |
+| Dev lap 2 | night | 0.308 | 0.276 |
+
+final-v2 was not scored on the audit laps 6 and 7.
+
+**Measured on the test bag, final-v2** (default): one release run on a shared RTX 4090 took 392.3 s in total
+(543 ms per output tick), 349.6 s of it image probing; 145 of 145 border fits were valid (`run_summary.json` of
+that run). On the same GPU type the release and the research v2 driver differ by a median of 0.2 mm, RMS 8 mm and
+a maximum of 7.6 cm. Identical measurement streams are not claimed for final-v2.
+
+**Reproducibility, final-v2.** final-v2 output depends on the GPU type. On the test bag the research v2 driver on
+an A100 (research reference run) and the same code on an RTX 4090 differ by median 9.6 cm, RMS 0.55 m and a
+maximum of 2.9 m, confined to the start transient (about the first 2 s). On one GPU type the release matches the
+research driver (median 0.2 mm, RMS 8 mm). Compare aggregate metrics, not rows.
+
+final-v2 (default since v2.0.0): configuration `configs/final/final-v2.yaml` (release copy SHA-256 `482b9ded85f0881431b137b01dea2390ee7c52cc523591932da6136c61709a2c`; research original `699c35a609030cc8584c51b8169e825d7584a023061286fb2ad730d1cfab903f`, which differs by the `$ASSETS/` path prefix); research decisions D-096 and D-097. The figures in the Results section and the timings above are labelled final-v1 or final-v2 accordingly.
