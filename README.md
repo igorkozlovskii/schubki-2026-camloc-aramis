@@ -115,9 +115,10 @@ quiet-machine time of the release driver is not measured. The program is offline
 probes decides when each camera measurement becomes available to the causal filter, so a loaded machine changes
 the output slightly. On the test bag the two release runs differ from the research output by 14.0 mm and 9.5 mm
 pooled position RMS (median 1.3 mm, 95th percentile 18 mm, maximum 0.22 m and 0.085 m); the research driver
-rerun on the same inputs differs from its own earlier output by 8.4 mm RMS (median 1.3 mm). The release therefore
-reproduces the research driver within the run-to-run envelope of about 1 cm RMS (median about 1 mm), not
-bitwise.
+rerun on the same inputs differs from its own earlier output by 8.4 mm RMS (median 1.3 mm). The six camera
+measurement streams of the release runs are identical to the research run's; only the times at which they become
+available differ. The release therefore reproduces the research driver within its run-to-run envelope (8-14 mm
+RMS, median about 1 mm, maximum up to 0.22 m on this bag), not bitwise.
 
 ## Results
 
