@@ -4,8 +4,9 @@
 
 The system estimates a race car's position and heading from seven onboard cameras, calibration, a landmark map, track borders and car-state telemetry. It starts from one supplied pose and produces causal poses at 10 Hz. The released system uses camera landmark matching, border and pole measurements, and a telemetry-based track-coordinate filter; it has no learned sequence layer.
 
-`final-v2` is the default: it batches feature extraction and matching for the six non-front cameras using the E matcher. `final-v1` remains available; both versions use the same maps, borders, poles, filter and asset bundle.
+![Algorithm overview: map building and inference](scheme.png)
 
+[PDF](scheme.pdf) · [Editable diagram](scheme.drawio)
 
 ## Requirements
 
