@@ -1,4 +1,4 @@
-# Frozen driver port: what differs from the research files (PRG-003 R02b)
+# Frozen driver port: what differs from the research files 
 
 No parameter, threshold, constant, map, weight or algorithm differs from the D-091 freeze (`configs/final/final-v1.yaml`, `manifests/final-v1-freeze.json`).
 Every adapted file's original and copied sha256 are in `manifests/source-export.json` (`adaptation` is non-null exactly when they differ).
@@ -7,7 +7,7 @@ Every adapted file's original and copied sha256 are in `manifests/source-export.
 |---|---|
 | `scripts/v2_s42_lib.py`, `s07_fusion_lib.py`, `v2_s11_common.py`, `s07c_faults.py` | one line: `ROOT` is `$CAMLOC_ASSET_ROOT` when set, else the script's parent (all other drivers inherit `ROOT` from these) |
 | `configs/final/final-v1.yaml` | asset paths prefixed `$ASSETS/` (the driver resolves them against the asset root); undoing the prefix gives the research config byte for byte (tested) |
-| `external/.../lightglue/__init__.py` | R02a: unshipped backend imports dropped |
+| `external/.../lightglue/__init__.py` | unshipped backend imports dropped |
 | `scripts/final_run.py` (hand port, research sha256 `01558e66...`) | `pixi run ... scripts/X` and `VISION` replaced by `sys.executable scripts/X`; `scripts/gpu_slot.sh`, `/tmp/camloc-gpu*.lock` and `GpuSlot` removed (probe processes run one after the other as before; optional `--wait-vram-mb`); frozen assets resolved through the asset root; probe configs get absolute `map_dir` and `ext_dir`; `--split configs/splits/release-v1.yaml` passed to the probe worker; optional path audit (`CAMLOC_AUDIT_DIR`); `parity` and `freeze` subcommands (need research stores) removed |
 | `configs/splits/release-v1.yaml` (new) | empty lap table: the research split's only run-time use is the audit-lap guard; the release carries no research lap or audit intervals |
 

@@ -37,7 +37,7 @@ from .lightglue import LightGlue # noqa
 from .utils import match_pair    # noqa
 ```
 
-This is the only transformed source in the R02a export. Its original and
+This is the only transformed source in the source export. Its original and
 resulting sha256 are recorded in `manifests/source-export.json`
 (`role=third_party`, `adaptation` field).
 
@@ -47,4 +47,4 @@ The full external-resource / weight provenance and the complete component
 licence table are in this directory's `external-resources.json` and
 `license-table.md` (copied verbatim from the research checkout). Weight
 acquisition and the organizer-data terms for own-derived maps/masks are tracked
-there; weights are not part of the R02a source foundation.
+there; weights are not part of the source foundation.

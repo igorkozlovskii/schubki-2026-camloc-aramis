@@ -1,12 +1,11 @@
-# Runtime foundation (PRG-003 R02a)
+# Runtime foundation
 
-**Status: runtime foundation only. The final-model live adapter and inference
-verification are pending R02b/R03.** This document describes what R02a put in
-place and how it was verified. It is **not** a claim that the final model runs
-end to end — no model is constructed, no checkpoint is loaded and no inference,
-packaging or scoring is performed by R02a.
+**Status: historical foundation notes.** This page describes the source foundation and the single
+environment that the final model runs on. The complete run (frozen driver, asset bundle, end-to-end run on the
+test bag) is described in `README.md`, `docs/ASSETS.md` and `docs/R02B_ADAPTATIONS.md`; the commands below were
+verified for the foundation and still apply.
 
-## What this step delivered
+## What the foundation contains
 
 1. **A standalone source foundation** for the single final model (research
    decision D-086: mc7 + borders + poles + speed-aware / dynamic v_max, **no**
@@ -27,15 +26,13 @@ packaging or scoring is performed by R02a.
    repo root) containing BOTH the model/vision stack and the MCAP reader/exporter
    stack. Streamlit, JupyterLab and research-only tooling are excluded.
 
-### What is NOT here yet (owned by later steps)
+### Added after the foundation
 
-- The standalone live inference adapter / release config for
-  mc7 + borders + poles + dynamic v_max (R02b).
-- Dynamic v_max folded into shared filter code (R02b).
-- The asset bundle (maps, pole map, static masks, segmentation weights,
-  LightGlue/ALIKED/DINOv2 weights, calibration) (R02b).
-- Raw-MCAP reproduction, parity against the research pipeline and measured
-  runtime / resources (R03).
+- The frozen final driver `scripts/final_run.py` (Pixi task `camloc-run`) and its script closure, with dynamic
+  v_max as part of the frozen modules.
+- The asset bundle (maps, pole map, masks, segmentation weights, LightGlue/ALIKED/DINOv2 weights, calibration),
+  delivered as a release asset and verified by `tools/verify_assets.py` (`docs/ASSETS.md`).
+- An end-to-end run on the test bag and its parity and resource measurements (`README.md`, `docs/RESULTS.md`).
 
 No older runner option (A′ `release-e04t-fb-v2`, `release-mc7-v1`) is shipped as
 a release choice. Per D-086 and PRG-003 D-007, exactly one final model is the
@@ -113,7 +110,7 @@ original and resulting sha256 of the adapted `__init__.py` are recorded in
 `manifests/source-export.json` and in `licenses/`. No LightGlue weights, `.git`,
 examples, notebooks or tests are copied. No weight is fetched on import.
 
-## Boundary guarantees checked by R02a
+## Boundary guarantees of the foundation
 
 - `camloc` and all selected final-model modules import from this sibling's
   `src/` (asserted against the file origin), never from a research checkout.

@@ -17,11 +17,11 @@ what is local to the release delivery.
 
 ## Status
 
-R02b ported the frozen D-091 final driver (`scripts/final_run.py run`), extended the exporter to the
+The release ported the frozen D-091 final driver (`scripts/final_run.py run`), extended the exporter to the
 `final-v1.yaml` `freeze.code` closure, pinned the environment to the research vision lock versions, built the
 asset bundle (`tools/build_assets.py`, `tools/verify_assets.py`, `docs/ASSETS.md`) and ran the test bag end to
 end. Parity with the research run is not bitwise (latency-dependent availability); see
-`docs/R02B_ADAPTATIONS.md`. Packaging, scoring and the organizer quick start are later steps.
+`docs/R02B_ADAPTATIONS.md`. The README holds the organizer quick start; release packaging is orchestrated from the research checkout.
 
 ## Rules for work in this directory
 
@@ -46,6 +46,6 @@ end. Parity with the research run is not bitwise (latency-dependent availability
 ## Ownership
 
 PRG-003 (release orchestrator, in the research checkout) owns orchestration
-during preparation. Implementers work within a written brief and leave draft
+during preparation. Implementers work within a written brief and leave
 receipts; reviewers are independent. This sibling does not own or edit
 PRG-001/PRG-002 state.
